@@ -6,13 +6,37 @@
 
 using namespace std;
 
+const int ARR_LENGTH = 8;
+
+
 int main()
 {
-  cout << "Welcome message" << endl;
+
+  int evenNums[8] = {0};
+  int index = 0;
+  int input;
+
+  cout <<  endl << "Welcome message" << endl;
+
+  //while (evenNums[7] == 0) {
+  for (int i = 0; i < ARR_LENGTH; i++) {
+    cout << "Please enter an integer: ";
+    cin >> input;
+    evenNums[index] = input;
+    index++;
+  }
+  //}
+
+  cout << "printing array: " << endl << endl;
+  for(int i = 0; i < ARR_LENGTH; i++) {
+    cout << "index =  " << i;
+    cout << endl << " value = " << evenNums[i] << " ";
+    cout << endl;
+  }
 
   // 3.)
   // Write the code needed to accept interger input from the keyboard
-  // Unit 8 EVEN numbers greater than or equal to 25 have been stored
+  // Unil 8 EVEN numbers greater than or equal to 25 have been stored
   // In a STATIC array
 
   // 4.)
