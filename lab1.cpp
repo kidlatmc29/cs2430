@@ -9,6 +9,7 @@ using namespace std;
 const int ARR_LENGTH = 10;
 
 void getInput(int max, int arr[]);
+int findMin(int arr[]);
 
 int main()
 {
@@ -16,25 +17,25 @@ int main()
   int nums[ARR_LENGTH] = {0};
   int max;
 
-  cout <<  endl << "Welcome message" << endl;
+  cout <<  endl << "- Welcome to Lab1 - " << endl;
 
   cout << "Please enter a max value: ";
   cin >> max;
 
   getInput(max, nums);
 
-/**
   cout << endl << endl;
 
-  cout << "printing array: " << endl;
+  cout << "Printing array.... " << endl;
   for(int i = 0; i < ARR_LENGTH; i++) {
     cout << "#" << i;
     cout << " = " << nums[i] << " ";
     cout << endl;
   }
-  **/
 
-  cout << endl << "End of Lab1 Program" << endl;
+  cout << "Minimum value: " << findMin(nums) << endl;
+
+  cout << endl << "- End of Lab1 Program - " << endl;
 
   return 0;
 }
@@ -53,13 +54,15 @@ void getInput(int max, int arr[])
       index++;
     }
   }
+}
 
-  cout << endl << endl;
-
-  cout << "printing array: " << endl;
-  for(int i = 0; i < ARR_LENGTH; i++) {
-    cout << "#" << i;
-    cout << " = " << arr[i] << " ";
-    cout << endl;
+int findMin(int arr[])
+{
+  int min = arr[0];
+  for(int index = 1; index < ARR_LENGTH; index++) {
+    if(arr[index] < min) {
+      min = arr[index];
+    }
   }
+  return min;
 }
