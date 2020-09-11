@@ -7,26 +7,49 @@
 using namespace std;
 
 const int ARR_LENGTH = 10;
-const int MAX_NUM = 50;
 
-void getIntput(int max, int[] arr);
+void getInput(int max, int arr[]);
 
 int main()
 {
 
-  int nums[10] = {0};
-  int index = 0;
-  int input;
+  int nums[ARR_LENGTH] = {0};
+  int max;
 
   cout <<  endl << "Welcome message" << endl;
 
+  cout << "Please enter a max value: ";
+  cin >> max;
+
+  getInput(max, nums);
+
 /**
-  while (nums[ARR_LENGTH - 1] == 0) {
+  cout << endl << endl;
+
+  cout << "printing array: " << endl;
+  for(int i = 0; i < ARR_LENGTH; i++) {
+    cout << "#" << i;
+    cout << " = " << nums[i] << " ";
+    cout << endl;
+  }
+  **/
+
+  cout << endl << "End of Lab1 Program" << endl;
+
+  return 0;
+}
+
+
+void getInput(int max, int arr[])
+{
+  int index = 0;
+  int input;
+
+  while (arr[ARR_LENGTH - 1] == 0) {
     cout << "Please enter an integer: ";
     cin >> input;
-    if(input <= MAX_NUM && input > 0) {
-      cout << "index = " << index << endl;
-      nums[index] = input;
+    if(input <= max && input > 0) {
+      arr[index] = input;
       index++;
     }
   }
@@ -36,18 +59,7 @@ int main()
   cout << "printing array: " << endl;
   for(int i = 0; i < ARR_LENGTH; i++) {
     cout << "#" << i;
-    cout << " = " << nums[i] << " ";
+    cout << " = " << arr[i] << " ";
     cout << endl;
   }
-  **/ 
-
-  cout << endl << "End of Lab1 Program" << endl;
-
-  return 0;
-}
-
-
-void getInput(int max, int[] arr)
-{
-  cout << "in getInput()"
 }
