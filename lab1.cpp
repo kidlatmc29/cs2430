@@ -30,11 +30,7 @@ int main()
 
   // 7.)
   // Add the code that will allow the input and serach to be repated as many
-  // times as the user desiers
-
-    return 0;
-  }
-
+  // times as the user desires
 
   cout << endl << "End of Lab1 Program" << endl;
 
