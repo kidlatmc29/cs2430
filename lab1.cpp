@@ -8,7 +8,6 @@ using namespace std;
 
 const int ARR_LENGTH = 8;
 
-
 int main()
 {
 
@@ -18,14 +17,14 @@ int main()
 
   cout <<  endl << "Welcome message" << endl;
 
-  //while (evenNums[7] == 0) {
-  for (int i = 0; i < ARR_LENGTH; i++) {
+  while (evenNums[ARR_LENGTH - 1] == 0) {
     cout << "Please enter an integer: ";
     cin >> input;
+    if(input % 2 == 0) {
     evenNums[index] = input;
     index++;
+    }
   }
-  //}
 
   cout << "printing array: " << endl << endl;
   for(int i = 0; i < ARR_LENGTH; i++) {
