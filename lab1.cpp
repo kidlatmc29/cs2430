@@ -6,56 +6,48 @@
 
 using namespace std;
 
-const int ARR_LENGTH = 8;
+const int ARR_LENGTH = 10;
+const int MAX_NUM = 50;
+
+void getIntput(int max, int[] arr);
 
 int main()
 {
 
-  int evenNums[8] = {0};
+  int nums[10] = {0};
   int index = 0;
   int input;
 
   cout <<  endl << "Welcome message" << endl;
 
-  while (evenNums[ARR_LENGTH - 1] == 0) {
+/**
+  while (nums[ARR_LENGTH - 1] == 0) {
     cout << "Please enter an integer: ";
     cin >> input;
-    if(input % 2 == 0) {
-    evenNums[index] = input;
-    index++;
+    if(input <= MAX_NUM && input > 0) {
+      cout << "index = " << index << endl;
+      nums[index] = input;
+      index++;
     }
   }
 
-  cout << "printing array: " << endl << endl;
+  cout << endl << endl;
+
+  cout << "printing array: " << endl;
   for(int i = 0; i < ARR_LENGTH; i++) {
-    cout << "index =  " << i;
-    cout << endl << " value = " << evenNums[i] << " ";
+    cout << "#" << i;
+    cout << " = " << nums[i] << " ";
     cout << endl;
   }
-
-  // 3.)
-  // Write the code needed to accept interger input from the keyboard
-  // Unil 8 EVEN numbers greater than or equal to 25 have been stored
-  // In a STATIC array
-
-  // 4.)
-  //Output the values along with the array index for each
-
-  // 5.)
-  // Put the code from 3.) into a function and call the function from main
-  // with a PARAMETER that determins the min value that will be stored.
-  // Replacing 25. Accept inter input from the keyboard to determine the int main(int argc, char const *argv[]) {
-  // value.
-
-  // 6.)
-  // Write a function that returns the min value stored in the array and call the fxn
-  // from main, printing the value returned in main.
-
-  // 7.)
-  // Add the code that will allow the input and serach to be repated as many
-  // times as the user desires
+  **/ 
 
   cout << endl << "End of Lab1 Program" << endl;
 
   return 0;
+}
+
+
+void getInput(int max, int[] arr)
+{
+  cout << "in getInput()"
 }
