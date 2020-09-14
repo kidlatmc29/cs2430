@@ -49,7 +49,7 @@ int main()
 
     if(again == YES) {
       for(int index = 0; index < ARR_LENGTH; index++) {
-        nums[index] = 0;
+        nums[index] = 0; // turned in as nums[index], did not clear properly
       }
       max = 0;
     }
