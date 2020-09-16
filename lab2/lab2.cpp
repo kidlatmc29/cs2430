@@ -5,6 +5,10 @@
 #include <iostream> 
 using namespace std; 
 
+//static char PUSH = 'p';
+//static char POP = 'o';
+//static char STOP = 's';
+
 class reverseStack {
   public:
     //push()
@@ -24,5 +28,14 @@ int main()
    * When the stack is full OR when the user wants to stop, 
    * print all the elements in reverseStack and end the program.
    **/
+
+  int input; 
+
+  cout << endl << "Welcome to Lab 2!" << endl;
+  cout << "Please enter an array size: ";
+  cin >> input; 
+
+  cout << "the array size is: " << input << endl;
+  cout << endl << "End of Lab2" << endl;
   return 0;
 }
