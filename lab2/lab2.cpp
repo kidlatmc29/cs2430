@@ -8,16 +8,20 @@ using namespace std;
 //static char PUSH = 'p';
 //static char POP = 'o';
 //static char STOP = 's';
+typedef int elementType; 
 
 class reverseStack {
   public:
+    //default constructor 
+    //param construtor
     //push()
     //pop()
     //print() 
   private:
-    // dynamically allocated int array
-    // size of the array
-    // elements in the array
+    int size;
+    int maxSize; 
+    elementType* array; 
+    // top
     // isFull() fxn
 };
 
@@ -35,7 +39,7 @@ int main()
   cout << "Please enter an array size: ";
   cin >> input; 
 
-  cout << "the array size is: " << input << endl;
+  
   cout << endl << "End of Lab2" << endl;
   return 0;
 }

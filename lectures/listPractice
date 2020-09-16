@@ -1,0 +1,30 @@
+
+public List::List(int max)
+: size(0), maxSize(m)
+{
+  array = new ElementType[max];
+}
+
+List::~List()
+{
+  delete[]array;
+}
+
+void List::insert(ElementType val)
+{
+  Node* newNode = new Node(val);
+  Node* nPtr; 
+  size++; 
+
+  if(!myFront || (myFront->value >= val)) {
+    neNode->next = myFront;
+    myFront = newNode;
+  } else {
+    nPtr = myFront;
+    while((nPtr->next && nPtr->next->value < val)) {
+      nPtr = nPtr->next;
+    }
+    newNode->next = nPtr->next; 
+    nPtr->next = newNode; 
+  }
+}
