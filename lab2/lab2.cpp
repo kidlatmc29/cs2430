@@ -2,13 +2,21 @@
 // lab2.cpp
 // 09-18-2020
 
+// DESCRIPTION: 
+// ASSUMPTION: None. 
+// SOURCES: 
 #include <iostream> 
 using namespace std; 
 
-static char PUSH = 'p';
-static char POP = 'o';
-static char STOP = 's';
+const char PUSH = 'p';
+const char POP = 'o';
+const char STOP = 's';
 typedef int elementType; 
+
+char getUserInput(); 
+// Asks user for their choice from the menu, returns the choice
+// PRE: None.
+// POST: None. 
 
 int push(elementType *stack, elementType value, int& size, int maxSize);
 // Adds one new element to the top of the reverseStack, returns new size
@@ -17,20 +25,20 @@ int push(elementType *stack, elementType value, int& size, int maxSize);
 
 bool isFull(int size, int maxSize);
 // Returns true if stack is full
-// PRE:
-// POST:
+// PRE: None. 
+// POST: None.
 
 void print(elementType *stack, int maxSize);
 // Prints out all the elements in the stack in reverse order
-// PRE:
-// POST:
+// PRE: None. 
+// POST: None. 
 
 int main()
 {
   elementType size = 0;
   elementType maxSize; 
   elementType* reverseStack = nullptr; 
-  char choice; // stores user's request
+  char choice = 'x'; // stores user's request, intialized with a dummy value
   elementType value; // stores the value the user wants to push 
 
   cout << endl << "Welcome to Lab 2!" << endl;
@@ -40,36 +48,52 @@ int main()
 
   reverseStack = new elementType[maxSize];
 
-  cout << "Do you want to push (" << PUSH << "), pop (" << POP
-        << "), or stop (" << STOP << ")?: ";
-    cin >> choice; 
-
-  while(!(isFull(size, maxSize)) && choice != STOP) {
-    if(choice == PUSH) {
-      cout << "Enter a number you want to push to the stack: ";
-      cin >> value; 
-      if(size == 0 || value > reverseStack[size - 1]) {
-        push(reverseStack, value, size, maxSize);
-        cout << endl;
-      } else {
-        cout << value << " is smaller than the current top" << endl;
-      }
-    } else if(choice == POP) {
-      // we pop here
-      cout << "poppin" << endl;
-    } else {
-      cout << "Sorry, I don't understand that command." << endl;
+  while((choice != STOP) && !(isFull(size, maxSize))) {
+    
+    while((choice != PUSH) && (choice != POP) && (choice != STOP)) {
+      choice = getUserInput();
     }
     
-    cout << "Do you want to push (" << PUSH << "), pop (" << POP
-           << "), or stop (" << STOP << ")?: ";
-      cin >> choice; 
+    switch(choice)
+    {
+      case PUSH :
+      {
+        cout << "Please enter a number you want to push to the stack: ";
+        cin >> value; 
+
+        if(size == 0 || value > reverseStack[size - 1]) {
+          push(reverseStack, value, size, maxSize);
+        } else {
+          cout << value << " is smaller than the current top." << endl;
+        }
+
+        choice = getUserInput(); 
+        break; 
+      }
+      case POP :
+      {
+        // ya pop here
+       cout << "poppin";
+       choice = getUserInput();
+       break;
+      }
+    }
   }
 
   print(reverseStack, size);
+  cout << endl << "End of Lab2" << endl << endl;
 
-  cout << endl << "End of Lab2" << endl << endl;;
   return 0;
+}
+
+char getUserInput()
+{
+  char input;
+  cout << "Do you want to push (" << PUSH << "), pop (" << POP
+          << "), or stop (" << STOP << ")?: ";
+  cin >> input;
+
+  return input; 
 }
 
 int push(elementType *stack, elementType value, int& size, int maxSize)
