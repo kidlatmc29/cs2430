@@ -47,18 +47,22 @@ int main()
   reverseStack = new elementType[arrSize];
   maxSize = arrSize; 
 
-  cout << "Do you want to push (" << PUSH << "), pop (" << POP << "), or stop ("
-       << STOP << ")?: ";
-  cin >> choice; 
+cout << "Do you want to push (" << PUSH << "), pop (" << POP
+          << "), or stop (" << STOP << ")?: ";
+    cin >> choice; 
 
-  while(choice != STOP) {
+  while(!(isFull(size, maxSize)) && choice != STOP) {
     if(choice == PUSH) {
       cout << "Enter a number you want to push to the stack: ";
       cin >> value; 
       push(reverseStack, value, size, maxSize);
+    } else if(choice == POP) {
+      // we pop here
+      cout << "poppin" << endl;
     }
-    cout << "Do you want to push (p), pop (o), or stop (s)?: ";
-    cin >> choice; 
+    cout << "Do you want to push (" << PUSH << "), pop (" << POP
+           << "), or stop (" << STOP << ")?: ";
+      cin >> choice; 
   }
 
   print(reverseStack, maxSize);
@@ -87,9 +91,8 @@ bool isFull(int size, int maxSize)
 void print(elementType *stack, int size)
 {
   cout << "reverseStack: ";
-  for(int index = 0; index < size; index++)
-  {
-    if(index + 1 == size) {
+  for(int index = 0; index < size; index++) {
+    if(index == size - 1) {
       cout << stack[index] << endl; 
     } else {
     cout << stack[index] << ", "; 
