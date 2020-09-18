@@ -18,7 +18,7 @@ char getUserInput();
 // PRE: None.
 // POST: None. 
 
-int push(elementType *stack, elementType value, int& size, int maxSize);
+void push(elementType *stack, elementType value, int& size, int maxSize);
 // Adds one new element to the top of the reverseStack, returns new size
 // PRE: value must be type elementType in order to be pushed
 // POST:
@@ -33,18 +33,29 @@ void print(elementType *stack, int maxSize);
 // PRE: None. 
 // POST: None. 
 
+elementType pop(elementType *stack, int& size);
+// 
+// PRE:
+// POST: 
+
 int main()
 {
   elementType size = 0;
-  elementType maxSize; 
+  elementType maxSize = 0; 
   elementType* reverseStack = nullptr; 
-  char choice = 'x'; // stores user's request, intialized with a dummy value
+  char choice = 'x'; // stores user's request, intialized with a invalid value
   elementType value; // stores the value the user wants to push 
 
   cout << endl << "Welcome to Lab 2!" << endl;
-  cout << "Please enter an array size: ";
-  cin >> maxSize; 
-  cout << endl;
+
+  while(maxSize <= 0) {
+    cout << "Please enter an array size: ";
+    cin >> maxSize; 
+    if(maxSize <= 0) {
+      cout << "Array size must be greater than 1." ; 
+    }
+    cout << endl;
+  }
 
   reverseStack = new elementType[maxSize];
 
@@ -72,8 +83,11 @@ int main()
       }
       case POP :
       {
-        // ya pop here
-       cout << "poppin";
+      if(size > 0) {
+        cout << "The popped value is " << pop(reverseStack, size) << endl;
+      } else {
+        cout << "reverseStack is empty! " << endl;
+      }
        choice = getUserInput();
        break;
       }
@@ -82,7 +96,7 @@ int main()
 
   print(reverseStack, size);
   cout << endl << "End of Lab2" << endl << endl;
-  
+
   delete[] reverseStack;
   return 0;
 }
@@ -97,13 +111,11 @@ char getUserInput()
   return input; 
 }
 
-int push(elementType *stack, elementType value, int& size, int maxSize)
+void push(elementType *stack, elementType value, int& size, int maxSize)
 {
   stack[size] = value; 
   size++;
   cout << "Pushed " << value << endl;
-
-  return size; 
 }
 
 bool isFull(int size, int maxSize)
@@ -123,4 +135,10 @@ void print(elementType *stack, int size)
   }
 }
 
-//pop()
+elementType pop(elementType *stack, int& size)
+{
+    elementType poppedVal = stack[size - 1];
+    stack[size - 1] = 0; 
+    size--;
+    return poppedVal; 
+}
