@@ -10,9 +10,17 @@ static char POP = 'o';
 static char STOP = 's';
 typedef int elementType; 
 
+void push(elementType *stack, elementType value, int size, int maxSize);
+// Adds one new element to the top of the reverseStack
+// PRE: value must be type elementType in order to be pushed
+// POST:
+
+bool isFull(int size, int maxSize);
+
+
 int main()
 {
-  int size;
+  int size = 0;
   int maxSize; 
   elementType* reverseStack; 
   /**
@@ -28,13 +36,17 @@ int main()
   cout << "Please enter an array size: ";
   cin >> arrSize; 
 
-  reverseStack = new int[arrSize];
+  reverseStack = new elementType[arrSize];
   maxSize = arrSize; 
 
-  cout << "Do you want to push (p), pop (o), or stop (s)?: ";
+  cout << "Do you want to push (" << PUSH << "), pop (" << POP << "), or stop ("
+       << STOP << ")?: ";
   cin >> input; 
+
   while(input != STOP) {
     cout << "you selected: " << input << endl;
+    cout << "maxSize = " << maxSize << endl;
+    cout << "size = " << size << endl;
     cout << "Do you want to push (p), pop (o), or stop (s)?: ";
     cin >> input; 
   }
@@ -43,7 +55,20 @@ int main()
   return 0;
 }
 
-//push()
+void push(elementType *stack, elementType value, int size, int maxSize)
+{
+  int index = size - 1;
+  if(isFull(size, maxSize)) {
+    cout << "reverseStack is full!" << endl;
+  } else {
+      cout << "Pushed " << value << endl;
+  }
+}
+
+bool isFull(int size, int maxSize)
+{
+  return size >= maxSize; 
+}
+
 //pop()
 //print() 
-// isFull() fxn
