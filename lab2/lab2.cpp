@@ -9,8 +9,7 @@
 
 // ASSUMPTION: None. 
 
-// SOURCES: 
-// 
+// SOURCES: For switch code, refrenced "hw1.cpp" from cpcs 1430 class. 
 
 #include <iostream> 
 using namespace std; 
