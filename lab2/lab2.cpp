@@ -9,7 +9,7 @@
 
 // ASSUMPTION: None. 
 
-// SOURCES: For switch code, refrenced "hw1.cpp" from cpcs 1430 class. 
+// SOURCES: For switch code, referenced "hw1.cpp" from cpcs 1430 class. 
 
 #include <iostream> 
 using namespace std; 
@@ -44,6 +44,8 @@ void print(elementType *stack, int maxSize);
 // it will print nothing. 
 // PRE: None. 
 // POST: None. 
+
+void resize(elementType *stack, int maxSize);
 
 int main()
 {
@@ -150,4 +152,14 @@ void print(elementType *stack, int size)
     cout << stack[index] << ", "; 
     }
   }
+}
+
+void resize(elementType *stack, int maxSize)
+{
+  elementType *newStack = new elementType[maxSize * 2];
+  for(int index = 0; index < maxSize; index++) {
+    newStack[index] = stack[index];
+  }
+  delete[] stack; 
+  stack = newStack; 
 }
