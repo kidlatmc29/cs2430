@@ -65,7 +65,7 @@ cout << "Do you want to push (" << PUSH << "), pop (" << POP
       cin >> choice; 
   }
 
-  print(reverseStack, maxSize);
+  print(reverseStack, size);
 
   cout << endl << "End of Lab2" << endl;
   return 0;
