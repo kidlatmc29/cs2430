@@ -27,39 +27,40 @@ void print(elementType *stack, int maxSize);
 
 int main()
 {
-  int size = 0;
-  int maxSize; 
+  elementType size = 0;
+  elementType maxSize; 
   elementType* reverseStack = nullptr; 
-  /**
-   * Allow the user to push or pop as many elements as they wish. 
-   * When the stack is full OR when the user wants to stop, 
-   * print all the elements in reverseStack and end the program.
-   **/
-
-  int arrSize; 
-  char choice; 
-  int value; 
+  char choice; // stores user's request
+  elementType value; // stores the value the user wants to push 
 
   cout << endl << "Welcome to Lab 2!" << endl;
   cout << "Please enter an array size: ";
-  cin >> arrSize; 
+  cin >> maxSize; 
+  cout << endl;
 
-  reverseStack = new elementType[arrSize];
-  maxSize = arrSize; 
+  reverseStack = new elementType[maxSize];
 
-cout << "Do you want to push (" << PUSH << "), pop (" << POP
-          << "), or stop (" << STOP << ")?: ";
+  cout << "Do you want to push (" << PUSH << "), pop (" << POP
+        << "), or stop (" << STOP << ")?: ";
     cin >> choice; 
 
   while(!(isFull(size, maxSize)) && choice != STOP) {
     if(choice == PUSH) {
       cout << "Enter a number you want to push to the stack: ";
       cin >> value; 
-      push(reverseStack, value, size, maxSize);
+      if(size == 0 || value > reverseStack[size - 1]) {
+        push(reverseStack, value, size, maxSize);
+        cout << endl;
+      } else {
+        cout << value << " is smaller than the current top" << endl;
+      }
     } else if(choice == POP) {
       // we pop here
       cout << "poppin" << endl;
+    } else {
+      cout << "Sorry, I don't understand that command." << endl;
     }
+    
     cout << "Do you want to push (" << PUSH << "), pop (" << POP
            << "), or stop (" << STOP << ")?: ";
       cin >> choice; 
@@ -67,19 +68,16 @@ cout << "Do you want to push (" << PUSH << "), pop (" << POP
 
   print(reverseStack, size);
 
-  cout << endl << "End of Lab2" << endl;
+  cout << endl << "End of Lab2" << endl << endl;;
   return 0;
 }
 
 int push(elementType *stack, elementType value, int& size, int maxSize)
 {
-  if(isFull(size, maxSize)) {
-    cout << "reverseStack is full!" << endl;
-  } else {
-    stack[size] = value; 
-    size++;
-    cout << "Pushed " << value << endl;
-  }
+  stack[size] = value; 
+  size++;
+  cout << "Pushed " << value << endl;
+
   return size; 
 }
 
