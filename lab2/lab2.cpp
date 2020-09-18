@@ -10,19 +10,26 @@ static char POP = 'o';
 static char STOP = 's';
 typedef int elementType; 
 
-void push(elementType *stack, elementType value, int size, int maxSize);
-// Adds one new element to the top of the reverseStack
+int push(elementType *stack, elementType value, int& size, int maxSize);
+// Adds one new element to the top of the reverseStack, returns new size
 // PRE: value must be type elementType in order to be pushed
 // POST:
 
 bool isFull(int size, int maxSize);
+// Returns true if stack is full
+// PRE:
+// POST:
 
+void print(elementType *stack, int maxSize);
+// Prints out all the elements in the stack in reverse order
+// PRE:
+// POST:
 
 int main()
 {
   int size = 0;
   int maxSize; 
-  elementType* reverseStack; 
+  elementType* reverseStack = nullptr; 
   /**
    * Allow the user to push or pop as many elements as they wish. 
    * When the stack is full OR when the user wants to stop, 
@@ -30,7 +37,8 @@ int main()
    **/
 
   int arrSize; 
-  char input; 
+  char choice; 
+  int value; 
 
   cout << endl << "Welcome to Lab 2!" << endl;
   cout << "Please enter an array size: ";
@@ -41,28 +49,34 @@ int main()
 
   cout << "Do you want to push (" << PUSH << "), pop (" << POP << "), or stop ("
        << STOP << ")?: ";
-  cin >> input; 
+  cin >> choice; 
 
-  while(input != STOP) {
-    cout << "you selected: " << input << endl;
-    cout << "maxSize = " << maxSize << endl;
-    cout << "size = " << size << endl;
+  while(choice != STOP) {
+    if(choice == PUSH) {
+      cout << "Enter a number you want to push to the stack: ";
+      cin >> value; 
+      push(reverseStack, value, size, maxSize);
+    }
     cout << "Do you want to push (p), pop (o), or stop (s)?: ";
-    cin >> input; 
+    cin >> choice; 
   }
-  
+
+  print(reverseStack, maxSize);
+
   cout << endl << "End of Lab2" << endl;
   return 0;
 }
 
-void push(elementType *stack, elementType value, int size, int maxSize)
+int push(elementType *stack, elementType value, int& size, int maxSize)
 {
-  int index = size - 1;
   if(isFull(size, maxSize)) {
     cout << "reverseStack is full!" << endl;
   } else {
-      cout << "Pushed " << value << endl;
+    stack[size] = value; 
+    size++;
+    cout << "Pushed " << value << endl;
   }
+  return size; 
 }
 
 bool isFull(int size, int maxSize)
@@ -70,5 +84,17 @@ bool isFull(int size, int maxSize)
   return size >= maxSize; 
 }
 
+void print(elementType *stack, int size)
+{
+  cout << "reverseStack: ";
+  for(int index = 0; index < size; index++)
+  {
+    if(index + 1 == size) {
+      cout << stack[index] << endl; 
+    } else {
+    cout << stack[index] << ", "; 
+    }
+  }
+}
+
 //pop()
-//print() 
