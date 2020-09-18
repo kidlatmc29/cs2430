@@ -10,23 +10,11 @@ using namespace std;
 //static char STOP = 's';
 typedef int elementType; 
 
-class reverseStack {
-  public:
-    //default constructor 
-    //param construtor
-    //push()
-    //pop()
-    //print() 
-  private:
-    int size;
-    int maxSize; 
-    elementType* array; 
-    // top
-    // isFull() fxn
-};
-
 int main()
 {
+  int size;
+  int maxSize; 
+  elementType* array; 
   /**
    * Allow the user to push or pop as many elements as they wish. 
    * When the stack is full OR when the user wants to stop, 
@@ -39,7 +27,13 @@ int main()
   cout << "Please enter an array size: ";
   cin >> input; 
 
+  cout << "";
   
   cout << endl << "End of Lab2" << endl;
   return 0;
 }
+
+//push()
+//pop()
+//print() 
+// isFull() fxn

@@ -12,7 +12,7 @@ const char YES = 'y';
 void getInput(int max, int arr[]);
 // Given a max and a static int array, get values from the user
 // PRE: none
-// POST: non
+// POST: none
 
 int findMin(int arr[]);
 // Given an int array, find the min value and return it
