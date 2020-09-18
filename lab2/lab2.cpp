@@ -82,7 +82,8 @@ int main()
 
   print(reverseStack, size);
   cout << endl << "End of Lab2" << endl << endl;
-
+  
+  delete[] reverseStack;
   return 0;
 }
 
