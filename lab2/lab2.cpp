@@ -70,7 +70,7 @@ int main()
 
   while((choice != STOP) && !(isFull(size, maxSize))) {
     while((choice != PUSH) && (choice != POP) && (choice != STOP)) {
-      choice = getUserInput();
+      choice = tolower(getUserInput());
     }
     switch(choice)
     {
@@ -87,7 +87,7 @@ int main()
         cout << endl;
 
         if(size < maxSize) {
-        choice = getUserInput(); 
+        choice = tolower(getUserInput()); 
         }
         break; 
       }
@@ -99,7 +99,7 @@ int main()
         cout << "reverseStack is empty! " << endl;
       }
         cout << endl;
-        choice = getUserInput();
+        choice = tolower(getUserInput());
         break;
       }
     }
