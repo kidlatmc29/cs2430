@@ -45,7 +45,7 @@ void print(elementType *stack, int maxSize);
 // PRE: None. 
 // POST: None. 
 
-void resize(elementType *stack, int maxSize);
+void resize(elementType *stack, int& maxSize);
 
 int main()
 {
@@ -61,7 +61,7 @@ int main()
     cout << "Please enter an array size: ";
     cin >> maxSize; 
     if(maxSize <= 0) {
-      cout << "Array size must be greater than 1." ; 
+      cout << "Array size must be greater than 1."; 
     }
     cout << endl;
   }
@@ -87,7 +87,7 @@ int main()
         cout << endl;
 
         if(size < maxSize) {
-        choice = tolower(getUserInput()); 
+          choice = tolower(getUserInput());
         }
         break; 
       }
@@ -152,14 +152,4 @@ void print(elementType *stack, int size)
     cout << stack[index] << ", "; 
     }
   }
-}
-
-void resize(elementType *stack, int maxSize)
-{
-  elementType *newStack = new elementType[maxSize * 2];
-  for(int index = 0; index < maxSize; index++) {
-    newStack[index] = stack[index];
-  }
-  delete[] stack; 
-  stack = newStack; 
 }
