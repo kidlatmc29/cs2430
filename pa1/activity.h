@@ -6,8 +6,22 @@
 using namespace std;
 
 class ActivityList {
+  private: 
+    class ActivityNode {
+      ActivityNode(string n, float p, float r, int pri);
+      string name;
+      float price; 
+      float rating;
+      int priority; 
+      ActivityNode *next = nullptr; 
+    };
+
+    int size; // stores the number of elements in the list 
+
   public:
+  ActivityList(); 
   // default constructor
+
   // copy constructor
   // copy assignment 
   // deconstructor 
@@ -17,17 +31,10 @@ class ActivityList {
   // getSize
   // isEmpty
 
+  //  printList()
   // getRatings(string name)
   //  returns 0 if the item doesn't exist in the list 
   // createList(ActivityList& s2, int priority)
-  private: 
-    class ActivityNode {
-      ActivityNode(string name, float price, float rating, int prio);
-      string name;
-      float price; 
-      float rating;
-      int priority; 
-      ActivityNode* next = nullptr; 
-    };
 
+  ActivityNode *head; 
 };
