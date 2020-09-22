@@ -2,39 +2,46 @@
 // activity.h
 // 9-28-2020
 
+// DESCRIPTION: 
+// ASSUMPTION: 
+// SOURCES: 
+
 #include <iostream>
 using namespace std;
 
 class ActivityList {
   private: 
     class ActivityNode {
-      ActivityNode(string n, float p, float r, int pri);
-      string name;
-      float price; 
-      float rating;
-      int priority; 
-      ActivityNode *next = nullptr; 
+      public: 
+        ActivityNode(string n, float p, float r, int pri);
+        string name;
+        float price; 
+        float rating;
+        int priority; 
+        ActivityNode *next = nullptr; 
     };
 
-    int size; // stores the number of elements in the list 
-
   public:
-  ActivityList(); 
-  // default constructor
+    ActivityNode *head; 
+    int size; // stores the number of elements in the list 
+    ActivityList(); 
+    // default constructor
 
-  // copy constructor
-  // copy assignment 
-  // deconstructor 
+    // copy constructor
+    // copy assignment 
+    // deconstructor 
 
-  // enqueue
-  // dequeue 
-  // getSize
-  // isEmpty
+   void enqueue(string n, float p, float r, int pri);
+    // enqueue
+    // dequeue 
+    // getSize
 
-  //  printList()
-  // getRatings(string name)
-  //  returns 0 if the item doesn't exist in the list 
-  // createList(ActivityList& s2, int priority)
+    bool isEmpty();
+    // isEmpty
 
-  ActivityNode *head; 
+    void printList();
+    //  printList()
+    // getRatings(string name)
+    //  returns 0 if the item doesn't exist in the list 
+    // createList(ActivityList& s2, int priority)
 };

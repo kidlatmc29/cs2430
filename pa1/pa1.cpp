@@ -3,22 +3,53 @@
 // 9-28-2020
 
 #include <iostream>
+#include <sstream> // ask in oh's if we can use stringstream
 #include <fstream>
 #include "activity.h"
 
 using namespace std; 
 
+const string FILE_NAME = "activity.csv";
+const char delimeter = ','; 
+
+void readFile(ActivityList &myList);
+
 int main()
 {
-  // create an empty ActivityList
+  cout << "PA1 Start! " << endl;
+  ActivityList myList; 
   // read in activities from file, adding activity nodes to the list
+  readFile(myList);
 
-  // file IO goes here
+
 
   // testing magic
 
+  cout << "PA1 Ending" << endl;
   // clean up
   return 0;
 }
 
 // read file fxn 
+void readFile(ActivityList &list)
+{
+  ifstream input; 
+  string line; 
+  stringstream ss;
+  bool failed = false; 
+
+  cout << "Reading in file " << FILE_NAME << "..." << endl;
+  input.open(FILE_NAME);
+
+  if(!failed) {
+    while(getline(input, line)) {
+      for(int row = 1; row <= 4; row++) {
+        
+      }
+      // get the whole line, then split on the ',' to get indiviual values 
+      // call enqueue passing in the parameters to create the activity node
+    }
+  }
+
+  input.close();
+}
