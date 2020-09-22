@@ -17,7 +17,7 @@ void List::insert(ElementType val)
   size++; 
 
   if(!myFront || (myFront->value >= val)) {
-    neNode->next = myFront;
+    newNode->next = myFront;
     myFront = newNode;
   } else {
     nPtr = myFront;
