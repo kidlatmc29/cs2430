@@ -24,12 +24,14 @@ class ActivityList {
   public:
     ActivityNode *head; 
     int size; // stores the number of elements in the list 
+
     ActivityList(); 
     // default constructor
+    ~ActivityList();
+    // deconstructor 
 
     // copy constructor
     // copy assignment 
-    // deconstructor 
 
    void enqueue(string n, float p, float r, int pri);
     // enqueue

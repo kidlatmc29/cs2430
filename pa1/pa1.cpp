@@ -18,8 +18,11 @@ int main()
 {
   cout << "PA1 Start! " << endl;
   ActivityList myList; 
+  cout << "Adding Pike Place Market into myList...." << endl;
+  myList.enqueue("Pike Place Market", 0, 4.6, 1);
+  myList.printList();
   // read in activities from file, adding activity nodes to the list
-  readFile(myList);
+    // readFile(myList);
 
 
 
