@@ -18,7 +18,7 @@ class ActivityList {
         float price; 
         float rating;
         int priority; 
-        ActivityNode *next = nullptr; 
+        ActivityNode *next; 
     };
 
   public:

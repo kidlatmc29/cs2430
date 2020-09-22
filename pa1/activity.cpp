@@ -24,6 +24,18 @@ void ActivityList::enqueue(string n, float p, float r, int pri )
   ActivityNode *newNode = new ActivityNode(n, p, r, pri);
   ActivityNode *nPtr; 
 
+  if(isEmpty() || head->priority >= newNode->priority) {
+    head = newNode; 
+    size++; 
+    newNode->next = nullptr; 
+  } else {
+    nPtr = head; 
+    while((nPtr->next && nPtr->next->priority < newNode->priority)) {
+      nPtr = nPtr->next; 
+    }
+    newNode->next = nPtr->next;
+    nPtr->next = newNode; 
+  }
 }
 
 void ActivityList::printList()
@@ -50,5 +62,5 @@ void ActivityList::printList()
 
 bool ActivityList::isEmpty()
 {
-  return !(head); 
+  return head; 
 }
