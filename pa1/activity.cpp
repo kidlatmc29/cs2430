@@ -24,10 +24,12 @@ ActivityList::ActivityNode::ActivityNode(string n, float p, float r, int pri)
 
 ActivityList::ActivityList(ActivityList &list2)
 {
+  head = nullptr;
   ActivityNode *copyNode = list2.head; 
   while(copyNode) {
     enqueue(copyNode->name, copyNode->price, copyNode->rating, 
             copyNode->priority);
+    cout << "copying node..." << endl;
     copyNode = copyNode->next; 
   }
 }
@@ -73,7 +75,6 @@ void ActivityList::printList()
 {
   ActivityNode *nPtr = head;
   int count = 1; 
-  cout << "Printing ActivityList of size " << size << ":" << endl;
 
   if(isEmpty()) {
     cout << "the list is empty" << endl;
@@ -81,7 +82,6 @@ void ActivityList::printList()
     while(nPtr) {
       cout << count << ". [P" << nPtr->priority << "] " << nPtr->name << " - "
            << "$" << nPtr->price << " - " << nPtr->rating << " stars" << endl; 
-
       nPtr = nPtr->next;
       count++;
     } 
@@ -100,6 +100,7 @@ bool ActivityList::isEmpty()
 
  float ActivityList::getRating(string name)
  {
-   float rating; 
+   float rating = 0.0; 
+   return rating; 
    // traverse the linked list until you find the name, return the float
  }
