@@ -27,7 +27,7 @@ class ActivityList {
 
     ActivityList(); 
     ~ActivityList();
-    ActivityList(ActivityList list2);
+    ActivityList(ActivityList &list2);
     // copy constructor
 
     ActivityList& operator=(const ActivityList &list2);

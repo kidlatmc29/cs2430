@@ -2,6 +2,10 @@
 // activity.cpp
 // 9-28-2020
 
+// DESCRIPTION: 
+// ASSUMPTION: 
+// SOURCES: Lecture powerpoint - slide # insert function code 
+
 #include "activity.h"
 
 ActivityList::ActivityList()
@@ -18,7 +22,7 @@ ActivityList::ActivityNode::ActivityNode(string n, float p, float r, int pri)
   priority = pri;
 }
 
-ActivityList::ActivityList(ActivityList list2)
+ActivityList::ActivityList(ActivityList &list2)
 {
 
 }
