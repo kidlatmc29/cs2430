@@ -7,6 +7,7 @@
 ActivityList::ActivityList()
 {
   head = nullptr;
+  size = 0;
 }
 
 ActivityList::ActivityNode::ActivityNode(string n, float p, float r, int pri)
@@ -14,7 +15,7 @@ ActivityList::ActivityNode::ActivityNode(string n, float p, float r, int pri)
   name = n;
   price = p;
   rating = r;
-  pri = priority;
+  priority = pri;
 }
 
 ActivityList::~ActivityList()
@@ -34,7 +35,6 @@ void ActivityList::enqueue(string n, float p, float r, int pri)
   cout << "in enqueue fxn" << endl;
   ActivityNode *newNode = new ActivityNode(n, p, r, pri);
   ActivityNode *nPtr;
-  size++;
 
   if((isEmpty()) || head->priority >= newNode->priority) {
     newNode->next = head;
@@ -47,24 +47,25 @@ void ActivityList::enqueue(string n, float p, float r, int pri)
     newNode->next = nPtr->next;
     nPtr->next = newNode;
   }
+   size++;
 }
 
 void ActivityList::printList()
 {
   ActivityNode *nPtr = head;
-  cout << "Printing ActivityList: " << endl;
+  int count = 1; 
+  cout << "Printing ActivityList of size " << size << ":" << endl;
 
-  if (isEmpty()) {
-    cout << "the activity list is empty! " << endl;
-  } else if (!head->next){
-    cout << " there is only one element in the list... printing" << endl;
-    cout << nPtr->name << " " << nPtr->priority << endl;
+  if(isEmpty()) {
+    cout << "the list is empty" << endl;
   } else {
-    cout << "list is not empty so I stuff to print";
-      while(nPtr->next) {
-        cout << nPtr->name << " " << nPtr->priority << endl;
-      nPtr = nPtr->next; 
-    }
+    while(nPtr) {
+      cout << count << ". [P" << nPtr->priority << "] " << nPtr->name << " - "
+           << "$" << nPtr->price << " - " << nPtr->rating << " stars" << endl; 
+
+      nPtr = nPtr->next;
+      count++;
+    } 
   }
 }
 

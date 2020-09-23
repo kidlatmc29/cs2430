@@ -4,7 +4,7 @@
 
 // DESCRIPTION: 
 // ASSUMPTION: 
-// SOURCES: 
+// SOURCES: Lecture powerpoint - slide # insert function code 
 
 #include <iostream>
 using namespace std;
