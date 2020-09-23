@@ -28,5 +28,29 @@ int main()
 // read file fxn 
 void readFile(ActivityList &list)
 {
-  
+   ifstream input; 
+   string line; 
+   stringstream ss;
+
+   string incomingName; 
+   float incomingPrice; 
+   float incomingRating; 
+   int incomingPriority; 
+   
+   bool cannotOpen = false; 
+
+   cout << "Reading in file " << FILE_NAME << "...." << endl;
+
+   input.open(FILE_NAME);
+   cannotOpen = input.fail();
+
+   if(!cannotOpen) {
+     while(getline(input, line)) {
+      ss.str(line);
+
+
+      ss.clear(); 
+     }
+   }
+   input.close();
 }
