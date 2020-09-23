@@ -47,8 +47,7 @@ void readFile(ActivityList &list)
    if(!cannotOpen) {
      while(getline(input, line)) {
       ss.str(line);
-
-
+      // need to figure out how to split the elements on ,
       ss.clear(); 
      }
    }

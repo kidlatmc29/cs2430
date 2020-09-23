@@ -18,6 +18,12 @@ ActivityList::ActivityNode::ActivityNode(string n, float p, float r, int pri)
   priority = pri;
 }
 
+ActivityList& ActivityList::operator=(const ActivityList &list2)
+{
+  // copy nodes from this list into list2
+  return *this;
+}
+
 ActivityList::~ActivityList()
 {
   ActivityNode *nPtr = head;

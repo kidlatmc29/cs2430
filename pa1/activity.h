@@ -26,24 +26,20 @@ class ActivityList {
     int size; // stores the number of elements in the list 
 
     ActivityList(); 
-    // default constructor
     ~ActivityList();
-    // deconstructor 
-
+    ActivityList(ActivityList list2);
     // copy constructor
+
+    ActivityList& operator=(const ActivityList &list2);
     // copy assignment 
 
-   void enqueue(string n, float p, float r, int pri);
-    // enqueue
-    // dequeue 
-    // getSize
-
+    void enqueue(string n, float p, float r, int pri);
+    ActivityNode dequeue(string name);
+    int getSize();
     bool isEmpty();
-    // isEmpty
-
     void printList();
-    //  printList()
-    // getRatings(string name)
-    //  returns 0 if the item doesn't exist in the list 
+    float getRating(string name);
+    //  returns 0 if the item doesn't exist in the list
+    void createList(ActivityList& s2, int priority); 
     // createList(ActivityList& s2, int priority)
 };
