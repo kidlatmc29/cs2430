@@ -28,12 +28,17 @@ int main()
   return 0;
 }
 
-// read file fxn 
 void readFile(ActivityList &list)
 {
    ifstream input; 
    string line; 
    // stringstream ss;
+
+   string data[3];
+   string incomingName; 
+   string incomingPrice;
+   string incomingRating; 
+   string incomingPriority; 
 
    cout << "Reading in file " << FILE_NAME << "...." << endl;
 
@@ -41,7 +46,6 @@ void readFile(ActivityList &list)
 
    if((!input.fail())) {
      while(getline(input, line)) {
-       cout << line << endl; // just printing out the file as it reads it
       // need to figure out how to split the elements on ,
    }
    input.close();
