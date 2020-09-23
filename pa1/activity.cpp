@@ -18,6 +18,11 @@ ActivityList::ActivityNode::ActivityNode(string n, float p, float r, int pri)
   priority = pri;
 }
 
+ActivityList::ActivityList(ActivityList list2)
+{
+
+}
+
 ActivityList& ActivityList::operator=(const ActivityList &list2)
 {
   // copy nodes from this list into list2
@@ -38,7 +43,6 @@ ActivityList::~ActivityList()
 
 void ActivityList::enqueue(string n, float p, float r, int pri)
 {
-  cout << "in enqueue fxn" << endl;
   ActivityNode *newNode = new ActivityNode(n, p, r, pri);
   ActivityNode *nPtr;
 
