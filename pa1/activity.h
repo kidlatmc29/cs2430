@@ -35,9 +35,9 @@ class ActivityList {
 
     void enqueue(string n, float p, float r, int pri);
     ActivityNode dequeue(string name);
+    void printList();
     int getSize();
     bool isEmpty();
-    void printList();
     float getRating(string name);
     //  returns 0 if the item doesn't exist in the list
     void createList(ActivityList& s2, int priority); 

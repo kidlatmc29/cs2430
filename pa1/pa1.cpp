@@ -32,9 +32,10 @@ void readFile(ActivityList &list)
 {
    ifstream input; 
    string line; 
-   // stringstream ss;
+   stringstream ss;
 
-   string data[3];
+   string data[4];
+   int index = 0;
    string incomingName; 
    string incomingPrice;
    string incomingRating; 
@@ -46,7 +47,7 @@ void readFile(ActivityList &list)
 
    if((!input.fail())) {
      while(getline(input, line)) {
-      // need to figure out how to split the elements on ,
+      ss.str(line);
    }
    input.close();
   }

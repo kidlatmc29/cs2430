@@ -24,12 +24,17 @@ ActivityList::ActivityNode::ActivityNode(string n, float p, float r, int pri)
 
 ActivityList::ActivityList(ActivityList &list2)
 {
-
+  ActivityNode *copyNode = list2.head; 
+  while(copyNode) {
+    enqueue(copyNode->name, copyNode->price, copyNode->rating, 
+            copyNode->priority);
+    copyNode = copyNode->next; 
+  }
 }
 
 ActivityList& ActivityList::operator=(const ActivityList &list2)
 {
-  // copy nodes from this list into list2
+  // copy values from notes from this list into list2
   return *this;
 }
 
@@ -83,7 +88,18 @@ void ActivityList::printList()
   }
 }
 
+int ActivityList::getSize()
+{
+  return size; 
+}
+
 bool ActivityList::isEmpty()
 {
   return !(head);
 }
+
+ float ActivityList::getRating(string name)
+ {
+   float rating; 
+   // traverse the linked list until you find the name, return the float
+ }
