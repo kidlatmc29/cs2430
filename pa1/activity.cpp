@@ -25,7 +25,9 @@ ActivityList::ActivityNode::ActivityNode(string n, float p, float r, int pri)
 ActivityList::ActivityList(ActivityList &list2)
 {
   head = nullptr;
+  size = 0;
   ActivityNode *copyNode = list2.head; 
+
   while(copyNode) {
     enqueue(copyNode->name, copyNode->price, copyNode->rating, 
             copyNode->priority);
@@ -37,6 +39,12 @@ ActivityList::ActivityList(ActivityList &list2)
 ActivityList& ActivityList::operator=(const ActivityList &list2)
 {
   // copy values from notes from this list into list2
+  ActivityNode *nPtr = list2.head; 
+  if(nPtr && (&list2 != this)) {
+    // we got nodes to copy B)
+  } else if(!nPtr) {
+
+  }
   return *this;
 }
 
@@ -70,6 +78,10 @@ void ActivityList::enqueue(string n, float p, float r, int pri)
   }
    size++;
 }
+//ActivityNode ActivityList::dequeue(string name)
+//{
+  
+//}
 
 void ActivityList::printList()
 {
