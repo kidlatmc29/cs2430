@@ -15,16 +15,18 @@ using namespace std;
 
 const string FILE_NAME = "activities.csv";
 const char DELIMITER = ','; 
+const int NUM_ITEMS = 4; 
 
 void readFile(ActivityList &myList);
 
 int main()
 {
-  cout << "PA1 Starting... " << endl;
+  cout << endl << "PA1 Starting... " << endl << endl;
   ActivityList myList;
   readFile(myList); 
   myList.printList();
-  cout << "PA1 Ending..." << endl;
+  
+  cout << endl << "PA1 Ending..." << endl << endl;
   return 0;
 }
 
@@ -33,7 +35,7 @@ void readFile(ActivityList &list)
    ifstream input; 
    string line; 
    stringstream ss;
-   string items[4];
+   string items[NUM_ITEMS];
    string item;
    int index;
 

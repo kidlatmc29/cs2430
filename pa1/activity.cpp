@@ -4,7 +4,7 @@
 
 // DESCRIPTION: 
 // ASSUMPTION: 
-// SOURCES: Lecture powerpoint - slide # insert function code 
+// SOURCES: Dr. Kong's lecture ppt - slide # insert fxn code 
 
 #include "activity.h"
 
@@ -31,7 +31,6 @@ ActivityList::ActivityList(ActivityList &list2)
   while(copyNode) {
     enqueue(copyNode->name, copyNode->price, copyNode->rating, 
             copyNode->priority);
-    cout << "copying node..." << endl;
     copyNode = copyNode->next; 
   }
 }
@@ -78,10 +77,20 @@ void ActivityList::enqueue(string n, float p, float r, int pri)
   }
    size++;
 }
-//ActivityNode ActivityList::dequeue(string name)
-//{
-  
-//}
+
+ActivityList::ActivityNode *ActivityList::dequeue()
+{
+  ActivityNode *removed = nullptr; 
+  ActivityNode *nPtr = head; 
+  if(!(isEmpty())) {
+    while(nPtr) {
+      nPtr = nPtr->next; 
+    }
+    removed = nPtr; 
+  }
+  size--;
+  return removed; 
+}
 
 void ActivityList::printList()
 {
@@ -110,9 +119,16 @@ bool ActivityList::isEmpty()
   return !(head);
 }
 
- float ActivityList::getRating(string name)
+ float ActivityList::getRating(string target)
  {
-   float rating = 0.0; 
-   return rating; 
-   // traverse the linked list until you find the name, return the float
+  float rating = -1.0;  
+  ActivityNode *nPtr; 
+  if(!(isEmpty())) {
+    nPtr = head; 
+    while(nPtr && nPtr->name != target) {
+      nPtr = nPtr->next; 
+    }
+    rating = nPtr->rating;
+  }
+  return rating; 
  }
