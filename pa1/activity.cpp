@@ -128,7 +128,9 @@ bool ActivityList::isEmpty()
     while(nPtr && nPtr->name != target) {
       nPtr = nPtr->next; 
     }
-    rating = nPtr->rating;
+    if(nPtr) {
+      rating = nPtr->rating;
+    }
   }
   return rating; 
  }

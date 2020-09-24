@@ -25,6 +25,9 @@ int main()
   ActivityList myList;
   readFile(myList); 
   myList.printList();
+
+  cout << "Testing getRating(str x) with a item that doesn't exist..." << endl;
+  cout << "Rating of SU is: " << myList.getRating("SU");
   
   cout << endl << "PA1 Ending..." << endl << endl;
   return 0;
