@@ -23,16 +23,21 @@ typedef int elementType;
 
 struct Node{
   elementType num; 
-  Node *next = nullptr; 
+  Node *next; 
 };
 
 const char YES = 'y';
 
 void append(Node* head, elementType val); 
 
+bool isEmpty(Node* head);
+
+void resize(Node arr[]);
+
 int main()
 {
   Node *head = nullptr; 
+   
   elementType value;
   char input = YES; 
 
@@ -48,5 +53,23 @@ int main()
 
 void append(Node *head, elementType val)
 {
-  cout << "appending " << val << endl;
+  Node *tmp = new Node; 
+  tmp->num - val; 
+  tmp->next = nullptr; 
+  Node *nPtr; 
+
+  if(isEmpty(head)) {
+    head = tmp; 
+  } else { 
+    nPtr = head; 
+    while(tmp){
+      nPtr = nPtr->next; 
+    }
+    nPtr->next = tmp; 
+  }
+}
+
+bool isEmpty(Node *head)
+{
+  return (!head);
 }
