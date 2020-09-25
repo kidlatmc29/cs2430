@@ -32,8 +32,6 @@ void append(Node* head, elementType val);
 
 bool isEmpty(Node* head);
 
-void resize(Node arr[]);
-
 int main()
 {
   Node *head = nullptr; 
@@ -72,4 +70,19 @@ void append(Node *head, elementType val)
 bool isEmpty(Node *head)
 {
   return (!head);
+}
+
+void testPrint(Node *head)
+{
+  Node *nPtr;
+  cout << "Printing linked list...." << endl;
+  if(isEmpty(head)) {
+    cout << "The list is empty!" << endl;
+  } else {
+    nPtr = head; 
+    while(nPtr) {
+      cout << nPtr->num << " "; 
+      nPtr = nPtr->next; 
+    }
+  }
 }
