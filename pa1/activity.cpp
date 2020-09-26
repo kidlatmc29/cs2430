@@ -78,20 +78,26 @@ void ActivityList::enqueue(string n, float p, float r, int pri)
    size++;
 }
 
-ActivityList::ActivityNode *ActivityList::dequeue()
+ActivityList::ActivityNode *ActivityList::dequeue(string givenName)
 {
   ActivityNode *removed = nullptr; 
   ActivityNode *previous; 
   ActivityNode *nPtr = head; 
+
   if(!(isEmpty())) {
-    while(nPtr->next) {
-      previous = nPtr;
-      nPtr = nPtr->next; 
+    if(nPtr->name == givenName) {
+      removed = nPtr; 
+      head = nPtr->next; 
+    } else  {
+      while(nPtr->next && nPtr->next->name != givenName) {
+        previous = nPtr;
+        nPtr = nPtr->next; 
+      }
+    removed = nPtr->next; 
+    previous->next = nPtr->next; 
     }
-    removed = nPtr; 
-    previous->next = nullptr; 
+    size--;
   }
-  size--;
   return removed; 
 }
 
@@ -145,5 +151,5 @@ void ActivityList::clearList()
 
  void ActivityList::createList(ActivityList& s2, int givenPri)
  {
-   clearList();
+   
  }

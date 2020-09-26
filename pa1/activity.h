@@ -35,8 +35,8 @@ class ActivityList {
     void enqueue(string n, float p, float r, int pri);
     // Inserts an activity into the list based on it's priority. 
 
-    ActivityNode* dequeue();
-    // "Removes" the last first element in the list, increments list's size by 1
+    ActivityNode* dequeue(string givenName);
+    // "Removes" the given activity in the list, decrements list's size by 1
     //  then cuts off the node from the rest of the list by setting the previous
     //  node's next to nullptr.
     // PRE: None. 

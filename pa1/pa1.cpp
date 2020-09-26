@@ -46,12 +46,12 @@ int main()
   
   cout << "Test dequeue() ====================================================="
        << endl;
-  rmNode1 = listA.dequeue(); 
+  rmNode1 = listA.dequeue("Seattle Great Wheel"); 
   cout << "Dequeued " << listA.getSize() + 1 
        << ". [P" << rmNode1->priority << "] " << rmNode1->name << " - " << "$" 
        << rmNode1->price << " - " << rmNode1->rating << " stars from listA"
        << endl; 
-  rmNode2 = listA.dequeue();     
+  rmNode2 = listA.dequeue("Sample Activity");     
   cout << "Dequeued " << listA.getSize() + 1 
        << ". [P" << rmNode2->priority << "] " << rmNode2->name << " - " << "$" 
        << rmNode2->price << " - " << rmNode2->rating << " stars from listA"
