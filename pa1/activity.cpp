@@ -33,7 +33,17 @@ ActivityList::ActivityList(ActivityList &list2)
 
 ActivityList& ActivityList::operator=(const ActivityList &list2)
 {
-  // copy values from notes from this list into list2
+  ActivityNode *nPtr;
+  // copy values from notes from this list into list2 if they are not the same
+  if(this->head != list2.head) {
+    clearList();
+    nPtr = list2.head; 
+    while(nPtr->next) {
+      enqueue(nPtr->name, nPtr->price, nPtr->rating, nPtr->priority);
+    }
+  } else {
+    cout << "Lists are the same!" << endl;
+  }
   return *this;
 }
 
@@ -110,6 +120,11 @@ int ActivityList::getSize()
 bool ActivityList::isEmpty()
 {
   return !(head);
+}
+
+void ActivityList::clearList()
+{
+  head = nullptr; 
 }
 
  float ActivityList::getRating(string target)
