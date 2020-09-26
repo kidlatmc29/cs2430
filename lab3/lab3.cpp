@@ -6,9 +6,6 @@
 For this lab, you should write a C++ program with a recursive function that reverse
 prints the first X values in a linked list AND returns the sum of those values. The number
 X is determined by the user.
-Before calling the recursive function, you must first write a program that creates an
-unordered linked list. Allow the user to add as many nodes as they wish. When they are
-done, call the recursive function by passing the front of the linked list.
 Catch and print the number that is returned (i.e. the sum of first X nodes in the list) and
 end the program. Remember that your list has been dynamically allocated.
 Submit your program by running the following
@@ -26,33 +23,54 @@ struct Node{
   Node *next; 
 };
 
-const char YES = 'y';
-
-void append(Node* head, elementType val); 
+Node *append(Node* head, elementType val); 
 
 bool isEmpty(Node* head);
+
+void testPrint(Node *head);
+
+void clearList(Node *head);
+
+elementType sumPrint(Node *head, int numElements, elementType sum); 
+
+void removeNode(Node *head); 
 
 int main()
 {
   Node *head = nullptr; 
-   
+  int size = -1; 
   elementType value;
-  char input = YES; 
+  elementType finalSum = 0; 
+  int x; // stores how many values the user wants to print and sum to 
 
-  while(input == YES) {
-    cout << "Enter values to add to a list: ";
+  while(size < 1) {
+    cout << "Please enter a size for a linked list: ";
+    cin >> size; 
+  }
+  for(int i = 0; i < size; i++) {
+    cout << "Please enter a value to append to the linkd list: "; 
     cin >> value; 
-    append(head, value);
-    cout << endl << "Do you want to add another value? (y/n): ";
-    cin >> input; 
+    head = append(head, value);
+  }
+
+  // recursion time
+  cout << "Enter a integer: ";
+  cin >> x; 
+  cout << endl << "the sum of the first " << x << " elements are " << endl  
+       << sumPrint(head, x, finalSum);
+  // testPrint(head);
+
+  while(!isEmpty(head)){
+    removeNode(head);
   }
   return 0;
 }
 
-void append(Node *head, elementType val)
+Node *append(Node *head, elementType val)
 {
+  
   Node *tmp = new Node; 
-  tmp->num - val; 
+  tmp->num = val; 
   tmp->next = nullptr; 
   Node *nPtr; 
 
@@ -60,20 +78,21 @@ void append(Node *head, elementType val)
     head = tmp; 
   } else { 
     nPtr = head; 
-    while(tmp){
+    while(nPtr->next){
       nPtr = nPtr->next; 
     }
     nPtr->next = tmp; 
   }
+
+  return head; 
 }
 
 bool isEmpty(Node *head)
 {
-  return (!head);
+  return (!head); 
 }
 
-void testPrint(Node *head)
-{
+void testPrint(Node *head) {
   Node *nPtr;
   cout << "Printing linked list...." << endl;
   if(isEmpty(head)) {
@@ -84,5 +103,37 @@ void testPrint(Node *head)
       cout << nPtr->num << " "; 
       nPtr = nPtr->next; 
     }
+  }
+  cout << endl;
+}
+
+void removeNode(Node *head)
+{
+  Node *nPtr = head;
+  Node *previous;  
+  while(nPtr) {
+    nPtr = nPtr->next;
+    previous = nPtr; 
+  }
+  delete nPtr; 
+  previous->next = nullptr; 
+}
+
+elementType sumPrint(Node *head, int numElements, elementType sum)
+{
+  int index; 
+  Node *nPtr;
+  if(numElements == 0)  {
+    return sum; 
+  } else {
+    index = numElements; 
+    nPtr = head; 
+    while(nPtr && index != 0) {
+      nPtr = nPtr->next; 
+      index--; 
+    }
+    sum += nPtr->num;
+    cout << nPtr->num << " "; 
+    return sumPrint(head, numElements, sum);
   }
 }
