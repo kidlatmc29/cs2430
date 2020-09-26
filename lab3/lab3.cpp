@@ -2,21 +2,14 @@
 // lab3.cpp
 // 9-25-2020
 
-/**
-For this lab, you should write a C++ program with a recursive function that reverse
-prints the first X values in a linked list AND returns the sum of those values. The number
-X is determined by the user.
-Catch and print the number that is returned (i.e. the sum of first X nodes in the list) and
-end the program. Remember that your list has been dynamically allocated.
-Submit your program by running the following
-script in the directory with your program:
-/home/fac/hkong/submit/cpsc2430/submit_lab3
-**/
+// DESCRIPTION: Lab 3 allows the user to create a linked list with given values
+//  and then asks the user how many values to print and summate. 
+// ASSUMPTIONS: None.
+
 #include <iostream>
 
 using namespace std; 
-
-typedef int elementType; 
+typedef float elementType; 
 
 struct Node{
   elementType num; 
@@ -24,26 +17,23 @@ struct Node{
 };
 
 Node *append(Node* head, elementType val); 
+// adds node to the end of the linked list
 
 bool isEmpty(Node* head);
 
-void testPrint(Node *head);
-
-void clearList(Node *head);
-
 elementType sumPrint(Node *head, int numElements, elementType sum); 
-
-void removeNode(Node *head); 
 
 int main()
 {
   Node *head = nullptr; 
   int size = -1; 
   elementType value;
-  elementType finalSum = 0; 
+  elementType sum = 0; // used to store the current sum in printSum fxn
+  elementType finalSum;
   int x; // stores how many values the user wants to print and sum to 
 
   while(size < 1) {
+    cout << endl << "Lab 3 start.... " << endl;
     cout << "Please enter a size for a linked list: ";
     cin >> size; 
   }
@@ -53,16 +43,22 @@ int main()
     head = append(head, value);
   }
 
-  // recursion time
-  cout << "Enter a integer: ";
+  cout << "How many values do you want to reverse print? ";
   cin >> x; 
-  cout << endl << "the sum of the first " << x << " elements are " << endl  
-       << sumPrint(head, x, finalSum);
-  // testPrint(head);
+  finalSum = sumPrint(head, x, sum);
+  cout << endl << "The sum of these numbers are " << finalSum << endl; 
 
-  while(!isEmpty(head)){
-    removeNode(head);
+  // deallocating nodes
+  Node *nPtr = head;
+  Node *nextPtr;
+  while(nPtr) {
+    nextPtr = nPtr->next;
+    delete nPtr; 
+    nPtr = nextPtr; 
   }
+  head = nullptr; 
+
+  cout << endl;
   return 0;
 }
 
@@ -92,33 +88,6 @@ bool isEmpty(Node *head)
   return (!head); 
 }
 
-void testPrint(Node *head) {
-  Node *nPtr;
-  cout << "Printing linked list...." << endl;
-  if(isEmpty(head)) {
-    cout << "The list is empty!" << endl;
-  } else {
-    nPtr = head; 
-    while(nPtr) {
-      cout << nPtr->num << " "; 
-      nPtr = nPtr->next; 
-    }
-  }
-  cout << endl;
-}
-
-void removeNode(Node *head)
-{
-  Node *nPtr = head;
-  Node *previous;  
-  while(nPtr) {
-    nPtr = nPtr->next;
-    previous = nPtr; 
-  }
-  delete nPtr; 
-  previous->next = nullptr; 
-}
-
 elementType sumPrint(Node *head, int numElements, elementType sum)
 {
   int index; 
@@ -134,6 +103,6 @@ elementType sumPrint(Node *head, int numElements, elementType sum)
     }
     sum += nPtr->num;
     cout << nPtr->num << " "; 
-    return sumPrint(head, numElements, sum);
+    return sumPrint(head, numElements - 1, sum);
   }
 }
