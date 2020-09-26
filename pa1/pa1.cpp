@@ -17,49 +17,54 @@ const string FILE_NAME = "activities.csv";
 const char DELIMITER = ','; 
 const int NUM_ITEMS = 4; 
 
-void readFile(ActivityList &myList);
+void readFile(ActivityList &myList, string listName);
 
 int main()
 {
-  ActivityList myList;
-  ActivityList yourList; 
+  ActivityList listA;
+  ActivityList listB; 
   ActivityList::ActivityNode *rmNode1; 
   ActivityList::ActivityNode *rmNode2; 
 
-  cout << endl << "PA1 Starting... " << endl;
-  cout << "Created myList and yourList...." << endl;
-  readFile(myList); 
+  cout << endl << "PA1 Starting... " << endl << endl;
+  cout << "Created empty ActivityLists listA and listB...." << endl;
+  readFile(listA, "listA"); 
 
   cout << "Testing printList() ================================================" 
        << endl;
-  myList.printList();
-  yourList.printList();
+  listA.printList();
+  listB.printList();
   cout << endl;
 
-  cout << "Testing getRating =================================================="
+  cout << "Testing getRating() ================================================"
        << endl
-       << "Rating of the Space Needle: " << myList.getRating("Space Needle")
-       << endl << "Rating of Starbucks is: " << myList.getRating("Starbucks") 
+       << "Rating of the Space Needle: " << listA.getRating("Space Needle")
+       << endl << "Rating of Starbucks is: " << listA.getRating("Starbucks") 
        << endl << endl;
   
-  cout << "Test dequeue ======================================================="
+  cout << "Test dequeue() ====================================================="
        << endl;
-  rmNode1 = myList.dequeue(); 
-  cout << "Dequeued " << myList.getSize() + 1 
+  rmNode1 = listA.dequeue(); 
+  cout << "Dequeued " << listA.getSize() + 1 
        << ". [P" << rmNode1->priority << "] " << rmNode1->name << " - " << "$" 
-       << rmNode1->price << " - " << rmNode1->rating << " stars from myList"
+       << rmNode1->price << " - " << rmNode1->rating << " stars from listA"
        << endl; 
-  rmNode2 = myList.dequeue();     
-  cout << "Dequeued " << myList.getSize() + 1 
+  rmNode2 = listA.dequeue();     
+  cout << "Dequeued " << listA.getSize() + 1 
        << ". [P" << rmNode2->priority << "] " << rmNode2->name << " - " << "$" 
-       << rmNode2->price << " - " << rmNode2->rating << " stars from myList"
-       << endl;      
+       << rmNode2->price << " - " << rmNode2->rating << " stars from listA"
+       << endl << endl;      
   
+  cout << "Test getSize() ====================================================="
+       << endl;
+  cout << "listA has " << listA.getSize() <<  " activites" << endl
+       << "listB has " << listB.getSize() << " activites" << endl;
+
   cout << endl << "PA1 Ending..." << endl << endl;
   return 0;
 }
 
-void readFile(ActivityList &list)
+void readFile(ActivityList &list, string listName)
 {
    ifstream input; 
    string line; 
@@ -72,7 +77,8 @@ void readFile(ActivityList &list)
    float incomingRating;
    int incomingPriority; 
 
-   cout << "Reading from file " << FILE_NAME << "...." << endl << endl;
+   cout << "Reading from file " << FILE_NAME << " into " << listName << endl 
+        << endl;
 
    input.open(FILE_NAME);
 

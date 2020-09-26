@@ -48,6 +48,9 @@ class ActivityList {
     int getSize();
     
     bool isEmpty();
+
+    void clearList();
+    // Removes all nodes in the list and sets head to nullptr
    
     float getRating(string target);
     // Returns -1 if the item doesn't exist or if the list is empty.

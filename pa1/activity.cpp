@@ -34,12 +34,6 @@ ActivityList::ActivityList(ActivityList &list2)
 ActivityList& ActivityList::operator=(const ActivityList &list2)
 {
   // copy values from notes from this list into list2
-  ActivityNode *nPtr = list2.head; 
-  if(nPtr && (&list2 != this)) {
-    // we got nodes to copy B)
-  } else if(!nPtr) {
-
-  }
   return *this;
 }
 
@@ -136,12 +130,4 @@ bool ActivityList::isEmpty()
 
  void ActivityList::createList(ActivityList& s2, int givenPri)
  {
-  ActivityNode *nPtr;
-  if(!(isEmpty())) {
-    nPtr = head; 
-    while(nPtr && nPtr->priority != givenPri) {
-      nPtr = nPtr->next; 
-    }
-    
-  }
  }
