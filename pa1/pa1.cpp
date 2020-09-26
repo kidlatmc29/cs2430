@@ -32,7 +32,9 @@ int main()
 
   cout << "Testing printList() ================================================" 
        << endl;
+  cout << "listA: " << endl;
   listA.printList();
+  cout << "listB:" << endl;
   listB.printList();
   cout << endl;
 
@@ -58,7 +60,13 @@ int main()
   cout << "Test getSize() ====================================================="
        << endl;
   cout << "listA has " << listA.getSize() <<  " activites" << endl
-       << "listB has " << listB.getSize() << " activites" << endl;
+       << "listB has " << listB.getSize() << " activites" << endl << endl;
+
+  cout << "Test copy assignment ==============================================="
+       << endl << "listB = listA" << endl;
+  listB = listA; 
+  cout << "Printing listB:" << endl;
+  listB.printList(); 
 
   cout << endl << "PA1 Ending..." << endl << endl;
   return 0;
