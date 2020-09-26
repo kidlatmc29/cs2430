@@ -2,10 +2,6 @@
 // activity.cpp
 // 9-28-2020
 
-// DESCRIPTION: 
-// ASSUMPTION: 
-// SOURCES: Dr. Kong's lecture ppt - slide # insert fxn code 
-
 #include "activity.h"
 
 ActivityList::ActivityList()
@@ -98,7 +94,7 @@ void ActivityList::printList()
   int count = 1; 
 
   if(isEmpty()) {
-    cout << "the list is empty" << endl;
+    cout << "The list is empty!" << endl;
   } else {
     while(nPtr) {
       cout << count << ". [P" << nPtr->priority << "] " << nPtr->name << " - "
@@ -133,4 +129,16 @@ bool ActivityList::isEmpty()
     }
   }
   return rating; 
+ }
+
+ void ActivityList::createList(ActivityList& s2, int givenPri)
+ {
+  ActivityNode *nPtr;
+  if(!(isEmpty())) {
+    nPtr = head; 
+    while(nPtr && nPtr->priority != givenPri) {
+      nPtr = nPtr->next; 
+    }
+    
+  }
  }

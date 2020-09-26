@@ -4,7 +4,6 @@
 
 // DESCRIPTION: Lab 3 allows the user to create a linked list with given values
 //  and then asks the user how many values to print and summate. 
-// ASSUMPTIONS: None.
 
 #include <iostream>
 
@@ -38,7 +37,7 @@ int main()
     cin >> size; 
   }
   for(int i = 0; i < size; i++) {
-    cout << "Please enter a value to append to the linkd list: "; 
+    cout << "Please enter a value to append to the linked list: "; 
     cin >> value; 
     head = append(head, value);
   }
@@ -64,7 +63,6 @@ int main()
 
 Node *append(Node *head, elementType val)
 {
-  
   Node *tmp = new Node; 
   tmp->num = val; 
   tmp->next = nullptr; 
@@ -79,7 +77,6 @@ Node *append(Node *head, elementType val)
     }
     nPtr->next = tmp; 
   }
-
   return head; 
 }
 

@@ -21,13 +21,32 @@ void readFile(ActivityList &myList);
 
 int main()
 {
-  cout << endl << "PA1 Starting... " << endl << endl;
   ActivityList myList;
-  readFile(myList); 
-  myList.printList();
+  ActivityList yourList; 
+  ActivityList::ActivityNode *rmNode; 
 
-  cout << "Testing getRating(str x) with a item that doesn't exist..." << endl;
-  cout << "Rating of SU is: " << myList.getRating("SU");
+  cout << endl << "PA1 Starting... " << endl;
+  readFile(myList); 
+
+  cout << "Testing printList() ================================================" 
+       << endl;
+  myList.printList();
+  yourList.printList();
+
+  cout << "Testing getRating =================================================="
+       << endl
+       << "Rating of the Space Needle: " << myList.getRating("Space Needle")
+       << "Rating of Starbucks is: " << myList.getRating("Starbucks") << endl
+       << endl;
+  
+  cout << "Test dequeue ====================================================="
+       << endl;
+  rmNode = myList.dequeue(); 
+  cout << "Dequeued: " << endl << myList.getSize() + 1 
+       << ". [P" << rmNode->priority << "] " << rmNode->name << " - " << "$" 
+       << rmNode->price << " - " << rmNode->rating << " stars" << endl; 
+  delete rmNode; 
+  rmNode = nullptr; 
   
   cout << endl << "PA1 Ending..." << endl << endl;
   return 0;
@@ -46,7 +65,7 @@ void readFile(ActivityList &list)
    float incomingRating;
    int incomingPriority; 
 
-   cout << "Reading in file " << FILE_NAME << "...." << endl;
+   cout << "Reading from file " << FILE_NAME << "...." << endl << endl;
 
    input.open(FILE_NAME);
 
