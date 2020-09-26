@@ -36,9 +36,12 @@ class ActivityList {
     // Inserts an activity into the list based on it's priority. 
 
     ActivityNode* dequeue();
-    // removes the last first element in the list
+    // "Removes" the last first element in the list, increments list's size by 1
+    //  then cuts off the node from the rest of the list by setting the previous
+    //  node's next to nullptr.
     // PRE: None. 
-    // POST: The node is returned to main, and deallocated there
+    // POST: The node is returned to main, and deallocated once the program is 
+    //   over. 
 
     void printList();
 

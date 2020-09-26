@@ -23,30 +23,37 @@ int main()
 {
   ActivityList myList;
   ActivityList yourList; 
-  ActivityList::ActivityNode *rmNode; 
+  ActivityList::ActivityNode *rmNode1; 
+  ActivityList::ActivityNode *rmNode2; 
 
   cout << endl << "PA1 Starting... " << endl;
+  cout << "Created myList and yourList...." << endl;
   readFile(myList); 
 
   cout << "Testing printList() ================================================" 
        << endl;
   myList.printList();
   yourList.printList();
+  cout << endl;
 
   cout << "Testing getRating =================================================="
        << endl
        << "Rating of the Space Needle: " << myList.getRating("Space Needle")
-       << "Rating of Starbucks is: " << myList.getRating("Starbucks") << endl
-       << endl;
+       << endl << "Rating of Starbucks is: " << myList.getRating("Starbucks") 
+       << endl << endl;
   
-  cout << "Test dequeue ====================================================="
+  cout << "Test dequeue ======================================================="
        << endl;
-  rmNode = myList.dequeue(); 
-  cout << "Dequeued: " << endl << myList.getSize() + 1 
-       << ". [P" << rmNode->priority << "] " << rmNode->name << " - " << "$" 
-       << rmNode->price << " - " << rmNode->rating << " stars" << endl; 
-  delete rmNode; 
-  rmNode = nullptr; 
+  rmNode1 = myList.dequeue(); 
+  cout << "Dequeued " << myList.getSize() + 1 
+       << ". [P" << rmNode1->priority << "] " << rmNode1->name << " - " << "$" 
+       << rmNode1->price << " - " << rmNode1->rating << " stars from myList"
+       << endl; 
+  rmNode2 = myList.dequeue();     
+  cout << "Dequeued " << myList.getSize() + 1 
+       << ". [P" << rmNode2->priority << "] " << rmNode2->name << " - " << "$" 
+       << rmNode2->price << " - " << rmNode2->rating << " stars from myList"
+       << endl;      
   
   cout << endl << "PA1 Ending..." << endl << endl;
   return 0;

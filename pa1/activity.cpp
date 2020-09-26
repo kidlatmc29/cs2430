@@ -77,12 +77,15 @@ void ActivityList::enqueue(string n, float p, float r, int pri)
 ActivityList::ActivityNode *ActivityList::dequeue()
 {
   ActivityNode *removed = nullptr; 
+  ActivityNode *previous; 
   ActivityNode *nPtr = head; 
   if(!(isEmpty())) {
-    while(nPtr) {
+    while(nPtr->next) {
+      previous = nPtr;
       nPtr = nPtr->next; 
     }
     removed = nPtr; 
+    previous->next = nullptr; 
   }
   size--;
   return removed; 
