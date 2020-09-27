@@ -2,7 +2,7 @@
 // pa1.cpp
 // 9-28-2020
 
-// DESCRIPTION: 
+// DESCRIPTION: Creates
 // ASSUMPTION: 
 // SOURCES: Lecture powerpoint - slide # insert function code 
 
@@ -44,7 +44,7 @@ int main()
        << endl << "Rating of Starbucks is: " << listA.getRating("Starbucks") 
        << endl << endl;
   
-  cout << "Test dequeue() ====================================================="
+  cout << "Testing dequeue() =================================================="
        << endl;
   rmNode1 = listA.dequeue("Seattle Great Wheel"); 
   cout << "Dequeued " << listA.getSize() + 1 
@@ -57,16 +57,26 @@ int main()
        << rmNode2->price << " - " << rmNode2->rating << " stars from listA"
        << endl << endl;      
   
-  cout << "Test getSize() ====================================================="
+  cout << "Testing getSize() =================================================="
        << endl;
   cout << "listA has " << listA.getSize() <<  " activites" << endl
        << "listB has " << listB.getSize() << " activites" << endl << endl;
 
-  cout << "Test copy assignment ==============================================="
+  cout << "Testing copy assignment ============================================"
        << endl << "listB = listA" << endl;
   listB = listA; 
   cout << "Printing listB:" << endl;
   listB.printList(); 
+  cout << endl;
+  
+  cout << "Testing createList ================================================="
+       << endl << "Creating list of priority 1 from listA..." << endl;
+  ActivityList important;
+  listA.createList(important, 1);
+  cout << "Printing important list:" << endl;
+  important.printList();
+  cout << endl;
+
 
   cout << endl << "PA1 Ending..." << endl << endl;
   return 0;

@@ -151,5 +151,24 @@ void ActivityList::clearList()
 
  void ActivityList::createList(ActivityList& s2, int givenPri)
  {
-   
+   ActivityNode *nPtr;
+  // edge cases: 
+  //    if givenPri isn't in the list
+  //    OR if there isn't any givenPri in the list
+
+  if(isEmpty()) {
+    cout << "List is empty!" << endl;
+  } else {
+    nPtr = head; 
+    while(nPtr) {
+     if(nPtr->priority == givenPri) {
+       s2.enqueue(nPtr->name, nPtr->price, nPtr->rating, nPtr->priority);
+     } 
+     nPtr = nPtr->next; 
+    }
+  }
+  if(s2.getSize() == 0) {
+    cout << "No activity found in this list with priority " << givenPri
+         << endl;
+  }
  }
