@@ -55,7 +55,9 @@ int main()
   cout << "Dequeued " << listA.getSize() + 1 
        << ". [P" << rmNode2->priority << "] " << rmNode2->name << " - " << "$" 
        << rmNode2->price << " - " << rmNode2->rating << " stars from listA"
-       << endl << endl;      
+       << endl;
+  listA.printList();    
+  cout << endl;  
   
   cout << "Testing getSize() =================================================="
        << endl;
@@ -77,6 +79,11 @@ int main()
   important.printList();
   cout << endl;
 
+  cout << "Testing copy constructor ==========================================="
+       << endl << "Creating listC from listB..." << endl;
+     ActivityList listC(listB);
+     listC.printList();
+  cout << endl;
 
   cout << endl << "PA1 Ending..." << endl << endl;
   return 0;
