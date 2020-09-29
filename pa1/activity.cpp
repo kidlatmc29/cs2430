@@ -80,25 +80,20 @@ void ActivityList::enqueue(string n, float p, float r, int pri)
 
 ActivityList::ActivityNode *ActivityList::dequeue(string givenName)
 {
-  ActivityNode *removed = nullptr; 
-  ActivityNode *previous; 
-  ActivityNode *nPtr = head; 
-
-  if(!(isEmpty())) {
-    if(nPtr->name == givenName) {
-      removed = nPtr; 
-      head = nPtr->next; 
-    } else  {
-      while(nPtr->next && nPtr->next->name != givenName) {
-        previous = nPtr;
-        nPtr = nPtr->next; 
-      }
-    removed = nPtr->next; 
-    previous->next = nPtr->next; 
+  ActivityNode *nPtr;
+  ActivityNode *previous = head; 
+  nPtr = previous->next; 
+  if(nPtr->name == givenName) {
+    head = nPtr; 
+  } else {
+    while(nPtr && nPtr->name != givenName) {
+      nPtr = nPtr->next;
+      previous = previous->next; 
     }
-    size--;
+    previous->next = nPtr->next; // reassign next pointer to skip removed node
   }
-  return removed; 
+  size--;
+  return nPtr; 
 }
 
 void ActivityList::printList()

@@ -2,9 +2,12 @@
 // pa1.cpp
 // 9-28-2020
 
-// DESCRIPTION: Creates
-// ASSUMPTION: 
-// SOURCES: Lecture powerpoint - slide # insert function code 
+// DESCRIPTION: Tests ActivityList class. Tests functions: default constuctor,
+//   enqueue, printList, getRating, dequeue, getSize, copy assignment, 
+//   createList, and copy constructor. readFile is used to intialize listA, 
+//   with activties that is used throughout the testing. 
+// 
+// SOURCES: Dr. Kong lecture powerpoint - insert function code 
 
 #include <iostream>
 #include <sstream>
@@ -31,12 +34,12 @@ int main()
   readFile(listA, "listA"); 
 
   cout << "Testing printList() ================================================" 
-       << endl;
-  cout << "listA: " << endl;
-  listA.printList();
-  cout << "listB:" << endl;
-  listB.printList();
-  cout << endl;
+       << endl
+       << "listA: " << endl;
+       listA.printList();
+       cout << "listB:" << endl;
+       listB.printList();
+       cout << endl;
 
   cout << "Testing getRating() ================================================"
        << endl
