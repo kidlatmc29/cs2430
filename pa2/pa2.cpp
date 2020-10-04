@@ -18,6 +18,8 @@ int main()
   cout << "Welcome to PA 2. Please enter a positive integer: ";
   cin >> input; 
 
+
+
   cout << "End of PA 2." << endl << endl;
   return 0; 
 }

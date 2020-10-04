@@ -19,11 +19,16 @@ class RecursiveQueue {
     void doubleSize();
     // resizes the array to have double the size
 
+    void enqueue(int num);
     // enqueue 
+    int dequeue();
     // dequeue
-    // copyArr
-    // getSize
-    // isEmpty
+
+    int getSize();
+    // returns the size of the array
+
+    bool isEmpty();
+    // returns true if size is 0
 
     // recInsert(int val)
     //  takes in a positive integer and inserts each digit into the array
@@ -40,5 +45,5 @@ class RecursiveQueue {
     
     // print()
     //  prints the queue with commas seperated values. there should be no 
-    //  trailing comma. 
+    //  trailing comma.       
 };
