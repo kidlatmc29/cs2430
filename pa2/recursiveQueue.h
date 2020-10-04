@@ -9,10 +9,20 @@ class RecursiveQueue {
     int *arr = new int[size];
   public: 
     RecursiveQueue();
+    // default constuctor 
     ~RecursiveQueue(); 
+    // deconstructor 
+    
+    RecursiveQueue& operator=(const RecursiveQueue &arr2);
     // copy assignment
+
+    void doubleSize();
+    // resizes the array to have double the size
+
     // enqueue 
     // dequeue
+    // copyArr
+    // getSize
     // isEmpty
 
     // recInsert(int val)
