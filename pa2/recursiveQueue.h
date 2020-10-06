@@ -4,31 +4,34 @@
 
 class RecursiveQueue {
   private: 
-    int size = 3; 
+    int size; 
     int numOfElements;
-    int *arr = new int[size];
+    int *arr;
+
   public: 
     RecursiveQueue();
     // default constuctor 
     ~RecursiveQueue(); 
     // deconstructor 
     
-    RecursiveQueue& operator=(const RecursiveQueue &arr2);
+    RecursiveQueue& operator=(const RecursiveQueue& src);
     // copy assignment
-
-    void doubleSize();
-    // resizes the array to have double the size
 
     void enqueue(int num);
     // enqueue 
     int dequeue();
     // dequeue
 
+    void copyArr(const RecursiveQueue& src);
+    //copies contents from src into current recursiveQueue
     int getSize();
     // returns the size of the array
 
     bool isEmpty();
-    // returns true if size is 0
+    // returns true if numOfElements is 0
+
+    int getRear();
+    // returns the index of the end of the queue
 
     // recInsert(int val)
     //  takes in a positive integer and inserts each digit into the array
