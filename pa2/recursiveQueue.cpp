@@ -36,7 +36,9 @@ void RecursiveQueue::copyArr(const RecursiveQueue& src)
   int *copy = new int[src.size];
   for(int index = 0; index < src.size; index++) {
     size++;
+    numOfElements++;
     copy[index] = src.arr[index];
   }
+  delete[] arr; 
   arr = copy;
 }
