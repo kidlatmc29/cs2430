@@ -26,6 +26,24 @@ RecursiveQueue& RecursiveQueue::operator=(const RecursiveQueue& src)
    return *this;
 }
 
+void RecursiveQueue::enqueue(int num)
+{
+  if(numOfElements + 1 > size) {
+    cout << "Doubling size..." << endl;
+    // call double size fxn probably 
+  } 
+
+  arr[numOfElements - 1] = num;
+  numOfElements++;
+}
+
+int RecursiveQueue::dequeue()
+{
+  int removed = arr[numOfElements - 1];
+  numOfElements--;
+  return removed;
+}
+
 bool RecursiveQueue::isEmpty()
 {
   return (numOfElements == 0);

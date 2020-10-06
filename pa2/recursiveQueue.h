@@ -2,6 +2,10 @@
 // recursiveQueue.h
 // 10-12-2020
 
+using namespace std;
+
+#include <iostream> 
+
 class RecursiveQueue {
   private: 
     int size; 
