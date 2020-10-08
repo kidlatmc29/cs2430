@@ -31,6 +31,10 @@ int main()
   myQueue.enqueue(7);
 
   myQueue.print();
+  cout << "dequeuing " << myQueue.dequeue() << " and " << myQueue.dequeue()
+       << endl;
+
+  myQueue.print();
   cout << "End of PA 2." << endl << endl;
   return 0; 
 }

@@ -67,4 +67,7 @@ class RecursiveQueue {
     
     void print();
     //  prints the queue with commas seperated values.       
+
+    void print(int front, int rear);
+    //  helper function for print()
 };
