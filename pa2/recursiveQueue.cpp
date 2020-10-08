@@ -34,7 +34,14 @@ RecursiveQueue& RecursiveQueue::operator=(const RecursiveQueue& src)
 
 void RecursiveQueue::enqueue(int num)
 {
-  if(numOfElements + 1 > size) {
+  
+  if(isEmpty()) {
+    cout << "queue is empty, enquing fist node" << endl;
+    front++;
+    rear++;
+    arr[front] = num;
+    numOfElements++;
+  } else if(numOfElements + 1 > size) {
     cout << "Doubling size..." << endl;
     int *doubleArr = new int[size*2];
     for(int index = front; index < size; index++) {
@@ -43,10 +50,11 @@ void RecursiveQueue::enqueue(int num)
     delete [] arr; 
     arr = doubleArr;  
     size *= 2; 
-  } 
+  } else {
     arr[rear] = num;
     numOfElements++;
     rear++;
+  }
 }
 
 int RecursiveQueue::dequeue()
@@ -54,6 +62,7 @@ int RecursiveQueue::dequeue()
   int removed = arr[front];
   numOfElements--;
   front++;
+
   return removed;
 }
 
