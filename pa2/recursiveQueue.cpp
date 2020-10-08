@@ -15,6 +15,10 @@ RecursiveQueue::RecursiveQueue()
 
 RecursiveQueue::~RecursiveQueue()
 {
+  front = -1;
+  rear = -1;
+  numOfElements = 0;
+  size = 0; 
   delete[] arr; 
   arr = nullptr;
 }
@@ -25,15 +29,17 @@ RecursiveQueue::RecursiveQueue(RecursiveQueue& src)
   front = src.front;
   rear = src.rear;
   numOfElements = src.numOfElements; 
-
-  //for(int index = front; index < rear; 
-
+  size = numOfElements;
+  
+  for(int index = front; index <= rear; index++) {
+    arr[index] = src.arr[index];
+  }
 }
 
 RecursiveQueue& RecursiveQueue::operator=(const RecursiveQueue& src)
 {
   if(&src != this) {
-    copyArr(src);
+    arr = copyArr(src);
   }
    return *this;
 }
@@ -78,7 +84,7 @@ bool RecursiveQueue::isEmpty()
   return (numOfElements == 0);
 }
 
-void RecursiveQueue::copyArr(const RecursiveQueue& src)
+int* RecursiveQueue::copyArr(const RecursiveQueue& src)
 {
   int *copy = new int[src.size];
   for(int index = 0; index < src.size; index++) {
@@ -86,20 +92,11 @@ void RecursiveQueue::copyArr(const RecursiveQueue& src)
     numOfElements++;
     copy[index] = src.arr[index];
   }
-  delete [] arr;
-  arr = copy;
+  return copy; 
 }
 
 void RecursiveQueue::print()
 {
-  /**
-  // ITERATIVE PRINT FIRST WILL CHANGE TO RECURSIVE
-  for(int index = front; index < rear; index++) {
-    if(index < rear) 
-      cout << arr[index] << ", ";
-  }
-    cout << arr[rear] << endl;  
-  **/
  print(getFront(), getRear());
 }
 

@@ -49,8 +49,8 @@ class RecursiveQueue {
     // PRE:
     // POST:
 
-    void copyArr(const RecursiveQueue& src);
-    //copies contents from src into current recursiveQueue
+    int* copyArr(const RecursiveQueue& src);
+    // copies contents from src's arr into a new array
     // PRE:
     // POST:
 
