@@ -42,18 +42,21 @@ void RecursiveQueue::enqueue(int num)
     arr[front] = num;
     numOfElements++;
   } else if(numOfElements + 1 > size) {
-    cout << "Doubling size..." << endl;
-    int *doubleArr = new int[size*2];
-    for(int index = front; index < size; index++) {
-      doubleArr[index] = arr[index];
-    }
-    delete [] arr; 
-    arr = doubleArr;  
-    size *= 2; 
+      cout << "Doubling size..." << endl;
+      int *doubleArr = new int[size*2];
+
+      for(int index = front; index < size; index++) {
+        doubleArr[index] = arr[index];
+      }
+      delete [] arr; 
+      arr = doubleArr;  
+      size *= 2; 
+      rear++;
+      arr[rear] = num;
   } else {
+    rear++;
     arr[rear] = num;
     numOfElements++;
-    rear++;
   }
 }
 
@@ -85,7 +88,12 @@ void RecursiveQueue::copyArr(const RecursiveQueue& src)
 
 void RecursiveQueue::print()
 {
-  
+  // ITERATIVE PRINT FIRST WILL CHANGE TO RECURSIVE
+  for(int index = front; index < rear; index++) {
+    if(index < rear) 
+      cout << arr[index] << ", ";
+  }
+    cout << arr[rear] << endl;  
 }
 
 int RecursiveQueue::getFront()
