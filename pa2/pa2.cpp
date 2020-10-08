@@ -21,13 +21,14 @@ int main()
   cin >> input; 
   **/
 
-  cout << endl << "enqueuing 123456 into myQueue...." << endl;
+  cout << endl << "enqueuing 1234567 into myQueue...." << endl;
   myQueue.enqueue(1);
   myQueue.enqueue(2);
   myQueue.enqueue(3);
   myQueue.enqueue(4);
   myQueue.enqueue(5);
   myQueue.enqueue(6);
+  myQueue.enqueue(7);
 
   myQueue.print();
   cout << "End of PA 2." << endl << endl;
