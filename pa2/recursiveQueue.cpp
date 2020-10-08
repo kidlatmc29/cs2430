@@ -100,12 +100,17 @@ void RecursiveQueue::print()
   }
     cout << arr[rear] << endl;  
   **/
-
+ print(getFront(), getRear());
 }
 
 void RecursiveQueue::print(int front, int rear)
 {
-  
+  if(front == rear){
+    cout << arr[front] << endl;
+  } else {
+    print(++front, rear);
+    cout << arr[front] << endl;
+  }
 }
 
 int RecursiveQueue::getFront()
