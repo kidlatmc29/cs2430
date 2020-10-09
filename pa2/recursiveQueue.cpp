@@ -95,21 +95,6 @@ int* RecursiveQueue::copyArr(const RecursiveQueue& src)
   return copy; 
 }
 
-void RecursiveQueue::print()
-{
- print(getFront(), getRear());
-}
-
-void RecursiveQueue::print(int front, int rear)
-{
-  if(front == rear){
-    cout << arr[front] << endl;
-  } else {
-    cout << arr[front] << ", ";
-    print(front + 1, rear);
-  }
-}
-
 int RecursiveQueue::getFront()
 {
   return front; 
@@ -127,5 +112,42 @@ void RecursiveQueue::recInsert(int val)
   } else {
   recInsert(val / 10);
   enqueue(val % 10);
+  }
+}
+
+void RecursiveQueue::doubleEven()
+{
+  doubleEven(getFront(), getRear());
+}
+
+void RecursiveQueue::doubleEven(int front, int rear)
+{
+  if (front == rear) {
+    return;
+  } else {
+    if(front % 2 == 0) {
+    arr[front] *= 2;  
+    }
+    doubleEven(front + 1, rear);
+  }
+}
+
+int RecursiveQueue::sumBiggerX(int x)
+{
+  return -1; 
+}
+
+void RecursiveQueue::print()
+{
+ print(getFront(), getRear());
+}
+
+void RecursiveQueue::print(int front, int rear)
+{
+  if(front == rear){
+    cout << arr[front] << endl;
+  } else {
+    cout << arr[front] << ", ";
+    print(front + 1, rear);
   }
 }

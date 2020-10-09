@@ -29,15 +29,16 @@ int main()
   myQueue.print();
 
   cout << endl << "Doubling on even indices...." << endl;
-  // call double even
+  myQueue.doubleEven();
   cout << endl << "Resulting array is: ";
   myQueue.print();
 
-  // sumBigger x 
-  cout << endl << "Please enter an integer: ";
+
+  cout << endl << "Please enter an integer for x: ";
   cin >> input; 
   cout << endl << "Calling sumBiggerX with " << input << "...." << endl;
-  // call sumBiggerX here
+  sum = myQueue.sumBiggerX(input);
+  cout << "The sum off all values greater than x is " << sum << endl;
 
   cout << endl 
        << "Class function testing ============================================="

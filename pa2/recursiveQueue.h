@@ -19,6 +19,12 @@ class RecursiveQueue {
     //  helper function for print()
     // PRE:
     // POST:
+
+  void doubleEven(int front, int rear);
+  // helper function for doubleEven()
+  // PRE:
+  // POST: 
+  
   public: 
   // Class Functions =======================================================
     RecursiveQueue();
