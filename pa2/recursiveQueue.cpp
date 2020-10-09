@@ -4,7 +4,7 @@
 
 #include "recursiveQueue.h"
 
-RecursiveQueue::RecursiveQueue()
+RecursiveQueue::RecursiveQueue() // could make this parameterized but eh
 {
   size = 3; 
   numOfElements = 0;
@@ -30,7 +30,7 @@ RecursiveQueue::RecursiveQueue(RecursiveQueue& src)
   rear = src.rear;
   numOfElements = src.numOfElements; 
   size = numOfElements;
-  
+
   for(int index = front; index <= rear; index++) {
     arr[index] = src.arr[index];
   }
@@ -72,7 +72,7 @@ int RecursiveQueue::dequeue()
     numOfElements--;
     front++;
   } else {
-    cout << "Recursive Queue is empty!" << endl;
+    cout << "RecursiveQueue is empty!" << endl;
     removed = -1; 
   }
 
@@ -118,4 +118,9 @@ int RecursiveQueue::getFront()
 int RecursiveQueue::getRear()
 {
   return rear; 
+}
+
+void recInsert(int val)
+{
+  
 }

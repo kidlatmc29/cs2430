@@ -80,7 +80,7 @@ class RecursiveQueue {
     // POST:
 
   // The Recursive Functions ===================================================
-    // recInsert(int val)
+    void recInsert(int val);
     //  takes in a positive integer and inserts each digit into the array
     //  edge cases: 
     //    - empty array
