@@ -137,6 +137,11 @@ int RecursiveQueue::sumBiggerX(int x)
   return -1; 
 }
 
+int RecursiveQueue::sumBiggerX(int sum, int front, int rear)
+{
+
+}
+
 void RecursiveQueue::print()
 {
  print(getFront(), getRear());

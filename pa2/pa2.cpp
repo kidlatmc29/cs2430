@@ -43,6 +43,10 @@ int main()
   cout << endl 
        << "Class function testing ============================================="
        << endl;
+    // copy constructor
+    // copy assignment
+    // print on an empty 
+    // dequeue on an empty
   cout << endl << endl << "End of PA 2" << endl << endl;
   return 0; 
 }

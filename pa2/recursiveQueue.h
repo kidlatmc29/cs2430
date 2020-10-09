@@ -16,15 +16,20 @@ class RecursiveQueue {
 
   // Helper Functions ======================================================
   void print(int front, int rear);
-    //  helper function for print()
-    // PRE:
-    // POST:
+    // helper function for print()
+    // PRE: Public print fxn was called
+    // POST: All values in arr is printed recursively
 
   void doubleEven(int front, int rear);
   // helper function for doubleEven()
-  // PRE:
-  // POST: 
-  
+  // PRE: public doubleEven fxn was called
+  // POST: even indices in arr are doubled 
+
+  int sumBiggerX(int sum, int front, int rear);
+  // helper function for sumBigger(int x)
+  // PRE: public sumBiggerX(int x) fxn was called
+  // POST: returns the sum, if no elements in arr are greater than x, returns -1
+
   public: 
   // Class Functions =======================================================
     RecursiveQueue();
@@ -87,17 +92,17 @@ class RecursiveQueue {
     // POST:
 
   // Recursive Functions ===================================================
-    void recInsert(int val);
+   void recInsert(int val);
     //  takes in a positive integer and inserts each digit into the array
     //  edge cases: 
     //    - empty array
     //    - array with values inside it 
     //    - array with not enough space for the given integer
-    // PRE:
-    // POST:
+    // PRE: val is a postive integer.
+    // POST: each digit of val is inserted into the arr using enqueue fxn. 
 
    void doubleEven();
-    //  a recursive fxn that doubles each digit at even indices 
+    //  calls private doubleEven fxn that doubles each digit at even indices 
     // PRE:
     // POST:
  
@@ -106,8 +111,8 @@ class RecursiveQueue {
     // PRE:
     // POST:
 
-    void print();
-    //  prints the queue with commas seperated values.       
+   void print();
+    //  calls private print fxn to print all values in arr with commas     
     // PRE:
     // POST:
 };
