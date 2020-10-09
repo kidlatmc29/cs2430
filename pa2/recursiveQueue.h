@@ -14,12 +14,13 @@ class RecursiveQueue {
     int front;
     int rear; 
 
-  // The Helper Functions ======================================================
+  // Helper Functions ======================================================
   void print(int front, int rear);
     //  helper function for print()
-  
+    // PRE:
+    // POST:
   public: 
-  // The Class Functions =======================================================
+  // Class Functions =======================================================
     RecursiveQueue();
     // default constuctor 
     // PRE:
@@ -79,20 +80,28 @@ class RecursiveQueue {
     // PRE:
     // POST:
 
-  // The Recursive Functions ===================================================
+  // Recursive Functions ===================================================
     void recInsert(int val);
     //  takes in a positive integer and inserts each digit into the array
     //  edge cases: 
     //    - empty array
     //    - array with values inside it 
     //    - array with not enough space for the given integer
+    // PRE:
+    // POST:
 
-    // doubleEven()
+   void doubleEven();
     //  a recursive fxn that doubles each digit at even indices 
-    
+    // PRE:
+    // POST:
+ 
     // sumBiggerX(int x)
     //  returns the sum of all the elements in the array that are bigger than x
-    
+    // PRE:
+    // POST:
+
     void print();
     //  prints the queue with commas seperated values.       
+    // PRE:
+    // POST:
 };

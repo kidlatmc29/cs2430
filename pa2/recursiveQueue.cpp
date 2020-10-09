@@ -49,7 +49,7 @@ void RecursiveQueue::enqueue(int num)
   if(isEmpty()) {
     front++;
   } else if(numOfElements + 1 > size) {
-      cout << "Doubling size..." << endl;
+      cout << "Doubling size to " << size*2 << "..." << endl;
       int *doubleArr = new int[size*2];
       for(int index = front; index < size; index++) {
         doubleArr[index] = arr[index];
