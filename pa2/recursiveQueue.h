@@ -95,7 +95,7 @@ class RecursiveQueue {
     // PRE:
     // POST:
  
-    // sumBiggerX(int x)
+   int sumBiggerX(int x);
     //  returns the sum of all the elements in the array that are bigger than x
     // PRE:
     // POST:

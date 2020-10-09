@@ -16,23 +16,32 @@ int main()
   RecursiveQueue myQueue; 
   RecursiveQueue copyQueue; 
   int input; 
+  int sum; 
 
-  cout << endl << endl << "Welcome to PA 2 " << endl;
+  cout << endl << endl << "Welcome to PA 2 " << endl << endl;
   cout << "Recursive function testing ========================================="
-       << "Please enter a positive integer: ";
+       << endl << "Please enter a positive integer: ";
   cin >> input; 
-  cout << "Initalizing array with recInsert...." << endl;
+  cout <<  endl << "Initalizing array with recInsert...." << endl;
   myQueue.recInsert(input);
 
-  cout << "Initalized array is: ";
+  cout << endl << "Initalized array is: ";
   myQueue.print();
 
+  cout << endl << "Doubling on even indices...." << endl;
   // call double even
-  // sumBigger x 
-  // test other class fxns
+  cout << endl << "Resulting array is: ";
+  myQueue.print();
 
-  cout << "Class function testing ============================================="
+  // sumBigger x 
+  cout << endl << "Please enter an integer: ";
+  cin >> input; 
+  cout << endl << "Calling sumBiggerX with " << input << "...." << endl;
+  // call sumBiggerX here
+
+  cout << endl 
+       << "Class function testing ============================================="
        << endl;
-  cout << "End of PA 2." << endl << endl;
+  cout << endl << endl << "End of PA 2" << endl << endl;
   return 0; 
 }
