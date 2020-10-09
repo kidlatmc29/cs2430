@@ -120,7 +120,12 @@ int RecursiveQueue::getRear()
   return rear; 
 }
 
-void recInsert(int val)
+void RecursiveQueue::recInsert(int val)
 {
-  
+  if(val < 10) {
+    enqueue(val);
+  } else {
+  recInsert(val / 10);
+  enqueue(val % 10);
+  }
 }

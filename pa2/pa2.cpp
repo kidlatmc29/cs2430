@@ -14,21 +14,12 @@ using namespace std;
 int main()
 {
   RecursiveQueue myQueue; 
-/**
   int input; 
   cout << endl << endl;
   cout << "Welcome to PA 2. Please enter a positive integer: ";
   cin >> input; 
-  **/
-
-  cout << endl << "enqueuing 1234567 into myQueue...." << endl;
-  myQueue.enqueue(1);
-  myQueue.enqueue(2);
-  myQueue.enqueue(3);
-  myQueue.enqueue(4);
-  myQueue.enqueue(5);
-  myQueue.enqueue(6);
-  myQueue.enqueue(7);
+  
+  myQueue.recInsert(input);
 
   myQueue.print();
   cout << "dequeuing " << myQueue.dequeue() << " and " << myQueue.dequeue()
