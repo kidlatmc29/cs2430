@@ -134,12 +134,30 @@ void RecursiveQueue::doubleEven(int front, int rear)
 
 int RecursiveQueue::sumBiggerX(int x)
 {
-  return -1; 
+  int sum;
+  if(!isEmpty()) {
+    sum = sumBiggerX(x, getFront(), getRear());
+  } else {
+    sum = -1; 
+  }
+  return sum; 
 }
 
-int RecursiveQueue::sumBiggerX(int sum, int front, int rear)
+int RecursiveQueue::sumBiggerX(int x, int front, int rear)
 {
-
+  if(front == rear) {
+    if(arr[front] > x) {
+      return arr[front];
+    } else {
+      return 0;
+    }
+  } else {
+    if(arr[front] > x) {
+      return arr[front] + sumBiggerX(x, front + 1, rear);
+   } else {
+      return sumBiggerX(x, front + 1, rear);
+    }
+  }
 }
 
 void RecursiveQueue::print()

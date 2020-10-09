@@ -25,9 +25,9 @@ class RecursiveQueue {
   // PRE: public doubleEven fxn was called
   // POST: even indices in arr are doubled 
 
-  int sumBiggerX(int sum, int front, int rear);
+  int sumBiggerX(int x, int front, int rear);
   // helper function for sumBigger(int x)
-  // PRE: public sumBiggerX(int x) fxn was called
+  // PRE: public sumBiggerX(int x) fxn was called and the arr is not empty
   // POST: returns the sum, if no elements in arr are greater than x, returns -1
 
   public: 
