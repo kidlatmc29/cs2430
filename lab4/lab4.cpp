@@ -14,21 +14,36 @@ struct BNode {
   BNode *right; 
 };
 
-bool insert (BNode* &n, treeElement k);
+bool insert(BNode* &n, treeElement k);
+// inserts a new BNode with k as its value, if k is unique
+// PRE: None.
+// POST: the tree has one more new node, if k is unique
 
-bool contains(BNode* root, treeElement k);
+bool contains(BNode* n, treeElement k);
+// checks to see if k is an existing key in the BST
+// PRE: was called in insert() 
+// POST: returns false if k is not a value in any nodes in the tree, returns 
+//  true otherwise
 
-int sumOfBST(BNode* n, int sum);
+int sumOfBST(BNode* n);
+// sums up all the values of the nodes
+// PRE: All the values in the tree are positive. 
+// POST: The sum will be postive. 
 
 void printSmallerK(BNode* n, treeElement k);
+// prints out all values less than k
+// PRE: k is key present in the tree
+// POST: None. 
 
 void clearTree(BNode* n);
+// uses post traversal in order to delete all the nodes in the tree
+// PRE: None. 
+// POST: All the nodes except the root has been deleted
 
 int main()
 {
   int numOfKeys = 0;
   int count; 
-  int sum = 0;
   treeElement val; 
   bool unique = false; 
   BNode *root = nullptr; 
@@ -60,11 +75,9 @@ int main()
       cout << val << " is not a key in the BST" << endl;
     }
   }
-
-  // call sum
-  cout << "The sum of the tree is " << sumOfBST(root, sum) << endl;
-  // call delete list
+  cout << "The sum of the tree is " << sumOfBST(root) << endl;
   delete root; 
+  cout << "Tree is deleted."; 
 
   cout << endl << endl << "End of Lab 4" << endl << endl;
   return 0;
@@ -102,18 +115,30 @@ bool contains(BNode* n, treeElement k)
   }
 }
 
-int sumOfBST(BNode* n, int sum)
+treeElement sumOfBST(BNode* n)
 {
+  treeElement leftSum; 
+  treeElement rightSum; 
+  treeElement currentSum;
+
   if(n != nullptr) {
-    sum += n->value;
-    sumOfBST(n->left, sum);
-    sumOfBST(n->right, sum);
+    leftSum = sumOfBST(n->left);
+    rightSum = sumOfBST(n->right);
+    currentSum = n->value + leftSum + rightSum;
+    return currentSum;
+  } else {
+    currentSum = 0;
+    return currentSum;
   }
 }
 
 void clearTree(BNode* n)
 {
-  // post order traversal 
+  if (n != nullptr) {
+    clearTree(n->left);
+    clearTree(n->right);
+    delete n;
+  }
 }
 
 void printSmallerK(BNode* n, treeElement k)
