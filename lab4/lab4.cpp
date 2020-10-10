@@ -31,26 +31,27 @@ int main()
   int numOfKeys = 0;
   int count; 
   treeElement val; 
+  bool unique = false; 
   BNode *root = nullptr; 
 
-  cout << endl << "Start of Lab 4" << endl;
+  cout << endl << "Start of Lab 4" << endl << endl;
   cout << "How many keys do you want to add to the BST?: ";
   cin >> numOfKeys; 
 
   while(count != numOfKeys) {
     cout << "Please enter a value: ";
     cin >> val;
-    if(insert(root, val)) {
+    unique = insert(root, val);
+    if(unique) {
       count++;
     } else {
       cout << endl << "Please enter a unique vaue next time." << endl;
     }
   }
   
-
   print(root);
 
-  cout << endl << "End of Lab 4" << endl << endl;
+  cout << endl << endl << "End of Lab 4" << endl << endl;
   return 0;
 }
 
@@ -104,8 +105,8 @@ void clearTree(BNode* n)
 void print(BNode* n)
 {
   if(n != nullptr) {
-    cout << n->value << " ";
     print(n->left);
+    cout << n->value << " ";
     print(n->right);
   }
 }
