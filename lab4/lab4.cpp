@@ -18,18 +18,17 @@ bool insert (BNode* &n, treeElement k);
 
 bool contains(BNode* root, treeElement k);
 
-int sumOfBST(BNode* n);
+int sumOfBST(BNode* n, int sum);
 
 void printSmallerK(BNode* n, treeElement k);
 
 void clearTree(BNode* n);
 
-void print(BNode* n);
-
 int main()
 {
   int numOfKeys = 0;
   int count; 
+  int sum = 0;
   treeElement val; 
   bool unique = false; 
   BNode *root = nullptr; 
@@ -45,11 +44,27 @@ int main()
     if(unique) {
       count++;
     } else {
-      cout << endl << "Please enter a unique vaue next time." << endl;
+      cout << endl << "Please enter a unique positive value next time." << endl;
     }
   }
-  
-  print(root);
+
+  cout << endl << endl;
+  val = -1; 
+  while(!contains(root, val)) {
+    cout << "Enter a key: ";
+    cin >> val;
+    if(contains(root, val)) {
+      cout << "Values smaller than " << val << " are: " << endl;
+      printSmallerK(root,val);
+    } else {
+      cout << val << " is not a key in the BST" << endl;
+    }
+  }
+
+  // call sum
+  cout << "The sum of the tree is " << sumOfBST(root, sum) << endl;
+  // call delete list
+  delete root; 
 
   cout << endl << endl << "End of Lab 4" << endl << endl;
   return 0;
@@ -87,14 +102,13 @@ bool contains(BNode* n, treeElement k)
   }
 }
 
-void printSmallerK(BNode* n, treeElement k)
+int sumOfBST(BNode* n, int sum)
 {
-
-}
-
-int sumOfBST(BNode* n)
-{
-  return -1; 
+  if(n != nullptr) {
+    sum += n->value;
+    sumOfBST(n->left, sum);
+    sumOfBST(n->right, sum);
+  }
 }
 
 void clearTree(BNode* n)
@@ -102,11 +116,13 @@ void clearTree(BNode* n)
   // post order traversal 
 }
 
-void print(BNode* n)
+void printSmallerK(BNode* n, treeElement k)
 {
   if(n != nullptr) {
-    print(n->left);
-    cout << n->value << " ";
-    print(n->right);
+    printSmallerK(n->left, k);
+    if(n->value < k){
+      cout << n->value << endl;
+    }
+    printSmallerK(n->right, k);
   }
 }
