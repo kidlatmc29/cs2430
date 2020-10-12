@@ -46,6 +46,7 @@ class RecursiveQueue {
     // copy constructor 
     // PRE:
     // POST:
+
     RecursiveQueue& operator=(const RecursiveQueue& src);
     // copy assignment
     // PRE:
@@ -54,13 +55,13 @@ class RecursiveQueue {
     void enqueue(int num);
     // inserts num at the rear of the queue
     // PRE:
-    // POST: 
+    // POST: front stays the same, but rear is incremented up one
 
     int dequeue();
-    // dequeue
-    // PRE:
-    // POST:
-
+    // dequeues the first element in the array
+    // PRE: None. 
+    // POST: front is now incremented up one, rear stays the same
+    
     int* copyArr(const RecursiveQueue& src);
     // copies contents from src's arr into a new array
     // PRE:
@@ -68,28 +69,28 @@ class RecursiveQueue {
 
     int getSize();
     // returns the size of arr
-    // PRE:
-    // POST:
+    // PRE: None. 
+    // POST: Size will be a positive integer. 
 
     int getNumOfElements();
     //  returns the number of elements in arr 
-    // PRE:
-    // POST:
+    // PRE: None. 
+    // POST: numOfElements will be a positive integer. 
 
     bool isEmpty();
-    // returns true if numOfElements is 0
-    // PRE:
-    // POST:
+    // returns true if numOfElements is 0, else returns false
+    // PRE: None. 
+    // POST: None. 
 
     int getFront();
     // returns the index of the first element of the queue
-    // PRE:
-    // POST:
+    // PRE: None.
+    // POST: None. 
 
     int getRear();
     // returns the index of the last element of the queue
-    // PRE:
-    // POST:
+    // PRE: None.
+    // POST: None. 
 
   // Recursive Functions ===================================================
    void recInsert(int val);
@@ -103,16 +104,16 @@ class RecursiveQueue {
 
    void doubleEven();
     //  calls private doubleEven fxn that doubles each digit at even indices 
-    // PRE:
-    // POST:
+    // PRE: 
+    // POST: the array at even indices are doubled
  
    int sumBiggerX(int x);
     //  returns the sum of all the elements in the array that are bigger than x
-    // PRE:
-    // POST:
+    // PRE: 
+    // POST: returns the sum of the private helper fxn to main
 
    void print();
     //  calls private print fxn to print all values in arr with commas     
-    // PRE:
-    // POST:
+    // PRE: None.
+    // POST: All values of arr are printed. 
 };

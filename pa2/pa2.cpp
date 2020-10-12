@@ -15,6 +15,7 @@ int main()
 {
   RecursiveQueue myQueue; 
   RecursiveQueue copyQueue; 
+  RecursiveQueue queueB;
   int input; 
   int sum; 
 
@@ -43,10 +44,22 @@ int main()
   cout << endl 
        << "Class function testing ============================================="
        << endl;
-    // copy constructor
-    // copy assignment
-    // print on an empty 
-    // dequeue on an empty
+
+  cout << "Copy Constructor - myQueue to yourQueue" << endl;
+  myQueue(yourQueue);
+  cout << "yourQueue:" << endl;
+  print(yourQueue);
+
+  cout << "Copy Assignment - myQueue = copyQueue" << endl;
+  myQueue = copyQueue; 
+  cout << "copyQueue:" << endl;
+  copyQueue.print();
+  
+  out << "Printing on an empty queue- Printing queueB" << endl;
+    
+  cout << "Dequeueing on an empty queue - Dequeuing on queueB" << endl;
+  queueB.dequeue();
+ 
   cout << endl << endl << "End of PA 2" << endl << endl;
   return 0; 
 }
