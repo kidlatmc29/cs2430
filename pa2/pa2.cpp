@@ -45,19 +45,19 @@ int main()
        << "Class function testing ============================================="
        << endl;
 
-  cout << "Copy Constructor - myQueue to yourQueue" << endl;
-  myQueue(yourQueue);
+  cout << "Copy Constructor - createing yourQueue from myQueue" << endl;
+  RecursiveQueue yourQueue(myQueue);
   cout << "yourQueue:" << endl;
-  print(yourQueue);
+  yourQueue.print();
 
-  cout << "Copy Assignment - myQueue = copyQueue" << endl;
+  cout << endl << "Copy Assignment - myQueue = copyQueue" << endl;
   myQueue = copyQueue; 
   cout << "copyQueue:" << endl;
   copyQueue.print();
   
-  out << "Printing on an empty queue- Printing queueB" << endl;
+  cout << endl << "Printing on an empty queue- Printing queueB" << endl;
     
-  cout << "Dequeueing on an empty queue - Dequeuing on queueB" << endl;
+  cout << endl << "Dequeueing on an empty queue - Dequeuing on queueB" << endl;
   queueB.dequeue();
  
   cout << endl << endl << "End of PA 2" << endl << endl;
