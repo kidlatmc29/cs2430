@@ -47,6 +47,9 @@ int main()
        << "Testing Class Functions ============================================"
        << endl;
 
+  cout << "Dequeueing - on myQueue " << endl;
+  cout << "The dequeued value is " << myQueue.dequeue() << endl << endl;
+
   cout << "Copy Constructor - creating yourQueue from myQueue" << endl;
   RecursiveQueue yourQueue(myQueue);
   cout << "yourQueue: ";
@@ -58,7 +61,7 @@ int main()
   copyQueue.print();
   
   cout << endl << "Printing on an empty queue- Printing queueB" << endl;
-    
+
   cout << endl << "Dequeueing on an empty queue - Dequeuing on queueB" << endl;
   queueB.dequeue();
  

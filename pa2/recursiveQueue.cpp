@@ -4,7 +4,7 @@
 
 #include "recursiveQueue.h"
 
-RecursiveQueue::RecursiveQueue()
+RecursiveQueue::RecursiveQueue() 
 {
   size = 3; 
   numOfElements = 0;
@@ -39,7 +39,7 @@ RecursiveQueue::RecursiveQueue(RecursiveQueue& src)
 RecursiveQueue& RecursiveQueue::operator=(const RecursiveQueue& src)
 {
   if(&src != this) {
-    front = 0;
+    front = src.front;
     rear = src.numOfElements - 1;
     arr = copyArr(src);
   } else {
