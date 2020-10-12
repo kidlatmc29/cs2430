@@ -16,13 +16,16 @@ int main()
   RecursiveQueue myQueue; 
   RecursiveQueue copyQueue; 
   RecursiveQueue queueB;
-  int input; 
+  int input = -1;
   int sum; 
 
   cout << endl << endl << "Welcome to PA 2 " << endl << endl;
-  cout << "Recursive function testing ========================================="
-       << endl << "Please enter a positive integer: ";
-  cin >> input; 
+  cout << "Testing Recursive Functions ========================================"
+       << endl;
+  while(input < 0) { // checking user input
+     cout << "Please enter a positive integer: ";
+     cin >> input; 
+  }
   cout <<  endl << "Initalizing array with recInsert...." << endl;
   myQueue.recInsert(input);
 
@@ -34,7 +37,6 @@ int main()
   cout << endl << "Resulting array is: ";
   myQueue.print();
 
-
   cout << endl << "Please enter an integer for x: ";
   cin >> input; 
   cout << endl << "Calling sumBiggerX with " << input << "...." << endl;
@@ -42,17 +44,17 @@ int main()
   cout << "The sum off all values greater than x is " << sum << endl;
 
   cout << endl 
-       << "Class function testing ============================================="
+       << "Testing Class Functions ============================================"
        << endl;
 
-  cout << "Copy Constructor - createing yourQueue from myQueue" << endl;
+  cout << "Copy Constructor - creating yourQueue from myQueue" << endl;
   RecursiveQueue yourQueue(myQueue);
-  cout << "yourQueue:" << endl;
+  cout << "yourQueue: ";
   yourQueue.print();
 
-  cout << endl << "Copy Assignment - myQueue = copyQueue" << endl;
-  myQueue = copyQueue; 
-  cout << "copyQueue:" << endl;
+  cout << endl << "Copy Assignment - copyQueue = myQueue" << endl;
+  copyQueue = myQueue; 
+  cout << "copyQueue: ";
   copyQueue.print();
   
   cout << endl << "Printing on an empty queue- Printing queueB" << endl;
@@ -60,6 +62,6 @@ int main()
   cout << endl << "Dequeueing on an empty queue - Dequeuing on queueB" << endl;
   queueB.dequeue();
  
-  cout << endl << endl << "End of PA 2" << endl << endl;
+  cout << endl << "End of PA 2" << endl << endl;
   return 0; 
 }

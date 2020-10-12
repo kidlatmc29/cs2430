@@ -4,7 +4,7 @@
 
 #include "recursiveQueue.h"
 
-RecursiveQueue::RecursiveQueue() // could make this parameterized but eh
+RecursiveQueue::RecursiveQueue()
 {
   size = 3; 
   numOfElements = 0;
@@ -39,7 +39,11 @@ RecursiveQueue::RecursiveQueue(RecursiveQueue& src)
 RecursiveQueue& RecursiveQueue::operator=(const RecursiveQueue& src)
 {
   if(&src != this) {
+    front = 0;
+    rear = src.numOfElements - 1;
     arr = copyArr(src);
+  } else {
+    cout << "These are the same RecursiveQueues!" << endl;
   }
    return *this;
 }
