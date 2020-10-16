@@ -65,3 +65,23 @@ int deleteMax(int &x, int arr[], int currentSize)
 
   return x; 
 }
+
+void percolateDown(int hole, int arr[], int currentSize)
+{
+  int child; 
+  int temp = arr[hole];
+  bool bDown = true; // not a leaf
+  
+  while(bDown && hole * 2 <= currentSize) {
+    child = hole * 2;
+    if(child != currentSize && arr[child] > arr[child]) {
+      ++child;
+    }
+    if(arr[child] > temp) {
+      arr[hole] = arr [child];
+    } else {
+      bDown = false; 
+    }
+  
+  }
+}
