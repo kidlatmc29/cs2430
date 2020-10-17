@@ -12,19 +12,19 @@ const int MAX = 50;
 const int MIN = 0;
 
 void insert(int num, int arr[], int &currentSize);
-// 
-// PRE:
-// POST: 
+// inserts an integer into the heap, creating a max-heap
+// PRE: None.
+// POST: Root will be the max value in the heap
 
 int deleteMax(int arr[], int &currentSize); 
-//
-// PRE:
-// POST: 
+// returns the deleted integer from the heap
+// PRE: currentSize is greater then 1 
+// POST: currentSize has decreased by 1
 
 void percolateDown(int hole, int arr[], int currentSize);
-// 
-// PRE:
-// POST: 
+// helper fxn for deleteMax, percolates values
+// PRE: currentSize is great than 1
+// POST: the heap is still a max-heap
 
 int main()
 {
@@ -36,45 +36,50 @@ int main()
   int deletedVal = -1; 
   
   cout << endl << "Lab 5 start - " << endl;
-  for(int i = 1; i < MAX_SIZE - 1; i++) {
+  for(int i = 1; i < MAX_SIZE; i++) {
     rando = rand() % ((MAX - MIN) + 1) + MIN;
     // cout << "inserting " << rando << endl;
     if(i != MAX_SIZE) {    
+      cout << "inserting " << rando << "....." << endl;
       insert(rando, arr, currentSize);
     }
   }
 
-  // ask user a positive intger must be less than or equal to 14
-  cout << "Please enter a positive integer: ";
-  cin >> input; 
+  while(currentSize > 1) {
+      // ask user a positive intger must be less than or equal to 14
+      cout << "Please enter a positive integer: ";
+      cin >> input; 
+      cout << endl;
 
-  while(input > MAX - 1 || input < MIN){
-    cout << "Please enter a positive integer: ";
-    cin >> input;
-    cout << endl;
-    if(input > MAX_SIZE - 1) {
-      cout << "Given integer was too big!" << endl;
-    } else {
-      cout << "Must be a positive integer! " << endl;
+      while((input > currentSize || input < 1)){
+        if(input > currentSize) {
+          cout << "Given integer was too big!" << endl;
+        } else if (input < currentSize) {
+          cout << "Must be a positive integer! " << endl;
+        }
+        cout << "Please enter a positive integer: ";
+        cin >> input;
+        cout << endl;
+      }
+
+      // call delete max with given integer (input) then print val
+      for(int i = 1; i < input; i++){
+        deletedVal = deleteMax(arr, currentSize);
+      }
+      cout << "The " << input << "th greatest value was " << deletedVal << endl 
+            << endl;
+
+      if(currentSize > 1) {
+        // then print remaining heap
+        cout << "The remaining heap is: " << endl;
+        for(int i = 1; i <= currentSize; i++) {
+          cout << i << ". " << arr[i] << endl;
+        }
+      }
     }
-  }
 
-  // call delete max with given integer (input) then print val
-  for(int i = 1; i <= input; i++){
-    deletedVal = deleteMax(arr, currentSize);
-  }
-   cout << "The " << input << "th greatest value was " << deletedVal;
-
-  // then print remaining heap
-  cout << "The remaining heap is: " << endl;
-  for(int i = 1; i < currentSize; i++) {
-    cout << i << ". " << arr[i] << endl;
-  }
-
-  // repeat steps 6 and 6 until heap is empty
-
-  cout << "Lab 5 end - " << endl << endl;
-  return 0;
+    cout << "Lab 5 end - " << endl << endl;
+    return 0;
 }
 
 void insert(int num, int arr[], int &currentSize)
@@ -98,7 +103,7 @@ int deleteMax(int arr[], int &currentSize)
 {
   int rmVal = arr[1];
   if(currentSize == 0) { 
-    cout << " tree is empty- " << endl; // if empty, then throw "expection"
+    cout << " tree is empty! " << endl; // if empty, then throw "expection"
   }
 
   arr[1] = arr[currentSize--];
@@ -115,9 +120,11 @@ void percolateDown(int hole, int arr[], int currentSize)
   
   while(bDown && hole * 2 <= currentSize) {
     child = hole * 2;
+    
     if(child != currentSize && arr[child + 1] > arr[child]) {
       ++child;
     }
+
     if(arr[child] > temp) {
       arr[hole] = arr [child];
     } else {
@@ -128,6 +135,5 @@ void percolateDown(int hole, int arr[], int currentSize)
       hole = child;
     }
     arr[hole] = temp;
-  
   }
 }
