@@ -8,16 +8,62 @@
 #include <fstream> 
 #include <sstream>
 
-#include <gamebst.h> 
+//#include <gamebst.h> 
 
 using namespace std; 
 
 const string FILE_NAME = "boardgames.csv";
 const char DELIMITER = ','; 
+const int MAX_ITEMS = 3; 
 
-int fileRead();
+void fileRead(); // GameBST &menu
 
 int main()
 {
+  cout << endl << "Welcome to PA 3 - " << endl << endl;
+
+  fileRead();
+  cout << endl << "End of PA 3 - " << endl << endl;
+
   return 0;
+}
+
+void fileRead() //GameBST &menu
+{
+  ifstream input;
+  string line;
+  stringstream ss;
+  string items[MAX_ITEMS];
+  string item;
+  int index;
+
+  cout << "Reading from file " << FILE_NAME << "...." << endl;
+
+  input.open(FILE_NAME);
+
+  if(!input.fail()) {
+    while(getline(input, line)) { // NEED TO DEBUG WHY FIRST CHAR IS LEFT OUT
+      // cout << line << endl;
+      ss.str(line);
+      index = 0;
+      while(ss.good()) {
+        getline(ss,item,DELIMITER);
+        //cout << item << " ";
+        items[index] = item;
+        index++;
+      }
+
+    // testing file read
+    //  for(int i = 0; i < MAX_ITEMS; i++) {
+    //    cout << items[i] << " ";
+    //  }
+      cout << endl;
+
+      ss.clear();
+    }  
+    input.close();
+  } else {
+    cout << "file bad- sorry fam " << endl;
+  }
+
 }

@@ -94,9 +94,9 @@ bool insert(BNode* &n, treeElement k)
       n->right = nullptr;
       n->left = nullptr; 
     } else if(n->value > k) {
-      insert(n->left, k);
+      return insert(n->left, k);
     } else {
-      insert(n->right, k);
+      return insert(n->right, k);
     }
   }
   return unique;
