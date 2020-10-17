@@ -8,7 +8,7 @@ GameBST::GameBST() : root (nullptr) {}
 
 GameBST::GameBST(const GameBST &src)
 {
-
+  // copy tree fxn
 }
 
 GameBST& GameBST::operator=(const GameBST &src)
@@ -18,7 +18,7 @@ GameBST& GameBST::operator=(const GameBST &src)
 
 GameBST::~GameBST()
 {
-  // call clear list 
+  // call clear fxn 
   // make sure root is set to nullptr as well HERE
 }
 
@@ -32,14 +32,11 @@ void GameBST::insert(string key, int maxPlayers, int playtime)
   newNode->right = nullptr; 
   
   if(!root) {
-    // create new Tree Node for root
     root = newNode; 
   } else if(root->key > key) {
-    // call private insert fxn
      insert(root->left, newNode);
   } else if(root->key < key) {
      insert(root->left, newNode);
-    // also call private insert fxn
   }
 }
 
@@ -67,4 +64,30 @@ void GameBST::print(TreeNode *nPtr)
     cout << nPtr->key << endl;
     print(nPtr->right);
   }
+}
+
+bool GameBST::contains(TreeNode *nPtr, string gameName)
+{
+  if(!nPtr) {
+    return false; 
+  } else if (nPtr->key < gameName) {
+    contains(nPtr->left, gameName);
+  } else if(nPtr->key > gameName) {
+    contains(nPtr->right, gameName);
+  } else {
+    return true; 
+  }
+}
+
+bool GameBST::contains(TreeNode *nPtr, int timeLeft)
+{
+  if(!nPtr) {
+      return false; 
+    } else if (nPtr->playtime < timeLeft) {
+      contains(nPtr->left, timeLeft);
+    } else if(nPtr->playtime > timeLeft) {
+      contains(nPtr->right, timeLeft);
+    } else {
+      return true; 
+    }
 }

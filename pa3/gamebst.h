@@ -28,10 +28,20 @@ class GameBST {
     // PRE: Was called in public print fxn, passed in root
     // POST:
 
+    bool contains(TreeNode *nPtr, string gameName);
+    // helper fxn for many public fxns such as remove and printGame
+    // PRE: None. 
+    // POST: returns false if the key of nPtr does not exist in the tree 
+
+    bool contains(TreeNode *nPtr, int timeLeft);
+     // helper fxn for many public fxns such as printPlayable
+    // PRE: None. 
+    // POST: returns false if there is no game playable in given time 
+  
   public: 
     GameBST(); 
-    // default constructor
-    // PRE: 
+    // default parameterized constructor
+    // PRE: None.
     // POST: Root is initialized to nullptr
 
     GameBST(const GameBST& src);

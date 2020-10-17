@@ -3,6 +3,8 @@
 // 10-21-2020
 
 // DESCRIPTION: 
+// ASSUMPTION: 
+// REFRENCES: My own pa2.cpp file read and lab4.cpp's insert fxn
 
 #include <iostream> 
 #include <fstream> 
@@ -66,6 +68,7 @@ void fileRead(GameBST &menu)
 
       incomingMaxPlayers = stof(items[1]);
       incomingPlayTime = stof(items[2]);
+
 
       // call insert fxn
       menu.insert(items[0], incomingMaxPlayers, incomingPlayTime);
