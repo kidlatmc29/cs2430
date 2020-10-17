@@ -7,8 +7,7 @@
 #include <iostream> 
 #include <fstream> 
 #include <sstream>
-
-//#include <gamebst.h> 
+#include <gamebst.h> 
 
 using namespace std; 
 
@@ -16,19 +15,20 @@ const string FILE_NAME = "boardgames.csv";
 const char DELIMITER = ','; 
 const int MAX_ITEMS = 3; 
 
-void fileRead(); // GameBST &menu
+void fileRead(GameBST &menu);
 
 int main()
 {
+  GameBST myGameMenu; 
   cout << endl << "Welcome to PA 3 - " << endl << endl;
 
-  fileRead();
-  cout << endl << "End of PA 3 - " << endl << endl;
+  fileRead(myGameMenu);
 
+  cout << endl << "End of PA 3 - " << endl << endl;
   return 0;
 }
 
-void fileRead() //GameBST &menu
+void fileRead(GameBST &menu) 
 {
   ifstream input;
   string line;
@@ -36,6 +36,9 @@ void fileRead() //GameBST &menu
   string items[MAX_ITEMS];
   string item;
   int index;
+
+  int incomingMaxPlayers; 
+  int incomingPlayTime; 
 
   cout << "Reading from file " << FILE_NAME << "...." << endl;
 
@@ -57,8 +60,13 @@ void fileRead() //GameBST &menu
     //  for(int i = 0; i < MAX_ITEMS; i++) {
     //    cout << items[i] << " ";
     //  }
-      cout << endl;
+    // cout //<< endl;
 
+      incomingMaxPlayers = stof(items[1]);
+      incomingPlayTime = stof(items[2]);
+
+      // call insert fxn
+      
       ss.clear();
     }  
     input.close();

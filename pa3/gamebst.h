@@ -18,7 +18,7 @@ class GameBST {
     TreeNode *root;
 
     // Helper Functions: 
-    void insert();
+    void insert(TreeNode* nPtr, TreeNode* newNode);
     // helper fxn for public insert
     // PRE: Was called in public insert fxn, passed in root and new TreeNode
     // POST:
