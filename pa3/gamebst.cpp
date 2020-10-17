@@ -4,9 +4,9 @@
 
 #include "gamebst.h"
 
-GameBST::GameBST() : root (nullptr) {}
+GameBST::GameBST() : root (nullptr), key(" ") {}
 
-GameBST::GameBST(const GameBST &src)
+GameBST::GameBST(const GameBST &src)  
 {
   // copy tree fxn
 }
@@ -90,4 +90,46 @@ bool GameBST::contains(TreeNode *nPtr, int timeLeft)
     } else {
       return true; 
     }
+}
+
+bool GameBST::remove(string name)
+{
+  int removed = false; 
+  if(contains(root, name)) {
+    removed = true; 
+  } else {
+    cout << name << "was not in the GameBST" << endl;
+  }
+
+  return removed; 
+}
+
+void GameBST::remove(TreeNode *nPtr, string name)
+{
+  if(!nPtr) {
+    return; 
+  } 
+  if (nPtr->key > name) {
+    remove(nPtr->left, name);
+  } else if(nPtr->key < name) {
+    remove(nPtr->right, name);
+  } else if(nPtr->left != nullptr && nPtr->right != nullptr){
+    nPtr->key = findMin(nPtr->next)->key;
+    remove(nPtr->right, name);
+  }else {
+    TreeNode *temp = nPtr; 
+    nPtr = (nPtr->left != nullptr) ? nPtr->left: nPtr->right; 
+    delete temp;
+  }
+}
+
+GameBST::TreeNode* GameBST::findMin(TreeNode *nPtr)
+{
+  if(!nPtr) {
+    return nullptr;
+  } 
+  if(!nPtr->left) {
+    return nPtr; 
+  }
+  return findMin(nPtr->left);
 }

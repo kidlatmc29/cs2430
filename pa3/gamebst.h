@@ -34,10 +34,18 @@ class GameBST {
     // POST: returns false if the key of nPtr does not exist in the tree 
 
     bool contains(TreeNode *nPtr, int timeLeft);
-     // helper fxn for many public fxns such as printPlayable
+    // helper fxn for many public fxns such as printPlayable
     // PRE: None. 
     // POST: returns false if there is no game playable in given time 
   
+
+    void remove(TreeNode *nPtr, string name);
+    // helper fxn for public remove
+    // PRE:  
+    // POST: 
+
+    TreeNode* findMin(TreeNode *nPtr);
+
   public: 
     GameBST(); 
     // default parameterized constructor
