@@ -13,7 +13,7 @@ GameBST::GameBST(const GameBST &src)
 
 GameBST& GameBST::operator=(const GameBST &src)
 {
-
+  return *this;
 }
 
 GameBST::~GameBST()
@@ -43,7 +43,7 @@ void GameBST::insert(string key, int maxPlayers, int playtime)
   }
 }
 
-void GameBST::insert(TreeNode* nPtr, TreeNode* newNode) 
+void GameBST::insert(TreeNode* &nPtr, TreeNode* newNode) 
 {
   if(!nPtr) {
     nPtr = newNode; 
@@ -51,5 +51,20 @@ void GameBST::insert(TreeNode* nPtr, TreeNode* newNode)
     insert(nPtr->left, newNode);
   } else if(nPtr->key < newNode->key) {
     insert(nPtr->left, newNode);
+  }
+}
+
+void GameBST::print() 
+{
+  TreeNode* nPtr = root;
+  print(nPtr);
+}
+
+void GameBST::print(TreeNode *nPtr)
+{
+  if(nPtr) {
+    print(nPtr->left);
+    cout << nPtr->key << endl;
+    print(nPtr->right);
   }
 }

@@ -7,7 +7,7 @@
 #include <iostream> 
 #include <fstream> 
 #include <sstream>
-#include <gamebst.h> 
+#include "gamebst.h"
 
 using namespace std; 
 
@@ -23,6 +23,8 @@ int main()
   cout << endl << "Welcome to PA 3 - " << endl << endl;
 
   fileRead(myGameMenu);
+  cout << "printing myGameMenu..." << endl;
+  myGameMenu.print();
 
   cout << endl << "End of PA 3 - " << endl << endl;
   return 0;
@@ -66,7 +68,7 @@ void fileRead(GameBST &menu)
       incomingPlayTime = stof(items[2]);
 
       // call insert fxn
-      
+      menu.insert(items[0], incomingMaxPlayers, incomingPlayTime);
       ss.clear();
     }  
     input.close();
