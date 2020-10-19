@@ -138,7 +138,11 @@ void GameBST::clearTree(TreeNode *nPtr)
 {
   if(nPtr) {
     if(nPtr->left) {
-      
+      clearTree(nPtr->left);
+    } else {
+      clearTree(nPtr->right);
+      delete nPtr; 
+      nodePtr = nullptr; 
     }
   }
 }
