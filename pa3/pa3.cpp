@@ -28,6 +28,12 @@ int main()
   cout << "printing myGameMenu..." << endl;
   myGameMenu.print();
 
+  cout << endl <<  "attempting removing Codenames from tree" << endl;
+  cout << "printing myGameMenu..." << endl;
+  myGameMenu.remove("Codenames");
+  cout << endl;
+  myGameMenu.print();
+
   cout << endl << "End of PA 3 - " << endl << endl;
   return 0;
 }
@@ -49,28 +55,18 @@ void fileRead(GameBST &menu)
   input.open(FILE_NAME);
 
   if(!input.fail()) {
-    while(getline(input, line)) { // NEED TO DEBUG WHY FIRST CHAR IS LEFT OUT
-      // cout << line << endl;
+    while(getline(input, line)) { 
       ss.str(line);
       index = 0;
       while(ss.good()) {
         getline(ss,item,DELIMITER);
-        //cout << item << " ";
         items[index] = item;
         index++;
       }
 
-    // testing file read
-    //  for(int i = 0; i < MAX_ITEMS; i++) {
-    //    cout << items[i] << " ";
-    //  }
-    // cout //<< endl;
+      incomingMaxPlayers = stoi(items[1]);
+      incomingPlayTime = stoi(items[2]);
 
-      incomingMaxPlayers = stof(items[1]);
-      incomingPlayTime = stof(items[2]);
-
-
-      // call insert fxn
       menu.insert(items[0], incomingMaxPlayers, incomingPlayTime);
       ss.clear();
     }  
@@ -78,5 +74,4 @@ void fileRead(GameBST &menu)
   } else {
     cout << "file bad- sorry fam " << endl;
   }
-
 }

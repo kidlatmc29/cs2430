@@ -37,14 +37,26 @@ class GameBST {
     // helper fxn for many public fxns such as printPlayable
     // PRE: None. 
     // POST: returns false if there is no game playable in given time 
-  
 
-    void remove(TreeNode *nPtr, string name);
+    void remove(TreeNode* &nPtr, string name);
     // helper fxn for public remove
     // PRE:  
     // POST: 
 
     TreeNode* findMin(TreeNode *nPtr);
+    // finds the smallest key in the tree
+    // PRE: 
+    // POST: returns the the smallest key 
+
+    void clearTree(TreeNode *nPtr);
+    // 
+    // PRE:  
+    // POST: 
+
+    void cloneTree(TreeNode *copy);
+    //
+    // PRE:
+    // POST: 
 
   public: 
     GameBST(); 

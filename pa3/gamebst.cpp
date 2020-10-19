@@ -4,7 +4,7 @@
 
 #include "gamebst.h"
 
-GameBST::GameBST() : root (nullptr), key(" ") {}
+GameBST::GameBST() : root (nullptr) {}
 
 GameBST::GameBST(const GameBST &src)  
 {
@@ -63,33 +63,33 @@ void GameBST::print(TreeNode *nPtr)
     print(nPtr->left);
     cout << nPtr->key << endl;
     print(nPtr->right);
-  }
+  } 
 }
 
 bool GameBST::contains(TreeNode *nPtr, string gameName)
 {
   if(!nPtr) {
-    return false; 
-  } else if (nPtr->key < gameName) {
-    contains(nPtr->left, gameName);
-  } else if(nPtr->key > gameName) {
-    contains(nPtr->right, gameName);
+    return false;
+  } else if (nPtr->key == gameName) {
+    return true;
+  } else if (nPtr->key > gameName) {
+    return contains(nPtr->left, gameName);
   } else {
-    return true; 
+    return contains(nPtr->right, gameName);
   }
 }
 
 bool GameBST::contains(TreeNode *nPtr, int timeLeft)
 {
   if(!nPtr) {
-      return false; 
-    } else if (nPtr->playtime < timeLeft) {
-      contains(nPtr->left, timeLeft);
-    } else if(nPtr->playtime > timeLeft) {
-      contains(nPtr->right, timeLeft);
-    } else {
-      return true; 
-    }
+    return false; 
+  } else if(nPtr->playtime == timeLeft) {
+    return true;
+  } else if (nPtr->playtime > timeLeft) {
+    return contains(nPtr->left, timeLeft);
+  } else {
+    return contains(nPtr->right, timeLeft);
+  }
 }
 
 bool GameBST::remove(string name)
@@ -98,28 +98,28 @@ bool GameBST::remove(string name)
   if(contains(root, name)) {
     removed = true; 
   } else {
-    cout << name << "was not in the GameBST" << endl;
+    cout << name << " does not exist in the tree! " << endl;
   }
-
   return removed; 
 }
 
-void GameBST::remove(TreeNode *nPtr, string name)
+void GameBST::remove(TreeNode* &nPtr, string name)
 {
   if(!nPtr) {
     return; 
-  } 
-  if (nPtr->key > name) {
-    remove(nPtr->left, name);
-  } else if(nPtr->key < name) {
-    remove(nPtr->right, name);
-  } else if(nPtr->left != nullptr && nPtr->right != nullptr){
-    nPtr->key = findMin(nPtr->next)->key;
-    remove(nPtr->right, name);
-  }else {
+  } else if (nPtr->key < name) {
+      remove(nPtr->right, name);
+  } else if(nPtr->key > name) {
+      remove(nPtr->left, name);
+  } else if(nPtr->left != nullptr && nPtr->right != nullptr){ // 2 children
+      nPtr->key = findMin(nPtr->right)->key;
+      remove(nPtr->right, name);
+  } else {
     TreeNode *temp = nPtr; 
+    cout << "removing " << nPtr->key << endl;
     nPtr = (nPtr->left != nullptr) ? nPtr->left: nPtr->right; 
     delete temp;
+    temp = nullptr;
   }
 }
 
@@ -132,4 +132,18 @@ GameBST::TreeNode* GameBST::findMin(TreeNode *nPtr)
     return nPtr; 
   }
   return findMin(nPtr->left);
+}
+
+void GameBST::clearTree(TreeNode *nPtr)
+{
+  if(nPtr) {
+    if(nPtr->left) {
+      
+    }
+  }
+}
+
+void GameBST::cloneTree(TreeNode *copy)
+{
+
 }
