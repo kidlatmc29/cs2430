@@ -159,3 +159,21 @@ void GameBST::cloneTree(TreeNode *nPtr)
     cout << "leaf lad" << endl;
   }
 }
+
+void GameBST:printGame(string name)
+{
+  printGame(root, name);
+}
+
+void GameBST:printGame(TreeNode *nPtr, string name)
+{
+  if(nPtr->key == name) {
+    cout << "Game: " << nPtr->key << endl
+         << "Maxiumum # of players: " nPtr->maxPlayers << endl
+         << "Minium playtime: " << nPtr->playtime << " mins" << endl;
+  } else(nPtr->key > name) {
+    printGame(nPtr->left, name);
+  } else {
+    printGame(nPtr->right, name);
+  }
+}

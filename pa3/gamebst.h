@@ -57,7 +57,7 @@ class GameBST {
     void cloneTree(TreeNode *copy);
     // copies all the nodes from the given TreeNode pointer 
     // PRE: clearTree fxn has been called before this one
-    // POST: *this tree will have the same nodes as the copy
+    // POST: *this tree will have the same nodes as the copy 
 
   public: 
     GameBST(); 
