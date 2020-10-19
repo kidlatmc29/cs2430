@@ -144,7 +144,7 @@ void GameBST::clearTree(TreeNode *nPtr)
     } else {
       clearTree(nPtr->right);
       delete nPtr; 
-      nodePtr = nullptr; 
+      nPtr = nullptr; 
     }
   }
 }
@@ -153,8 +153,8 @@ void GameBST::cloneTree(TreeNode *nPtr)
 {
   if(nPtr) {
     insert(nPtr->key, nPtr->maxPlayers, nPtr->playtime);
-    copyTree(nPtr->left);
-    copyTree(nPtr->right);
+    cloneTree(nPtr->left);
+    cloneTree(nPtr->right);
   } else {
     cout << "leaf lad" << endl;
   }

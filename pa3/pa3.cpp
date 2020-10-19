@@ -21,18 +21,25 @@ void fileRead(GameBST &menu);
 
 int main()
 {
-  GameBST myGameMenu; 
+  GameBST myGameMenu;
+  GameBST bGame; 
   cout << endl << "Welcome to PA 3 - " << endl << endl;
 
   fileRead(myGameMenu);
   cout << "printing myGameMenu..." << endl;
   myGameMenu.print();
 
-  cout << endl <<  "attempting removing Codenames from tree" << endl;
-  cout << "printing myGameMenu..." << endl;
-  myGameMenu.remove("Codenames");
-  cout << endl;
-  myGameMenu.print();
+  // bGame = myGameMenu
+  bGame = myGameMenu;
+  cout << endl << "printing bGame..." << endl;
+  bGame.print();
+
+
+// cout << endl <<  "attempting removing Codenames from tree" << endl;
+ // cout << "printing myGameMenu..." << endl;
+ // myGameMenu.remove("Codenames");
+  //cout << endl;
+  // myGameMenu.print();
 
   cout << endl << "End of PA 3 - " << endl << endl;
   return 0;
