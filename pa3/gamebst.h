@@ -49,14 +49,15 @@ class GameBST {
     // POST: returns the the smallest key 
 
     void clearTree(TreeNode *nPtr);
-    // 
-    // PRE:  
-    // POST: 
+    // clears the current nodes in the tree
+    // PRE: None.
+    // POST: All nodes except for the root has been deallocated and set to 
+    //  nullptr  
 
     void cloneTree(TreeNode *copy);
-    //
-    // PRE:
-    // POST: 
+    // copies all the nodes from the given TreeNode pointer 
+    // PRE: clearTree fxn has been called before this one
+    // POST: *this tree will have the same nodes as the copy
 
   public: 
     GameBST(); 

@@ -13,13 +13,15 @@ GameBST::GameBST(const GameBST &src)
 
 GameBST& GameBST::operator=(const GameBST &src)
 {
+  clearTree(root);
+  cloneTree(src.root);
   return *this;
 }
 
 GameBST::~GameBST()
 {
-  // call clear fxn 
-  // make sure root is set to nullptr as well HERE
+  clearTree(root);
+  root = nullptr; 
 }
 
 void GameBST::insert(string key, int maxPlayers, int playtime)
