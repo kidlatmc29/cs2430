@@ -8,7 +8,7 @@ GameBST::GameBST() : root (nullptr) {}
 
 GameBST::GameBST(const GameBST &src)  
 {
-  // copy tree fxn
+  cloneTree(root);
 }
 
 GameBST& GameBST::operator=(const GameBST &src)
