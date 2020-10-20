@@ -65,6 +65,15 @@ class GameBST {
     // POST: 
 
     void printPlayable(TreeNode *nPtr, int timeLeft);
+    //
+    // PRE:
+    // POST:
+
+
+    int getHeight(TreeNode* nPtr);
+    //
+    // PRE:
+    // POST: 
 
   public: 
     GameBST(); 
@@ -78,18 +87,19 @@ class GameBST {
     // POST:  
 
     GameBST& operator=(const GameBST& src);
-    // copy assignment
-    // PRE: 
+    // copy assignment, takes the values of the nodes and copies them into
+    //  trees, calls helper fxns clearTree and cloneTree
+    // PRE:
     // POST: 
   
     ~GameBST();
-    // deconstructor
-    // PRE: 
-    // POST: 
+    // deconstructor, calls clearTree helper fxn
+    // PRE: None. 
+    // POST: All nodes are deallocated and root is set to nullptr. 
 
     void insert(string key, int maxPlayers, int playtime);
     // inserts a new node into the bst
-    // PRE: 
+    // PRE: None. 
     // POST: 
 
     bool remove(string name);
@@ -99,13 +109,13 @@ class GameBST {
 
     int getHeight();
     // returns the height of the tree
-    // PRE:
-    // POST: 
+    // PRE: None.
+    // POST: Returns 0 if only the root exists. 
 
     void print();
     // prints the game names in the tree, using inorder traversal
-    // PRE: 
-    // POST: 
+    // PRE: Calls private print helper fxn.
+    // POST: All games are printed in alphabetical order. 
 
     void printGame(string name);
     // prints out all the information of the given game name
@@ -115,6 +125,6 @@ class GameBST {
     void printPlayable(int timeLeft);
     // prints all the games that are less than or equal to the time given, using
     //  post-order traversal. 
-    // PRE:
-    // POST: 
+    // PRE: None. 
+    // POST: If no playable games are found, nothing is printed out. 
 };

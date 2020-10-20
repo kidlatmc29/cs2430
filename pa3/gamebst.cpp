@@ -6,9 +6,10 @@
 
 GameBST::GameBST() : root (nullptr) {}
 
-GameBST::GameBST(const GameBST &src)  
+GameBST::GameBST(const GameBST& src)  
 {
-  cloneTree(root);
+  root = nullptr; 
+  cloneTree(src.root);
 }
 
 GameBST& GameBST::operator=(const GameBST &src)
@@ -38,7 +39,7 @@ void GameBST::insert(string key, int maxPlayers, int playtime)
   } else if(root->key > key) {
      insert(root->left, newNode);
   } else if(root->key < key) {
-     insert(root->left, newNode);
+     insert(root->right, newNode);
   }
 }
 
@@ -49,7 +50,7 @@ void GameBST::insert(TreeNode* &nPtr, TreeNode* newNode)
   } else if(nPtr->key > newNode->key) {
     insert(nPtr->left, newNode);
   } else if(nPtr->key < newNode->key) {
-    insert(nPtr->left, newNode);
+    insert(nPtr->right, newNode);
   }
 }
 
@@ -155,7 +156,7 @@ void GameBST::cloneTree(TreeNode *nPtr)
     insert(nPtr->key, nPtr->maxPlayers, nPtr->playtime);
     cloneTree(nPtr->left);
     cloneTree(nPtr->right);
-  } 
+  }
 }
 
 void GameBST::printGame(string name)
@@ -189,6 +190,26 @@ void GameBST::printGame(TreeNode *nPtr, string name)
      } else if (nPtr->playtime <= timeLeft) {
        cout << nPtr->key << endl;
        printPlayable(nPtr->left, timeLeft);
+     }
+   }
+ }
+
+ int GameBST::getHeight()
+ {
+   return getHeight(root);
+ }
+
+ int GameBST::getHeight(TreeNode* nPtr)
+ {
+   if(!nPtr) {
+     return 0;
+   } else { 
+     int left = getHeight(nPtr->left);
+     int right = getHeight(nPtr->right);
+     if(left > right) {
+       return left + 1; 
+     } else {
+       return right + 1; 
      }
    }
  }

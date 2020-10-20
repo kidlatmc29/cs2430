@@ -23,28 +23,47 @@ int main()
 {
   GameBST myGameMenu;
   GameBST bGame; 
+
   cout << endl << "Welcome to PA 3 - " << endl << endl;
 
+  cout << "Reading in from boardgames.cvs...." << endl;
   fileRead(myGameMenu);
-  cout << "printing myGameMenu..." << endl;
+  cout << "Printing myGameMenu..." << endl;
   myGameMenu.print();
 
+  cout << endl << "Testing copy assignment ===================================="
+       << endl;
   bGame = myGameMenu;
-  cout << endl << "printing bGame..." << endl;
+  cout << endl << "Printing bGame: " << endl;
   bGame.print();
 
-
-// cout << endl <<  "attempting removing Codenames from tree" << endl;
-// cout << "printing myGameMenu..." << endl;
-// myGameMenu.remove("Codenames");
-// cout << endl;
-// myGameMenu.print();
-
-  cout << endl << "Printing out Codenames..." << endl;
+  cout << endl << "Testing copy constructor ==================================="
+       << endl;
+  GameBST moreGames(myGameMenu);
+  cout << "Creating moreGames from myGameMenu....." << endl
+       << "Printing moreGames: " << endl;
+  moreGames.print();
+ 
+  //cout << endl <<  "attempting removing Codenames from tree" << endl;
+  //cout << "printing myGameMenu..." << endl;
+  //myGameMenu.remove("Codenames");
+  //cout << endl;
+  //myGameMenu.print();
+  
+  cout << endl << "Testing getHeight fxn ======================================"
+       << endl;
+  cout << "The height of myGameMenu is " <<myGameMenu.getHeight() << endl;
+  cout << endl << "Testing printGame fxn ======================================"
+       << endl;
+  cout << endl << "Printing out Codenames: " << endl;
   myGameMenu.printGame("Codenames");
 
+  cout << endl << "Printing out Love Letter...." << endl;
+  myGameMenu.printGame("Love Letter");
 
-  cout << endl << "Games that can be played uner 30 minutes..." << endl;
+  cout << endl << "Testing printPlayable fxn =================================="
+       << endl;
+  cout << endl << "Games that can be played under 30 minutes..." << endl;
   myGameMenu.printPlayable(30);
   
   cout << endl << "End of PA 3 - " << endl << endl;
