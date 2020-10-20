@@ -43,6 +43,10 @@ int main()
   cout << endl << "Printing out Codenames..." << endl;
   myGameMenu.printGame("Codenames");
 
+
+  cout << endl << "Games that can be played uner 30 minutes..." << endl;
+  myGameMenu.printPlayable(30);
+  
   cout << endl << "End of PA 3 - " << endl << endl;
   return 0;
 }

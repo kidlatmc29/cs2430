@@ -64,6 +64,8 @@ class GameBST {
     // PRE: 
     // POST: 
 
+    void printPlayable(TreeNode *nPtr, int timeLeft);
+
   public: 
     GameBST(); 
     // default parameterized constructor
@@ -115,10 +117,4 @@ class GameBST {
     //  post-order traversal. 
     // PRE:
     // POST: 
-
-    void printPlayable(int timeLeft);
-    // 
-    // PRE:
-    // POST: 
-
 };
