@@ -29,17 +29,19 @@ int main()
   cout << "printing myGameMenu..." << endl;
   myGameMenu.print();
 
-  // bGame = myGameMenu
   bGame = myGameMenu;
   cout << endl << "printing bGame..." << endl;
   bGame.print();
 
 
 // cout << endl <<  "attempting removing Codenames from tree" << endl;
- // cout << "printing myGameMenu..." << endl;
- // myGameMenu.remove("Codenames");
-  //cout << endl;
-  // myGameMenu.print();
+// cout << "printing myGameMenu..." << endl;
+// myGameMenu.remove("Codenames");
+// cout << endl;
+// myGameMenu.print();
+
+  cout << endl << "Printing out Codenames..." << endl;
+  myGameMenu.printGame("Codenames");
 
   cout << endl << "End of PA 3 - " << endl << endl;
   return 0;

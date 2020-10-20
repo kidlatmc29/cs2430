@@ -59,6 +59,11 @@ class GameBST {
     // PRE: clearTree fxn has been called before this one
     // POST: *this tree will have the same nodes as the copy 
 
+    void printGame(TreeNode *nPtr, string name);
+    //
+    // PRE: 
+    // POST: 
+
   public: 
     GameBST(); 
     // default parameterized constructor
@@ -102,11 +107,18 @@ class GameBST {
 
     void printGame(string name);
     // prints out all the information of the given game name
-    // PRE:
-    // POST: 
+    // PRE: None.
+    // POST: None.
 
     void printPlayable(int timeLeft);
     // prints all the games that are less than or equal to the time given, using
     //  post-order traversal. 
+    // PRE:
+    // POST: 
+
+    void printPlayable(int timeLeft);
+    // 
+    // PRE:
+    // POST: 
 
 };
