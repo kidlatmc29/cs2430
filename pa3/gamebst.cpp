@@ -192,7 +192,8 @@ void GameBST::printGame(TreeNode *nPtr, string name)
        printPlayable(nPtr->left, timeLeft);
      } else if (nPtr->playtime <= timeLeft) {
        cout << nPtr->key << endl;
-       printPlayable(nPtr->right, timeLeft);
+       print(nPtr-right);
+       print(nPtr->left);
      }
    }
  }
