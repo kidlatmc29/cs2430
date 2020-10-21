@@ -88,7 +88,7 @@ bool GameBST::contains(TreeNode *nPtr, int timeLeft)
     return false; 
   } else if(nPtr->playtime == timeLeft) {
     return true;
-  } else if (nPtr->playtime > timeLeft) {
+  } else if (nPtr->playtime < timeLeft) {
     return contains(nPtr->left, timeLeft);
   } else {
     return contains(nPtr->right, timeLeft);
@@ -99,6 +99,7 @@ bool GameBST::remove(string name)
 {
   int removed = false; 
   if(contains(root, name)) {
+    remove(root, name);
     removed = true; 
   } else {
     cout << name << " does not exist in the tree! " << endl;
@@ -110,7 +111,9 @@ void GameBST::remove(TreeNode* &nPtr, string name)
 {
   if(!nPtr) {
     return; 
-  } else if (nPtr->key < name) {
+  } 
+
+  if (nPtr->key < name) {
       remove(nPtr->right, name);
   } else if(nPtr->key > name) {
       remove(nPtr->left, name);
@@ -189,7 +192,7 @@ void GameBST::printGame(TreeNode *nPtr, string name)
        printPlayable(nPtr->left, timeLeft);
      } else if (nPtr->playtime <= timeLeft) {
        cout << nPtr->key << endl;
-       printPlayable(nPtr->left, timeLeft);
+       printPlayable(nPtr->right, timeLeft);
      }
    }
  }

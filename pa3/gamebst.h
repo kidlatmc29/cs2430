@@ -40,12 +40,12 @@ class GameBST {
 
     void remove(TreeNode* &nPtr, string name);
     // helper fxn for public remove
-    // PRE:  
-    // POST: 
+    // PRE: a node's key is in the tree. 
+    // POST: None. 
 
     TreeNode* findMin(TreeNode *nPtr);
     // finds the smallest key in the tree
-    // PRE: 
+    // PRE: None. 
     // POST: returns the the smallest key 
 
     void clearTree(TreeNode *nPtr);
@@ -60,20 +60,19 @@ class GameBST {
     // POST: *this tree will have the same nodes as the copy 
 
     void printGame(TreeNode *nPtr, string name);
-    //
-    // PRE: 
-    // POST: 
+    // helper fxn for printGame
+    // PRE: name is present in the current tree.
+    // POST: None.
 
     void printPlayable(TreeNode *nPtr, int timeLeft);
-    //
-    // PRE:
-    // POST:
-
+    // helper fxn for printPlayable
+    // PRE: None.
+    // POST: None. 
 
     int getHeight(TreeNode* nPtr);
-    //
-    // PRE:
-    // POST: 
+    // calculates out the current height of the tree
+    // PRE: None. 
+    // POST: None. 
 
   public: 
     GameBST(); 
@@ -83,14 +82,14 @@ class GameBST {
 
     GameBST(const GameBST& src);
     // copy constructor
-    // PRE: 
-    // POST:  
+    // PRE: None. 
+    // POST: Created new GameBST object with the same contents of src
 
     GameBST& operator=(const GameBST& src);
     // copy assignment, takes the values of the nodes and copies them into
     //  trees, calls helper fxns clearTree and cloneTree
-    // PRE:
-    // POST: 
+    // PRE: rhs GameBST can be empty or not
+    // POST: lhs GameBST will have the same values as rhs GameBST
   
     ~GameBST();
     // deconstructor, calls clearTree helper fxn
@@ -100,12 +99,12 @@ class GameBST {
     void insert(string key, int maxPlayers, int playtime);
     // inserts a new node into the bst
     // PRE: None. 
-    // POST: 
+    // POST: New node is add be added properly into the bst
 
     bool remove(string name);
     // removes the game with the given name, returns true when done, else false
-    // PRE:
-    // POST: 
+    // PRE: a node with the given name is found in the tree
+    // POST: Node with the given key is removed
 
     int getHeight();
     // returns the height of the tree

@@ -2,9 +2,12 @@
 // pa3.cpp
 // 10-21-2020
 
-// DESCRIPTION: 
-// ASSUMPTION: 
-// REFRENCES: My own pa2.cpp file read and lab4.cpp's insert fxn
+// DESCRIPTION: GameBST saves data from a cvs file of games. Testing of the
+//  class function occurs, and allows the user to input what game they would
+//  like to print and see what games they can play in allocated time. 
+
+// REFRENCES: My own pa2.cpp file read, lab4.cpp's insert fxn, txt book ch4,
+//  figure 4.26 - remove fxn
 
 #include <iostream> 
 #include <fstream> 
@@ -23,6 +26,8 @@ int main()
 {
   GameBST myGameMenu;
   GameBST bGame; 
+  string gameName; 
+  int givenTime;
 
   cout << endl << "Welcome to PA 3 - " << endl << endl;
 
@@ -43,28 +48,32 @@ int main()
   cout << "Creating moreGames from myGameMenu....." << endl
        << "Printing moreGames: " << endl;
   moreGames.print();
- 
-  //cout << endl <<  "attempting removing Codenames from tree" << endl;
-  //cout << "printing myGameMenu..." << endl;
-  //myGameMenu.remove("Codenames");
-  //cout << endl;
-  //myGameMenu.print();
+
+  cout << endl << "Testing remove fxn ======================================"
+       << endl;
+  cout << "What game would you like to remove? ";
+  cin >> gameName;
+  myGameMenu.remove(gameName);
+  cout << "printing myGameMenu..." << endl;
+  myGameMenu.print();
   
   cout << endl << "Testing getHeight fxn ======================================"
        << endl;
-  cout << "The height of myGameMenu is " <<myGameMenu.getHeight() << endl;
+  cout << "The height of myGameMenu is " << myGameMenu.getHeight() << endl;
   cout << endl << "Testing printGame fxn ======================================"
        << endl;
-  cout << endl << "Printing out Codenames: " << endl;
-  myGameMenu.printGame("Codenames");
-
-  cout << endl << "Printing out Love Letter...." << endl;
-  myGameMenu.printGame("Love Letter");
+  cout << "What game would you like to print out? ";
+  getline(cin, gameName);
+  cout << endl << "Printing out " << gameName << ": " << endl;
+  myGameMenu.printGame(gameName);
 
   cout << endl << "Testing printPlayable fxn =================================="
        << endl;
-  cout << endl << "Games that can be played under 30 minutes..." << endl;
-  myGameMenu.printPlayable(30);
+  cout << "How much time do you have to play? (in minutes): ";
+  cin >> givenTime;
+  cout << endl << "Games that can be played under " << givenTime << " mins ...." 
+       << endl;
+  myGameMenu.printPlayable(givenTime);
   
   cout << endl << "End of PA 3 - " << endl << endl;
   return 0;
