@@ -37,13 +37,15 @@ int main()
        << endl;
   cout << "The height of myGameMenu is " << myGameMenu.getHeight() << endl;
   
+  cout << endl << "Testing print fxn =========================================="
+       << endl;
   cout << "Printing myGameMenu..." << endl;
   myGameMenu.print();
 
   cout << endl << "Testing copy assignment ===================================="
        << endl;
   bGame = myGameMenu;
-  cout << endl << "Printing bGame: " << endl;
+  cout << "Printing bGame: " << endl;
   bGame.print();
 
   cout << endl << "Testing copy constructor ==================================="
@@ -53,7 +55,7 @@ int main()
        << "Printing moreGames: " << endl;
   moreGames.print();
 
-  cout << endl << "Testing remove fxn ======================================"
+  cout << endl << "Testing remove fxn ========================================="
        << endl;
   cout << "What game would you like to remove? ";
   getline(cin,gameName);
@@ -62,7 +64,7 @@ int main()
   myGameMenu.print();
   cin.clear();
   
-  cout << endl << "Testing getHeight fxn ======================================"
+  cout << endl << "Testing getHeight fxn again ================================"
        << endl;
   cout << "The height of myGameMenu is " << myGameMenu.getHeight() << endl;
   
@@ -96,9 +98,7 @@ void fileRead(GameBST &menu)
   int index;
 
   int incomingMaxPlayers; 
-  int incomingPlayTime; 
-
-  cout << "Reading from file " << FILE_NAME << "...." << endl;
+  int incomingPlayTime;
 
   input.open(FILE_NAME);
 
