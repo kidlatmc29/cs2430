@@ -52,20 +52,23 @@ int main()
   cout << endl << "Testing remove fxn ======================================"
        << endl;
   cout << "What game would you like to remove? ";
-  cin >> gameName;
+  getline(cin,gameName);
   myGameMenu.remove(gameName);
   cout << "printing myGameMenu..." << endl;
   myGameMenu.print();
+  cin.clear();
   
   cout << endl << "Testing getHeight fxn ======================================"
        << endl;
   cout << "The height of myGameMenu is " << myGameMenu.getHeight() << endl;
+  
   cout << endl << "Testing printGame fxn ======================================"
        << endl;
   cout << "What game would you like to print out? ";
   getline(cin, gameName);
   cout << endl << "Printing out " << gameName << ": " << endl;
   myGameMenu.printGame(gameName);
+  cin.clear();
 
   cout << endl << "Testing printPlayable fxn =================================="
        << endl;
