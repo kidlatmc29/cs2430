@@ -33,6 +33,10 @@ int main()
 
   cout << "Reading in from boardgames.cvs...." << endl;
   fileRead(myGameMenu);
+  cout << endl << "Testing getHeight fxn ======================================"
+       << endl;
+  cout << "The height of myGameMenu is " << myGameMenu.getHeight() << endl;
+  
   cout << "Printing myGameMenu..." << endl;
   myGameMenu.print();
 

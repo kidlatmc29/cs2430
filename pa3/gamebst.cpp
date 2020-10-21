@@ -185,7 +185,14 @@ void GameBST::printGame(TreeNode *nPtr, string name)
 
  void GameBST::printPlayable(TreeNode *nPtr, int timeLeft)
  {
-   
+    // use POST order LRN
+   if(nPtr) {
+     printPlayable(nPtr->left, timeLeft);
+     printPlayable(nPtr->right, timeLeft);
+     if(nPtr->playtime <= timeLeft) {
+       cout << nPtr->key << endl;
+     }
+   }
  }
 
  int GameBST::getHeight()
