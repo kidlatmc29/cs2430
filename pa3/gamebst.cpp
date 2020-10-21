@@ -113,7 +113,9 @@ void GameBST::remove(TreeNode* &nPtr, string name)
       remove(nPtr->left, name);
   } else if(nPtr->left != nullptr && nPtr->right != nullptr){ // 2 children
       nPtr->key = findMin(nPtr->right)->key;
-      remove(nPtr->right, name);
+      nPtr->maxPlayers = findMin(nPtr->right)->maxPlayers; 
+      nPtr->playtime = findMin(nPtr->right)->playtime; 
+      remove(nPtr->right, nPtr->key);
   } else {
     TreeNode *temp = nPtr; 
     cout << "removing " << nPtr->key << endl;
