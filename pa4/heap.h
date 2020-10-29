@@ -5,6 +5,8 @@
 class WordHeap {
   private: 
     const int STARTING_SIZE = 3; 
+    int currentSize; 
+    int numOfItems;
     struct Item {
       int key; 
       string word; 
@@ -12,6 +14,18 @@ class WordHeap {
     Item* root; 
     int* arr;
   
+    // helper fxn
+    void resize();
+    // 
+    // PRE:
+    // POST: 
+
+    void percolateDown();
+    // 
+    // PRE:
+    // POST:
+    
+
   public: 
     WordHeap();
     // default parameterized constructor
@@ -20,7 +34,7 @@ class WordHeap {
 
     WordHeap(const WordHeap& src);
     // 
-    // PRE: 
+    // PRE:
     // POST: 
 
     WordHeap& operator=(const WordHeap src);

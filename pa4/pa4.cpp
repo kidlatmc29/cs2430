@@ -15,17 +15,17 @@ int main()
   string input; 
 
   cout << endl  << "Welcome to PA 4" << endl;
-  cout << "How many values do you wnt to add to the heap? :";
+  cout << "How many values do you want to add to the heap?: ";
   cin >> numOfVals;
   
   for(int i = 0; i < numOfVals; i++) {
     cout << "Enter a word you want to add: ";
     cin >> input;
     // call insert fxn on heap in here
-    cout << "Adding " << input << " ....";
+    cout << endl << "Adding " << input << " ...." << endl;
   }
 
-  cout << "What value do you want to print the children of? :";
+  cout << "What value do you want to print the children of?: ";
   cin >> input; 
   // call printing fxn or whatever
 
