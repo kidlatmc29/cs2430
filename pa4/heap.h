@@ -4,11 +4,13 @@
 
 class WordHeap {
   private: 
+    const int STARTING_SIZE = 3; 
     struct Item {
       int key; 
       string word; 
     };
     Item* root; 
+    int* arr;
   
   public: 
     WordHeap();
