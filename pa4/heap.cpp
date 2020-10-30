@@ -30,7 +30,6 @@ WordHeap::~WordHeap()
   // make the pointer nullptr; 
 }
 
-
 void WordHeap::insert(string x)
 {
   if(numOfItems == currentSize - 1) {

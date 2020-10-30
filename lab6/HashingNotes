@@ -1,0 +1,4 @@
+// Hashing insert with linear probing
+ while(bookshelf[h] != 0 && n = bookshelf[h].getISBN != newBook.getISBN()) {
+    h = hashFunc(h + 1);
+  }

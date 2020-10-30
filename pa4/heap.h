@@ -29,7 +29,6 @@ class WordHeap {
     // PRE:
     // POST:
 
-
   public: 
     WordHeap();
     // default parameterized constructor
