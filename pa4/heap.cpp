@@ -40,19 +40,16 @@ void WordHeap::insert(string x)
 
   int hole = ++numOfItems; 
   // make struct here
-  arr[0].word = x; 
-  arr[0].key = x.length();
+  Item wordInfo;
+  wordInfo.word = x; 
+  wordInfo.key = x.length();
+  arr[0] = wordInfo;
 
-  cout << "created item" << endl;
   while(arr[0].key > arr[hole/2].key) {
     arr[hole] = arr[hole/2];
     hole /= 2; 
-    cout << "perculating up..." << endl;
   }
-
   arr[hole] = arr[0];
-  numOfItems++;
-  cout << "done with inserting" << endl;
 }
 
 string WordHeap::deleteMax()
@@ -93,6 +90,12 @@ void WordHeap::percolateDown()
     }
     arr[hole] = temp;
   }
-  
 }
 
+void WordHeap::makeEmpty()
+{
+  cout << "Emptying Wordheap..." << endl;
+  while(numOfItems != 0) {
+    cout << deleteMax();
+  }
+}
