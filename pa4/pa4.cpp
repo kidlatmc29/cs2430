@@ -6,11 +6,13 @@
 // SOURCES: 
 
 #include <iostream> 
+#include "heap.h"
 
 using namespace std; 
 
 int main()
 {
+  WordHeap phrase; 
   int numOfVals; 
   string input; 
 
@@ -21,7 +23,7 @@ int main()
   for(int i = 0; i < numOfVals; i++) {
     cout << "Enter a word you want to add: ";
     cin >> input;
-    // call insert fxn on heap in here
+    phrase.insert(input);
     cout << endl << "Adding " << input << " ...." << endl;
   }
 
@@ -29,7 +31,11 @@ int main()
   cin >> input; 
   // call printing fxn or whatever
 
-  // call emptying heap fxn here 
+  // call emptying heap fxn here ]
+  cout << "Removing words" << endl;
+  cout << phrase.deleteMax(); 
+  cout << phrase.deleteMax();
   
+  cout << endl << "End of PA 4" << endl << endl; 
   return 0;
 }

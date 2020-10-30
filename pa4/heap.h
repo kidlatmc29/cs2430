@@ -2,9 +2,13 @@
 // heap.h
 // 11-2-2020
 
+#include<iostream>
+
+using namespace std; 
+
 class WordHeap {
   private: 
-    const int STARTING_SIZE = 3; 
+    const int STARTING_SIZE = 4; 
     int currentSize; 
     int numOfItems;
     struct Item {
@@ -37,7 +41,7 @@ class WordHeap {
     // PRE:
     // POST: 
 
-    WordHeap& operator=(const WordHeap src);
+    WordHeap& operator=(const WordHeap& src);
     // 
     // PRE: 
     // POST:
@@ -55,11 +59,6 @@ class WordHeap {
 
     string deleteMax();
     // returns the deleted max string from the heap
-    // PRE: 
-    // POST:
-
-    void percolateDown();
-    // 
     // PRE: 
     // POST:
 
