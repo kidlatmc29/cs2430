@@ -12,7 +12,7 @@ class WordHeap {
       string word; 
     };
     Item* root; 
-    int* arr;
+    Item* arr;
   
     // helper fxn
     void resize();
@@ -24,7 +24,7 @@ class WordHeap {
     // 
     // PRE:
     // POST:
-    
+
 
   public: 
     WordHeap();

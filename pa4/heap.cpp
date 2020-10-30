@@ -6,7 +6,7 @@
 
 WordHeap::WordHeap() 
 {
-  arr = new int[STARTING_SIZE];
+  arr = new Item[STARTING_SIZE];
   currentSize = STARTING_SIZE; 
   numOfItems = 0;
   root = nullptr; 
@@ -52,4 +52,44 @@ void WordHeap::insert(string word)
   arr[hole] = arr[0];
 }
 
+string WordHeap::deleteMax()
+{
+  string rmWord = arr[1];
+  if(currentSize == 0) {
+    scout << "This WordHeap is empty!" << endl; 
+  }
+
+  arr[1] = arr[currentSize--];
+  precolateDown();
+
+  return rmVal;
+}
+
+void percolateDown()
+{
+  int child;
+  int hole = 1; 
+  string temp = arr[hole];
+  bool pDown = true; 
+
+  while(pDown && hole * 2 <= currentSize) {
+    child = hole *2;
+
+    if(child != currentSize && arr[child + 1].key > arr[child].key) {
+      ++child;
+    }
+
+    if(arr[child].key > temp.key) {
+      arr[hole] = arr[child];
+    } else {
+      pDown = false; 
+    }
+
+    if(pDown) {
+      hole = child;
+    }
+    arr[hole] = temp;
+  }
+  
+}
 
