@@ -36,6 +36,16 @@ class Book{
       return title;
     }
 
+    void printBook(int index)
+    {
+      cout << "Bookshelf[" << index << "]----------";
+      if(ISBN != -1) {
+        cout << endl << "Title: " << title << endl << "ISBN: " 
+             << ISBN;
+      }
+      cout << endl << endl;
+    }
+
 };
 
 bool addBook(string newTitle, long newISBN, Book bookshelf[]);
@@ -69,7 +79,11 @@ int main()
     }
   }
   
-  cout << "The number of collisions was " << numCol << endl;
+  cout << "The number of collisions was " << numCol << "." << endl << endl;
+
+  for(int index = 0; index < BOOKSHELF_SIZE; index++) {
+    bookshelf[index].printBook(index);
+  }
 
   cout << "End of Lab 6 " << endl  << endl;
   return 0;

@@ -15,7 +15,6 @@ class WordHeap {
       int key; 
       string word; 
     };
-    Item* root; 
     Item* arr;
   
     // helper fxn
@@ -33,7 +32,7 @@ class WordHeap {
     WordHeap();
     // default parameterized constructor
     // PRE: None. 
-    // POST: Root is set to nullptr
+    // POST: 
 
     WordHeap(const WordHeap& src);
     // 

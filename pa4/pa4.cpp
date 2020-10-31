@@ -31,7 +31,7 @@ int main()
   cin >> input; 
   // call printing fxn or whatever
 
-  // call emptying heap fxn here ]
+  // call emptying heap fxn here
   cout << "Removing words" << endl;
   cout << phrase.deleteMax() << endl; 
   cout << phrase.deleteMax() << endl;

@@ -7,14 +7,12 @@
 WordHeap::WordHeap() 
 {
   arr = new Item[STARTING_SIZE];
-  currentSize = 0; 
+  currentSize = STARTING_SIZE; 
   numOfItems = 0;
-  root = nullptr; 
 }
 
 WordHeap::WordHeap(const WordHeap& src)
 {
-  root = nullptr;
   // some cloneHeap stuff
 }
 
@@ -30,14 +28,29 @@ WordHeap::~WordHeap()
   // make the pointer nullptr; 
 }
 
+void WordHeap::resize()
+{
+  Item *temp = new Item[currentSize * 2];
+
+  for(int index = 1; index < numOfItems; index++) {
+    temp[index].key = arr[index].key;
+    temp[index].word = arr[index].word;
+  }
+  arr = temp;
+  delete[] arr; 
+  
+  currentSize *= 2;
+}
+
 void WordHeap::insert(string x)
 {
-  if(numOfItems == currentSize - 1) {
+  int hole = ++numOfItems; 
+
+  if(numOfItems == currentSize -1) {
     cout << "Need to resizing..." << endl;
-    // call resize here
+    resize();
   }
 
-  int hole = ++numOfItems; 
   // make struct here
   Item wordInfo;
   wordInfo.word = x; 
@@ -48,6 +61,8 @@ void WordHeap::insert(string x)
     arr[hole] = arr[hole/2];
     hole /= 2; 
   }
+
+  cout << "inserting at " << hole << endl;
   arr[hole] = arr[0];
 }
 
