@@ -21,12 +21,12 @@ class Book{
     Book()
     {
       title = "";
-      ISBN = 0;
+      ISBN = -1;
     }
 
-    Book(string nT, int nI) : title(nT), ISBN(nI) {}
+    Book(string nT, long nI) : title(nT), ISBN(nI) {}
 
-    int getISBN()
+    long getISBN()
     {
       return ISBN;
     }
@@ -61,13 +61,15 @@ int main()
     9780679889106,9780486422459,9780582418172,9780060256579,9780141301068,
     9780439554930};
 
-  cout << endl "Welcome to Lab 6 " << endl;
+  cout << endl << "Welcome to Lab 6 " << endl;
 
   for(int index = 0; index < NUM_BOOKS; index++) {
-    if(!addBook(titleArr[index], isbnArr[index], bookshelf) {
+    if(!addBook(titleArr[index], isbnArr[index], bookshelf)) {
       numCol++;
     }
   }
+  
+  cout << "The number of collisions was " << numCol << endl;
 
   cout << "End of Lab 6 " << endl  << endl;
   return 0;
@@ -84,7 +86,7 @@ bool addBook(string newTitle, long newISBN, Book bookshelf[])
   Book newBook(newTitle, newISBN);
   int h = hashFunc(newBook.getISBN());
 
-  if(bookshelf[h].getISBN() != 0) {
+  if(bookshelf[h].getISBN() != -1) {
     cout << "Collision at index " << h << endl;
     return false; 
   }
