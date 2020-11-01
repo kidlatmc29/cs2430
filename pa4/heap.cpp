@@ -14,18 +14,25 @@ WordHeap::WordHeap()
 WordHeap::WordHeap(const WordHeap& src)
 {
   // some cloneHeap stuff
+  int temp[]
 }
 
 WordHeap& WordHeap::operator=(const WordHeap& src)
 {
   // some cool stuff
+  if(this != src) {
+    
+
+  }
   return *this;
 }
 
 WordHeap::~WordHeap()
 {
   // call rm fxn 
-  // make the pointer nullptr; 
+  delete[] arr; 
+  numOfItems = 0; 
+  currentSize = 0;
 }
 
 void WordHeap::resize()
@@ -36,9 +43,9 @@ void WordHeap::resize()
     temp[index].key = arr[index].key;
     temp[index].word = arr[index].word;
   }
-  arr = temp;
   delete[] arr; 
-  
+  arr = temp;
+
   currentSize *= 2;
 }
 
@@ -51,7 +58,6 @@ void WordHeap::insert(string x)
     resize();
   }
 
-  // make struct here
   Item wordInfo;
   wordInfo.word = x; 
   wordInfo.key = x.length();
@@ -110,6 +116,29 @@ void WordHeap::makeEmpty()
 {
   cout << "Emptying Wordheap..." << endl;
   while(numOfItems != 0) {
-    cout << deleteMax();
+    cout << deleteMax() << endl;
   }
+  numOfItems = 0;
+}
+
+void WordHeap::printChildren(string x)
+{
+  int index = contains();
+  if(index > numOfItems) 
+  {
+    cout << x << " is not in the heap" << endl;
+  } else {
+    cout << "Left child: " << arr[index*2 + 1].word;
+    cout << "Right child " << arr[index*2 + 2].word; 
+  }
+  
+}
+
+int WordHeap::contains(string word)
+{
+  int index = 1; 
+  while(index <= numOfItems && arr[index].word != word) {
+    index++; 
+  }
+  return index; 
 }

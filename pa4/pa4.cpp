@@ -32,10 +32,7 @@ int main()
   // call printing fxn or whatever
 
   // call emptying heap fxn here
-  cout << "Removing words" << endl;
-  cout << phrase.deleteMax() << endl; 
-  cout << phrase.deleteMax() << endl;
-  cout << phrase.deleteMax() << endl;
+  phrase.makeEmpty();
   
   cout << endl << "End of PA 4" << endl << endl; 
   return 0;

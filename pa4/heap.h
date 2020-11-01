@@ -28,6 +28,12 @@ class WordHeap {
     // PRE:
     // POST:
 
+  
+    int contains(string word);
+    // 
+    // PRE:
+    // POST:
+
   public: 
     WordHeap();
     // default parameterized constructor
