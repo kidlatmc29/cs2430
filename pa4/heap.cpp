@@ -14,22 +14,27 @@ WordHeap::WordHeap()
 WordHeap::WordHeap(const WordHeap& src)
 {
   // some cloneHeap stuff
-  int temp[]
 }
 
 WordHeap& WordHeap::operator=(const WordHeap& src)
 {
-  // some cool stuff
-  if(this != src) {
+  if(this != &src) {
+    numOfItems = src.getNumOfItems()
+    currentSize = src.getNumOfItems();
+    Item *temp = new Item[numOfItems + 1];
     
-
+    for(int index = 1; index < numOfItems; index++) {
+      temp[index].key = src[index].key;
+      temp[index].word = src[index].word;
+    }
+    delete[] arr; 
+    arr = temp;
   }
   return *this;
 }
 
 WordHeap::~WordHeap()
 {
-  // call rm fxn 
   delete[] arr; 
   numOfItems = 0; 
   currentSize = 0;

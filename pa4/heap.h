@@ -75,4 +75,9 @@ class WordHeap {
     // 
     // PRE: 
     // POST: 
+
+    int getNumOfItems();
+    // 
+    // PRE:
+    // POST:
 };
