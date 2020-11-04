@@ -17,67 +17,70 @@ class WordHeap {
     };
     Item* arr;
   
-    // helper fxn
+    // helper fxns
     void resize();
-    // 
-    // PRE:
-    // POST: 
+    // Creates a new dynamic array of Words with a size of currentSize*2
+    // PRE: numItems = currentSize - 1
+    // POST: currentSize is doubled and all elements in the array are the same
 
     void percolateDown();
-    // 
-    // PRE:
-    // POST:
+    // Finds the correct new spot for a node to reside after deleting max node
+    // PRE: The max node has been deleted from the heap
+    // POST: Heap structure is preserved with a new max node. 
 
   
     int contains(string word);
-    // 
-    // PRE:
-    // POST:
+    // Finds the index of the given word, returns out of bounds index
+    //  if the word is not in the heap
+    // PRE: None
+    // POST: Returns an index
 
   public: 
     WordHeap();
     // default parameterized constructor
     // PRE: None. 
-    // POST: 
+    // POST: All member vars are set to 0 or ""
 
-    WordHeap(const WordHeap& src);
-    // 
-    // PRE:
-    // POST: 
+    WordHeap(WordHeap& src);
+    // copy constructor 
+    // PRE: None.
+    // POST: this word heap will have the same heap and memeber vars as it's
+    //  src. 
 
-    WordHeap& operator=(const WordHeap& src);
-    // 
-    // PRE: 
-    // POST:
+    WordHeap& operator=(WordHeap& src);
+    // This wordheap gets the same values of src
+    // PRE: None.
+    // POST: None.
 
     ~WordHeap();
-    // 
-    // PRE: 
-    // POST:
+    // deconstructor  
+    // PRE: None
+    // POST: arr is deallocated, all applicable member variables are set to 0
 
     void insert(string x);
     // inserts an new node into the heap, creating a max heap based on word
     //  length
-    // PRE: 
-    // POST:
+    // PRE: None. 
+    // POST: A Word node is inserted into the correct place into the heap
 
     string deleteMax();
     // returns the deleted max string from the heap
-    // PRE: 
-    // POST:
+    // PRE: None. 
+    // POST: the max node is deleted and the heap retains its structure
 
     void printChildren(string x);
-    // 
-    // PRE: 
-    // POST:
+    // prints out the left and right child of the given string
+    // PRE: None.
+    // POST: Prints out left and right child, if one or both doesn't exist,
+    //  prints out nullptr, if x doesn't exist in the heap it tells the user
 
     void makeEmpty();
-    // 
-    // PRE: 
-    // POST: 
+    // deletes all the nodes from the heap
+    // PRE: None.
+    // POST: The arr is now empty and numOfItems is set to 0
 
     int getNumOfItems();
-    // 
-    // PRE:
-    // POST:
+    // returns numOfItems
+    // PRE: None.
+    // POST: None.
 };

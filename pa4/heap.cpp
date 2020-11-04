@@ -11,21 +11,28 @@ WordHeap::WordHeap()
   numOfItems = 0;
 }
 
-WordHeap::WordHeap(const WordHeap& src)
+WordHeap::WordHeap(WordHeap& src)
 {
-  // some cloneHeap stuff
+  currentSize = src.getNumOfItems();
+  arr = new Item[currentSize];
+
+  for(int index = 1; index < currentSize; index++) {
+    arr[index].key = src.arr[index].key;
+    arr[index].word = src.arr[index].word;
+  }
+   numOfItems = src.getNumOfItems();
 }
 
-WordHeap& WordHeap::operator=(const WordHeap& src)
+WordHeap& WordHeap::operator=(WordHeap& src)
 {
   if(this != &src) {
-    numOfItems = src.getNumOfItems()
+    numOfItems = src.getNumOfItems();
     currentSize = src.getNumOfItems();
     Item *temp = new Item[numOfItems + 1];
-    
-    for(int index = 1; index < numOfItems; index++) {
-      temp[index].key = src[index].key;
-      temp[index].word = src[index].word;
+
+    for(int index = 1; index <= numOfItems; index++) {
+      temp[index].key = src.arr[index].key;
+      temp[index].word = src.arr[index].word;
     }
     delete[] arr; 
     arr = temp;
@@ -119,7 +126,6 @@ void WordHeap::percolateDown()
 
 void WordHeap::makeEmpty()
 {
-  cout << "Emptying Wordheap..." << endl;
   while(numOfItems != 0) {
     cout << deleteMax() << endl;
   }
@@ -128,15 +134,26 @@ void WordHeap::makeEmpty()
 
 void WordHeap::printChildren(string x)
 {
-  int index = contains();
+  int index = contains(x);
   if(index > numOfItems) 
   {
     cout << x << " is not in the heap" << endl;
   } else {
-    cout << "Left child: " << arr[index*2 + 1].word;
-    cout << "Right child " << arr[index*2 + 2].word; 
+    cout << "Left child: ";
+    if(arr[index*2 + 1].word == "") {
+      cout << "nullptr";
+    } else {
+      cout << arr[index*2 + 1].word;
+    }
+    cout << endl;
+    cout << "Right child: ";
+    if(arr[index*2 + 2].word == "") {
+      cout << "nullptr";
+    } else {
+      cout << arr[index*2 + 2].word;
+    }
   }
-  
+  cout << endl;
 }
 
 int WordHeap::contains(string word)
@@ -146,4 +163,9 @@ int WordHeap::contains(string word)
     index++; 
   }
   return index; 
+}
+
+int WordHeap::getNumOfItems()
+{
+  return numOfItems;
 }
