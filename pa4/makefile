@@ -1,6 +1,3 @@
-target: files_target_depends_on
-<tab>how_to_make_target
-
 pa4: pa4.o heap.o 
 	g++ -o pa4 pa4.o heap.o
 
@@ -11,4 +8,4 @@ heap.o: heap.cpp
 	g++ -c -pedantic -Wall -Werror heap.cpp
 
 clean:
-rm *.o
+	rm *.o
