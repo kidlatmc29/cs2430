@@ -2,58 +2,27 @@
 // lab7.cpp
 // 11-6-2020
 
-// DESCRIPTION: 
+// DESCRIPTION: Creates a hash table of books. Keeps tracks of collion then,
+//  prints out the hash table once it has tried to insert all the given books. 
 
 #include <iostream>
 using namespace std;
 
-const int BOOKSHELF_SIZE = 13;
-const int NUM_BOOKS = 20;
+#ifndef BOOK_H
+#define BOOK_H
 
+template <
 class Book{
   private:
     string title;
     long ISBN;
 
   public:
-    Book()
-    {
-      title = "";
-      ISBN = -1;
-    }
-
-    Book(string nT, long nI) : title(nT), ISBN(nI) {}
-
-    long getISBN()
-    {
-      return ISBN;
-    }
-
-    string getTitle()
-    {
-      return title;
-    }
-
-    void printBook(int index)
-    {
-      cout << "Bookshelf[" << index << "]----------";
-      if(ISBN != -1) {
-        cout << endl << "Title: " << title << endl << "ISBN: " 
-             << ISBN;
-      }
-      cout << endl << endl;
-    }
-
 };
-
-bool addBook(string newTitle, long newISBN, Book bookshelf[]);
-
-int hashFunc(long key);
+#endif
 
 int main()
 {
-  Book bookshelf[NUM_BOOKS];
-  int numCol;
   string titleArr [] = {"Sherlock Holmes: The Complete Novels and Stories",
   "The Very Hungry Caterpillar","Goodnight Moon","On the Night You Were Born",
   "The Kissing Hand","The Monster at the End of this Book",
@@ -69,40 +38,5 @@ int main()
     9780679889106,9780486422459,9780582418172,9780060256579,9780141301068,
     9780439554930};
 
-  cout << endl << "Welcome to Lab 7 " << endl;
-
-  for(int index = 0; index < NUM_BOOKS; index++) {
-    if(!addBook(titleArr[index], isbnArr[index], bookshelf)) {
-      numCol++;
-    }
-  }
-  
-  cout << "The number of collisions was " << numCol << "." << endl << endl;
-
-  for(int index = 0; index < BOOKSHELF_SIZE; index++) {
-    bookshelf[index].printBook(index);
-  }
-
-  cout << "End of Lab 7 " << endl  << endl;
   return 0;
-}
-
-
-int hashFunc(long key)
-{
-   return key % BOOKSHELF_SIZE; 
-}
-
-bool addBook(string newTitle, long newISBN, Book bookshelf[])
-{
-  Book newBook(newTitle, newISBN);
-  int h = hashFunc(newBook.getISBN());
-
-  if(bookshelf[h].getISBN() != -1) {
-    cout << "Collision at index " << h << endl;
-    return false; 
-  }
-
-  bookshelf[h] = newBook;
-  return true; 
 }
