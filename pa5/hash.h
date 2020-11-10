@@ -5,5 +5,6 @@
 #include <iostream>
 
 class HashTable {
-
+  private:
+  public:
 };
