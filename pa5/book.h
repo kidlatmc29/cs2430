@@ -3,6 +3,7 @@
 // 11-16-2020
 
 #include <iostream>
+using namespace std; 
 
 class Book {
   private:
@@ -17,5 +18,18 @@ class Book {
     // PRE:
     // POST:
 
+    ~Book();
+    // deconstructor
+    // PRE:
+    // POST:
+
     long getISBN();
+    // returns the ISBN of the book
+    // PRE:
+    // POST:
+
+    string getAuthor();
+    // returns the author of the book
+    // PRE:
+    // POST:
 };
