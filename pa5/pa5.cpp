@@ -4,8 +4,6 @@
 
 // DESCRIPTION:
 
-void fileRead();
-
 #include <iostream>
 #include <fstream> 
 #include <sstream>
@@ -16,8 +14,14 @@ const int NUM_OF_COLS = 5;
 const string FILE_NAME = "books-sample.cvs"; // REMEMBER TO CHANGE TO books.csv
 const char DELIMITER = ',';
 
+void fileRead();
+
 int main()
 {
+  cout << endl << "Welcome to PA 5" << endl; 
+  cout << "Reading from books-sample.cvs..." << endl;
+  fileRead();
+  cout << endl << "End of PA 5" << endl;
   return 0;
 }
 
@@ -39,8 +43,12 @@ void fileRead()
 
   // let's just read row by row for now
   if(!input.fail()) {
+    cout << "file did not fail!" << endl;
     while(getline(input, line)) {
       cout << line << endl;
     }
+    input.close();
+  } else {
+    cout << "Cannot read file! " << endl;
   }
  }
