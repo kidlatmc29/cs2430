@@ -25,6 +25,7 @@ void fileRead()
 {
   ifstream input; 
   string line;
+ /**
   stringstream ss;
   string row[NUM_OF_COLS]; 
   string item; 
@@ -33,12 +34,12 @@ void fileRead()
   float incomingRating; 
   long incomingISBN;
   int incomingPages; 
-
+  **/
   input.open(FILE_NAME);
 
   // let's just read row by row for now
-  if(!input.fail() {
-    while(getline(input, line) {
+  if(!input.fail()) {
+    while(getline(input, line)) {
       cout << line << endl;
     }
   }
