@@ -13,7 +13,10 @@ class HashTable {
       Book value;
       BookNode* next; 
     };
-
+    const int MAX_SIZE = 10;
+    int currentSize; 
+    BookNode* array; 
+    
   public:
     HashTable();
     // default constructor
@@ -25,14 +28,25 @@ class HashTable {
     // PRE:
     // POST:
 
-    void addToBookshelf(long key, Book value);
+    int hash(long key);
+    // deconstructor
+    // PRE:
+    // POST:
+
+    bool contains(Book b);
+    // returns true if the given book is present in the hash table
+    // PRE:
+    // POST:
+
+
+    void addToBookshelf(long key, Book value); // insert
     // adds the key-pair value to the hash table. If it already exits,
     //  tells the user it's already in the bookshelf. Prints the load factor 
     //  otherwise. 
     // PRE: 
     // POST:
 
-    bool readBook(long key);
+    bool readBook(long key); // remove
     // prints that you've read the given book and removes it from the shelf.
     //  returns false if the book is not on the bookshelf. 
     // PRE:

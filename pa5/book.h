@@ -13,8 +13,14 @@ class Book {
     long ISBN;
     int pages; 
   public:
-    Book(string t, string a, float r, long i, int p);
+    Book();
     // default constructor
+    // PRE:
+    // POST:
+
+
+    Book(string t, string a, float r, long i, int p);
+    // default para constructor
     // PRE:
     // POST:
 

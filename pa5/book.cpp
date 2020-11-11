@@ -4,6 +4,8 @@
 
 #include "book.h"
 
+Book::Book() : title(""), ISBN (-1) {}
+
 Book::Book(string t, string a, float r, long i, int p) 
 {
   title = t;
@@ -16,4 +18,9 @@ Book::Book(string t, string a, float r, long i, int p)
 long Book::getISBN() 
 {
   return ISBN;
+}
+
+string Book::getAuthor()
+{
+  return author;
 }
