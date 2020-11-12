@@ -16,31 +16,31 @@ class Book {
   public:
     Book();
     // default constructor
-    // PRE:
-    // POST:
+    // PRE: This is called when needed to make empty Book objects
+    // POST: All data members are set to "empty" state.
 
     Book(string t, string a, float r, long i, int p);
     // default param constructor
-    // PRE:
-    // POST:
+    // PRE: This is called when all data memebers are given to create a Book
+    // POST: All data memebers are stored in the correct variables. 
 
     ~Book();
     // deconstructor
-    // PRE:
-    // POST:
+    // PRE: None.
+    // POST: Sets all data members to "empty" state.
 
     long getISBN();
     // returns the ISBN of the book
-    // PRE:
-    // POST:
+    // PRE: Called from by HashTable class.
+    // POST: None.
 
     string getAuthor();
     // returns the author of the book
-    // PRE:
-    // POST:
+    // PRE: Called from the HashTable class.
+    // POST: None.
 
     void printInfo();
     // prints all info for the book
-    // PRE:
-    // POST:
+    // PRE: Called by the HashTable class from the bookInfo() fxn.
+    // POST: None.
 };  

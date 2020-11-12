@@ -15,6 +15,15 @@ Book::Book(string t, string a, float r, long i, int p)
   pages = p;
 }
 
+Book::~Book()
+{
+  title = "";
+  author = "";
+  rating = -1; 
+  ISBN = -1; 
+  pages = -1;
+}
+
 long Book::getISBN() 
 {
   return ISBN;
@@ -25,11 +34,11 @@ string Book::getAuthor()
   return author;
 }
 
-void printInfo()
+void Book::printInfo()
 {
   cout << "Title: " << title << endl
        << "Authors: " << author << endl
        << "ISBN: " << ISBN  << endl
        << "Pages: " << pages << endl
-       << "Rating " << raiting << endl;
+       << "Rating " << rating << endl;
 }

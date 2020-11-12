@@ -10,11 +10,11 @@ HashTable::HashTable()
   currentSize = 0;
 }
 
-~HashTable::HashTable()
+HashTable::~HashTable()
 {
   // need to go through array and delete linked lists 
   for(int index = 0; index < currentSize; index++) {
-    BookNode* nPtr = arr[index];
+    BookNode* nPtr = arr[index].next;
     while(nPtr->key != -1) {
       BookNode* prev = nPtr; 
       nPtr = nPtr->next; 
@@ -42,7 +42,7 @@ void HashTable::addToBookshelf(long key, Book value)
 
 bool HashTable::readBook(long key)
 {
-
+  return true;
 }
 
 void HashTable::bookInfo(long key)

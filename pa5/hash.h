@@ -8,15 +8,16 @@ using namespace std;
 
 class HashTable {
   private:
+    const int MAX_SIZE = 11;
+    int currentSize; 
     class BookNode {
       public:
-        BookNode(long k, Book v);
+        BookNode(long k, Book v) : key(k), value(v) {};
+        BookNode() : key(-1) {};
         long key; 
         Book value;
         BookNode* next; 
     };
-    const int MAX_SIZE = 11;
-    int currentSize; 
     BookNode* arr; 
     
   public:
@@ -35,7 +36,7 @@ class HashTable {
     // PRE:
     // POST:
 
-    bool contains(Book b);
+    bool contains(long key);
     // returns true if the given book is present in the hash table
     // PRE:
     // POST:
