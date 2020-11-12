@@ -12,15 +12,15 @@ class Book {
     float rating;
     long ISBN;
     int pages; 
+
   public:
     Book();
     // default constructor
     // PRE:
     // POST:
 
-
     Book(string t, string a, float r, long i, int p);
-    // default para constructor
+    // default param constructor
     // PRE:
     // POST:
 
@@ -38,4 +38,9 @@ class Book {
     // returns the author of the book
     // PRE:
     // POST:
-};
+
+    void printInfo();
+    // prints all info for the book
+    // PRE:
+    // POST:
+};  

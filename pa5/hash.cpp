@@ -6,12 +6,23 @@
 
 HashTable::HashTable()
 {
-
+  arr = new BookNode[MAX_SIZE];
+  currentSize = 0;
 }
 
 ~HashTable::HashTable()
 {
-
+  // need to go through array and delete linked lists 
+  for(int index = 0; index < currentSize; index++) {
+    BookNode* nPtr = arr[index];
+    while(nPtr->key != -1) {
+      BookNode* prev = nPtr; 
+      nPtr = nPtr->next; 
+      delete prev; 
+    }
+  }
+  delete[] arr; 
+  currentSize = 0;
 }
 
 int HashTable::hash(long key)

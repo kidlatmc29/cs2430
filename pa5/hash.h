@@ -3,19 +3,21 @@
 // 11-16-2020
 
 #include <iostream>
+#include "book.h"
 using namespace std; 
 
 class HashTable {
   private:
-    class BookNode() {
-      BookNode(long k, Book v);
-      long key; 
-      Book value;
-      BookNode* next; 
+    class BookNode {
+      public:
+        BookNode(long k, Book v);
+        long key; 
+        Book value;
+        BookNode* next; 
     };
-    const int MAX_SIZE = 10;
+    const int MAX_SIZE = 11;
     int currentSize; 
-    BookNode* array; 
+    BookNode* arr; 
     
   public:
     HashTable();
@@ -29,7 +31,7 @@ class HashTable {
     // POST:
 
     int hash(long key);
-    // deconstructor
+    // hash function for inserting new key-value pairs into the table
     // PRE:
     // POST:
 
@@ -37,7 +39,6 @@ class HashTable {
     // returns true if the given book is present in the hash table
     // PRE:
     // POST:
-
 
     void addToBookshelf(long key, Book value); // insert
     // adds the key-pair value to the hash table. If it already exits,

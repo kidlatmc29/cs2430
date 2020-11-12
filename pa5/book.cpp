@@ -24,3 +24,12 @@ string Book::getAuthor()
 {
   return author;
 }
+
+void printInfo()
+{
+  cout << "Title: " << title << endl
+       << "Authors: " << author << endl
+       << "ISBN: " << ISBN  << endl
+       << "Pages: " << pages << endl
+       << "Rating " << raiting << endl;
+}
