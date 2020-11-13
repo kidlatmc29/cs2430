@@ -15,14 +15,33 @@ using namespace std;
 const int NUM_OF_COLS = 5; 
 const string FILE_NAME = "books-sample.csv"; // REMEMBER TO CHANGE TO books.csv
 const char DELIMITER = ',';
+const char BROWSE = '1';
+const char READ = '2';
+const char INFO = '3';
+const char REC = '4';
+const char QUIT = '5';
 
 void fileRead();
 
 int main()
 {
+  char menuChoice; 
   cout << endl << "Welcome to PA 5" << endl; 
-  cout << "Reading from books-sample.csv..." << endl << endl;
-  fileRead();
+  // cout << "Reading from books-sample.csv..." << endl << endl;
+  // fileRead();
+
+  while(menuChoice != QUIT && menuChoice != BROWSE && menuChoice != READ
+        && menuChoice != INFO && menuChoice != REC) {
+    cout << "Bookshelf Menu: " << endl
+         << "1. Browse for books" << endl
+         << "2. Read a book" << endl
+         << "3. View more info about a book" << endl
+         << "4. Get a reccomendation" << endl;
+         << "5. Quit" << endl;
+      cout << "What would you like to do?: ";  
+     cin >> menuChoice;
+  }
+
   cout << endl << "End of PA 5" << endl << endl;
   return 0;
 }
