@@ -36,7 +36,7 @@ int main()
          << "1. Browse for books" << endl
          << "2. Read a book" << endl
          << "3. View more info about a book" << endl
-         << "4. Get a reccomendation" << endl;
+         << "4. Get a reccomendation" << endl
          << "5. Quit" << endl;
       cout << "What would you like to do?: ";  
      cin >> menuChoice;

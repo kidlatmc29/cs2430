@@ -6,7 +6,7 @@
 
 HashTable::HashTable()
 {
-  arr = *BookNode[MAX_SIZE];
+  arr = new BookNode*[MAX_SIZE];
   currentSize = 0;
 }
 
@@ -14,7 +14,7 @@ HashTable::~HashTable()
 {
   // go through array and delete linked lists 
   for(int index = 0; index < currentSize; index++) {
-    BookNode* nPtr = arr[index].next;
+    BookNode* nPtr = arr[index]->next;
     while(nPtr->key != -1) {
       BookNode* prev = nPtr; 
       nPtr = nPtr->next; 
@@ -30,9 +30,9 @@ int HashTable::hash(long key)
   return key % MAX_SIZE;
 }
 
-bool HashTable::contains(long key)
+int HashTable::contains(long key)
 {
-  return false; 
+  return -1; 
 }
 
 void HashTable::addToBookshelf(long key, Book value)
@@ -41,10 +41,10 @@ void HashTable::addToBookshelf(long key, Book value)
   int index = hash(key);
 
   // check if it's the first key-value pair in the bucket
-  if(arr[index].key == -1) {
+  if(arr[index]->key == -1) {
     arr[index] = newBookNode;
   } else { // iterate through the linked list until it gets to the end
-    BookNode* nPtr = arr[index].next; 
+    BookNode* nPtr = arr[index]->next; 
     while(nPtr) {
       nPtr = nPtr->next; 
     }

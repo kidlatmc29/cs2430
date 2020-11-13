@@ -18,7 +18,7 @@ class HashTable {
         Book value;
         BookNode* next; 
     };
-    BookNode* arr; 
+    BookNode** arr; 
     
   public:
     HashTable();
