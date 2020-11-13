@@ -64,7 +64,7 @@ void HashTable::bookInfo(long key)
 
 void HashTable::displayAll()
 {
-  // iterates through heaptable and prints out all book info 
+  // iterates through heap table and prints out all book info 
 }
 
 void HashTable::recommend(long key)
