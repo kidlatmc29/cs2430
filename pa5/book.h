@@ -39,6 +39,11 @@ class Book {
     // PRE: Called from the HashTable class.
     // POST: None.
 
+    string getTitle();
+    // returns the title of the book
+    // PRE: Called from the HashTable class
+    // POST: None.
+
     void printInfo();
     // prints all info for the book
     // PRE: Called by the HashTable class from the bookInfo() fxn.

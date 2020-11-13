@@ -65,6 +65,13 @@ void HashTable::bookInfo(long key)
 void HashTable::displayAll()
 {
   // iterates through heap table and prints out all book info 
+  for(int index = 0; index < currentSize; index++) {
+    while(arr[index]->next) {
+      BookNode* nPtr = arr[index]->next; 
+      cout << "Title: " << arr[index]->value.getTitle() << endl;
+      nPtr = nPtr->next;
+    }
+  }
 }
 
 void HashTable::recommend(long key)

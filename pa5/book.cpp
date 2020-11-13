@@ -34,6 +34,11 @@ string Book::getAuthor()
   return author;
 }
 
+string Book::getTitle()
+{
+  return title;
+}
+
 void Book::printInfo()
 {
   cout << "Title: " << title << endl
