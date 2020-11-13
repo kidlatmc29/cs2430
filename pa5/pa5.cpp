@@ -7,6 +7,10 @@
 //  user and they can select certain functions and continue to do so until they
 //  quit the program. 
 
+// ASSUMPTIONS: When inputting a menu command the user only selects integers. 
+//  If user inputs chars, the program gets trapped in an infinte loop with
+//  the menu. 
+
 // SOURCES: Referenced my menu code from my cs1420 PA 5 project. 
 
 #include <iostream>
@@ -109,16 +113,21 @@ void fileRead()
 
  int getMenuChoice()
  {
-   int choice; 
-   cout << "Bookshelf Menu: " << endl
-        << "===============================" << endl
-        << "1. Browse for books" << endl
-        << "2. Read a book" << endl
-        << "3. View more info about a book" << endl
-        << "4. Get a reccomendation" << endl
-        << "5. Quit" << endl
-        << "===============================" << endl;
-   cout << "What would you like to do?: ";  
-   cin >> choice;
-    
+   int choice = 0; 
+   while(choice > 5 || choice < 1) {
+    cout << endl << "Bookshelf Menu: " << endl
+          << "===============================" << endl
+          << "1. Browse for books" << endl
+          << "2. Read a book" << endl
+          << "3. View more info about a book" << endl
+          << "4. Get a reccomendation" << endl
+          << "5. Quit" << endl
+          << "===============================" << endl;
+    cout << "What would you like to do?: ";  
+    cin >> choice;
+    if(choice > 5 || choice < 1) {
+      cout << "Invalid command! Please try again." << endl;
+    }
+   }
+   return choice;
  }
