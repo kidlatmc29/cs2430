@@ -51,8 +51,29 @@ int main()
     switch(menuChoice) 
     {
       case BROWSE:
+      {
         cout << "browsing for book! " << endl;
-        
+        menuChoice = getMenuChoice();
+        break;
+      }
+      case READ:
+      {
+        cout << "reading a book! " << endl;
+        menuChoice = getMenuChoice();
+        break;
+      }
+      case INFO:
+      {
+        cout << "getting info for book! " << endl;
+        menuChoice = getMenuChoice();
+        break;
+      }
+      case REC:
+      {
+        cout << "getting a reccomendation! " << endl;
+        menuChoice = getMenuChoice();
+        break;  
+      }
     }
   }
   cout << endl << "End of PA 5" << endl << endl;
