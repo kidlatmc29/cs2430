@@ -7,6 +7,9 @@
 HashTable::HashTable()
 {
   arr = new BookNode*[MAX_SIZE];
+  for(int index = 0; index < MAX_SIZE; index++){
+    arr[index] = nullptr; 
+  }
   currentSize = 0;
 }
 
@@ -15,7 +18,7 @@ HashTable::~HashTable()
   // go through array and delete linked lists 
   for(int index = 0; index < currentSize; index++) {
     BookNode* nPtr = arr[index]->next;
-    while(nPtr->key != -1) {
+    while(nPtr != nullptr) {
       BookNode* prev = nPtr; 
       nPtr = nPtr->next; 
       delete prev; 
@@ -39,16 +42,15 @@ void HashTable::addToBookshelf(long key, Book value)
 {
   BookNode* newBookNode = new BookNode(key, value);
   int index = hash(key);
-
   // check if it's the first key-value pair in the bucket
-  if(arr[index]->key == -1) {
+  if(arr[index] == nullptr) {
     arr[index] = newBookNode;
   } else { // iterate through the linked list until it gets to the end
     BookNode* nPtr = arr[index]->next; 
     while(nPtr) {
       nPtr = nPtr->next; 
     }
-    nPtr->next = newBookNode; 
+    nPtr = newBookNode; 
   }
 }
 
@@ -64,12 +66,19 @@ void HashTable::bookInfo(long key)
 
 void HashTable::displayAll()
 {
+  cout << "do I get here? " << endl;
   // iterates through heap table and prints out all book info 
   for(int index = 0; index < currentSize; index++) {
-    while(arr[index]->next) {
+    cout << "do I get here? " << endl;
+    if(arr[index]) {
+       cout << "Title: " << arr[index]->value.getTitle() << endl;
+    }
+    if (arr[index]->next) {
       BookNode* nPtr = arr[index]->next; 
-      cout << "Title: " << arr[index]->value.getTitle() << endl;
-      nPtr = nPtr->next;
+      while(nPtr) {
+        cout << "Title: " << arr[index]->value.getTitle() << endl;
+        nPtr = nPtr->next;
+      }
     }
   }
 }

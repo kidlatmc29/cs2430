@@ -44,8 +44,8 @@ int main()
   HashTable bookshelf; 
   int menuChoice; 
   cout << endl << "Welcome to PA 5" << endl; 
-  // cout << "Reading from books-sample.csv..." << endl << endl;
-  // fileRead();
+  cout << "Reading from books-sample.csv..." << endl << endl;
+  fileRead(bookshelf);
 
   while(menuChoice != QUIT) {
     while(menuChoice != QUIT && menuChoice != BROWSE && menuChoice != READ
@@ -58,6 +58,7 @@ int main()
       case BROWSE:
       {
         cout << "browsing for book! " << endl;
+        bookshelf.displayAll();
         menuChoice = getMenuChoice();
         break;
       }

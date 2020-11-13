@@ -12,7 +12,7 @@ class HashTable {
     int currentSize; 
     class BookNode {
       public:
-        BookNode(long k, Book v) : key(k), value(v) {};
+        BookNode(long k, Book v) : key(k), value(v), next(nullptr) {};
         BookNode() : key(-1) {};
         long key; 
         Book value;
