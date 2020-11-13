@@ -2,9 +2,12 @@
 // pa5.cpp
 // 11-16-2020
 
-// DESCRIPTION:
+// DESCRIPTION: PA 5 is a program that inserts books into a Hash Table and 
+//  allows the user to interact with the bookshelf. A menu is displayed to the
+//  user and they can select certain functions and continue to do so until they
+//  quit the program. 
 
-// SOURCES: 
+// SOURCES: Referenced my menu code from my cs1420 PA 5 project. 
 
 #include <iostream>
 #include <fstream> 
@@ -15,17 +18,17 @@ using namespace std;
 const int NUM_OF_COLS = 5; 
 const string FILE_NAME = "books-sample.csv"; // REMEMBER TO CHANGE TO books.csv
 const char DELIMITER = ',';
-const char BROWSE = '1';
-const char READ = '2';
-const char INFO = '3';
-const char REC = '4';
-const char QUIT = '5';
+const int BROWSE = 1;
+const int READ = 2;
+const int INFO = 3;
+const int REC = 4;
+const int QUIT = 5;
 
 void fileRead();
 
 int main()
 {
-  char menuChoice; 
+  int menuChoice; 
   cout << endl << "Welcome to PA 5" << endl; 
   // cout << "Reading from books-sample.csv..." << endl << endl;
   // fileRead();
@@ -33,13 +36,17 @@ int main()
   while(menuChoice != QUIT && menuChoice != BROWSE && menuChoice != READ
         && menuChoice != INFO && menuChoice != REC) {
     cout << "Bookshelf Menu: " << endl
+         << "===============================" << endl
          << "1. Browse for books" << endl
          << "2. Read a book" << endl
          << "3. View more info about a book" << endl
          << "4. Get a reccomendation" << endl
-         << "5. Quit" << endl;
+         << "5. Quit" << endl
+         << "===============================" << endl;
       cout << "What would you like to do?: ";  
      cin >> menuChoice;
+
+     cout << "Your choice was " << menuChoice << endl;
   }
 
   cout << endl << "End of PA 5" << endl << endl;
