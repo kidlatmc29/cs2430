@@ -16,6 +16,7 @@
 #include <iostream>
 #include <fstream> 
 #include <sstream>
+#include "hash.h"
 
 using namespace std; 
 
@@ -28,7 +29,7 @@ const int INFO = 3;
 const int REC = 4;
 const int QUIT = 5;
 
-void fileRead();
+void fileRead(HashTable &bookshelf);
 //
 // PRE:
 // POST:
@@ -40,6 +41,7 @@ int getMenuChoice();
 
 int main()
 {
+  HashTable bookshelf; 
   int menuChoice; 
   cout << endl << "Welcome to PA 5" << endl; 
   // cout << "Reading from books-sample.csv..." << endl << endl;
@@ -49,7 +51,6 @@ int main()
     while(menuChoice != QUIT && menuChoice != BROWSE && menuChoice != READ
           && menuChoice != INFO && menuChoice != REC) {
       menuChoice = getMenuChoice();
-      cout << "Your choice was " << menuChoice << endl;
     }
 
     switch(menuChoice) 
@@ -84,26 +85,42 @@ int main()
   return 0;
 }
 
-void fileRead()
+void fileRead(HashTable &bookshelf)
 {
   ifstream input; 
   string line;
- /**
+
   stringstream ss;
   string row[NUM_OF_COLS]; 
-  string item; 
+  string data; 
   int index; 
 
   float incomingRating; 
   long incomingISBN;
   int incomingPages; 
-  **/
+  
   input.open(FILE_NAME);
 
-  // let's just read row by row for now
   if(!input.fail()) {
     while(getline(input, line)) {
-      cout << line << endl;
+      ss.str(line);
+      index = 0;
+      while(ss.good()) {
+        getline(ss, data, DELIMITER);
+        row[index] = data;
+        index++;
+      }
+      incomingRating = stof(row[2]);
+      incomingISBN = stol(row[3]);
+      incomingPages = stoi(row[4]);
+
+      // create book object
+      Book newBook(row[0], row[1], incomingRating, incomingISBN, incomingPages);
+      //add book and isbn to shelf
+      bookshelf.addToBookshelf(incomingISBN, newBook);
+
+      // clear ss for next book
+      ss.clear();
     }
     input.close();
   } else {
