@@ -25,6 +25,14 @@ const int REC = 4;
 const int QUIT = 5;
 
 void fileRead();
+//
+// PRE:
+// POST:
+
+int getMenuChoice();
+//
+// PRE:
+// POST:
 
 int main()
 {
@@ -33,22 +41,20 @@ int main()
   // cout << "Reading from books-sample.csv..." << endl << endl;
   // fileRead();
 
-  while(menuChoice != QUIT && menuChoice != BROWSE && menuChoice != READ
-        && menuChoice != INFO && menuChoice != REC) {
-    cout << "Bookshelf Menu: " << endl
-         << "===============================" << endl
-         << "1. Browse for books" << endl
-         << "2. Read a book" << endl
-         << "3. View more info about a book" << endl
-         << "4. Get a reccomendation" << endl
-         << "5. Quit" << endl
-         << "===============================" << endl;
-      cout << "What would you like to do?: ";  
-     cin >> menuChoice;
+  while(menuChoice != QUIT) {
+    while(menuChoice != QUIT && menuChoice != BROWSE && menuChoice != READ
+          && menuChoice != INFO && menuChoice != REC) {
+      menuChoice = getMenuChoice();
+      cout << "Your choice was " << menuChoice << endl;
+    }
 
-     cout << "Your choice was " << menuChoice << endl;
+    switch(menuChoice) 
+    {
+      case BROWSE:
+        cout << "browsing for book! " << endl;
+        
+    }
   }
-
   cout << endl << "End of PA 5" << endl << endl;
   return 0;
 }
@@ -78,4 +84,20 @@ void fileRead()
   } else {
     cout << "Cannot read file! " << endl;
   }
+ }
+
+ int getMenuChoice()
+ {
+   int choice; 
+   cout << "Bookshelf Menu: " << endl
+        << "===============================" << endl
+        << "1. Browse for books" << endl
+        << "2. Read a book" << endl
+        << "3. View more info about a book" << endl
+        << "4. Get a reccomendation" << endl
+        << "5. Quit" << endl
+        << "===============================" << endl;
+   cout << "What would you like to do?: ";  
+   cin >> choice;
+    
  }
