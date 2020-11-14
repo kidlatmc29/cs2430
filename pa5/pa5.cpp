@@ -57,7 +57,7 @@ int main()
     {
       case BROWSE:
       {
-        cout << "browsing for book! " << endl;
+        cout << endl;
         bookshelf.displayAll();
         menuChoice = getMenuChoice();
         break;

@@ -9,7 +9,7 @@ using namespace std;
 class HashTable {
   private:
     const int MAX_SIZE = 11;
-    int currentSize; 
+    int numOfElements; 
     class BookNode {
       public:
         BookNode(long k, Book v) : key(k), value(v), next(nullptr) {};

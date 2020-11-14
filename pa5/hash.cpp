@@ -10,22 +10,24 @@ HashTable::HashTable()
   for(int index = 0; index < MAX_SIZE; index++){
     arr[index] = nullptr; 
   }
-  currentSize = 0;
+  numOfElements = 0;
 }
 
 HashTable::~HashTable()
 {
   // go through array and delete linked lists 
-  for(int index = 0; index < currentSize; index++) {
-    BookNode* nPtr = arr[index]->next;
-    while(nPtr != nullptr) {
-      BookNode* prev = nPtr; 
-      nPtr = nPtr->next; 
-      delete prev; 
+  for(int index = 0; index < MAX_SIZE; index++) {
+    if(arr[index]) {
+      BookNode* nPtr = arr[index]->next;
+      while(nPtr != nullptr) {
+        BookNode* prev = nPtr; 
+        nPtr = nPtr->next; 
+        delete prev; 
+      }
     }
   }
   delete[] arr; 
-  currentSize = 0;
+  numOfElements = 0;
 }
 
 int HashTable::hash(long key)
@@ -41,17 +43,22 @@ int HashTable::contains(long key)
 void HashTable::addToBookshelf(long key, Book value)
 {
   BookNode* newBookNode = new BookNode(key, value);
+  // check if there's a duplicate 
   int index = hash(key);
+  cout << "Load factor: " << numOfElements / MAX_SIZE;
   // check if it's the first key-value pair in the bucket
-  if(arr[index] == nullptr) {
+  if(!arr[index]) {
     arr[index] = newBookNode;
-  } else { // iterate through the linked list until it gets to the end
-    BookNode* nPtr = arr[index]->next; 
+  } else if(!arr[index]->next) { 
+    arr[index]->next = newBookNode;
+  } else {
+    BookNode *nPtr = arr[index]->next;
     while(nPtr) {
-      nPtr = nPtr->next; 
+      nPtr = nPtr->next;
     }
-    nPtr = newBookNode; 
+    nPtr = newBookNode;
   }
+  numOfElements++;
 }
 
 bool HashTable::readBook(long key)
@@ -66,20 +73,17 @@ void HashTable::bookInfo(long key)
 
 void HashTable::displayAll()
 {
-  cout << "do I get here? " << endl;
-  // iterates through heap table and prints out all book info 
-  for(int index = 0; index < currentSize; index++) {
-    cout << "do I get here? " << endl;
+  for(int index = 0; index < MAX_SIZE; index++) {
     if(arr[index]) {
-       cout << "Title: " << arr[index]->value.getTitle() << endl;
-    }
-    if (arr[index]->next) {
+      cout << "Title: " << arr[index]->value.getTitle() << endl
+           << "ISBN: " << arr[index]->value.getISBN() << endl << endl;
       BookNode* nPtr = arr[index]->next; 
       while(nPtr) {
-        cout << "Title: " << arr[index]->value.getTitle() << endl;
-        nPtr = nPtr->next;
+        cout << "Title: " << nPtr->value.getTitle() << endl
+             << "ISBN: " << nPtr->value.getISBN() << endl << endl;
+        nPtr = nPtr->next; 
       }
-    }
+    }  
   }
 }
 
