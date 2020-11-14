@@ -39,19 +39,13 @@ int HashTable::hash(long key)
 int HashTable::contains(long key)
 {
   int index = -1;
-  for(int i = 0; i < MAX_SIZE; i++) {
-    if(arr[i]) {
-      if(arr[index]->key == key) {
-        index = i; 
-      } else if(arr[i]->next) {
-        BookNode *nPtr = arr[i]->next; 
-        while(nPtr) {
-          if(nPtr->key == key) {
-            index = i;
-          }
-          nPtr = nPtr->next; 
-        }
+  for(int i = 0; index < MAX_SIZE; i++) {
+    BookNode *nPtr = arr[i]->next; 
+    while(nPtr) {
+      if(nPtr->key == key) {
+        index = i;
       }
+      nPtr = nPtr->next;
     }
   }
   return index; 
@@ -92,13 +86,14 @@ void HashTable::bookInfo(long key)
 void HashTable::displayAll()
 {
   for(int index = 0; index < MAX_SIZE; index++) {
-    BookNode* nPtr = arr[index]->next; 
+    BookNode *nPtr = arr[index]->next;
+    cout << "Index " << index << ": " << endl;
     while(nPtr) {
       cout << "Title: " << nPtr->value.getTitle() << endl
            << "ISBN: " << nPtr->value.getISBN() << endl << endl;
-      nPtr = nPtr->next; 
+      nPtr = nPtr->next;
     }
-  } 
+  }
 } 
 
 
