@@ -13,7 +13,7 @@ class HashTable {
     class BookNode {
       public:
         BookNode(long k, Book v) : key(k), value(v), next(nullptr) {};
-        BookNode() : key(-1) {};
+        BookNode() : key(-1), next(nullptr) {};
         long key; 
         Book value;
         BookNode* next; 

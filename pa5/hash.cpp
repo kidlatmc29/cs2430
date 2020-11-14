@@ -7,8 +7,9 @@
 HashTable::HashTable()
 {
   arr = new BookNode*[MAX_SIZE];
-  for(int index = 0; index < MAX_SIZE; index++){
-    arr[index] = nullptr; 
+  for(int index = 0; index < MAX_SIZE; index++) {
+    BookNode *head = new BookNode();
+    arr[index] = head; 
   }
   numOfElements = 0;
 }
@@ -17,8 +18,8 @@ HashTable::~HashTable()
 {
   // go through array and delete linked lists 
   for(int index = 0; index < MAX_SIZE; index++) {
-    if(arr[index]) {
-      BookNode* nPtr = arr[index]->next;
+    BookNode* nPtr = arr[index]->next;
+    if(nPtr) {
       while(nPtr != nullptr) {
         BookNode* prev = nPtr; 
         nPtr = nPtr->next; 
@@ -59,30 +60,21 @@ int HashTable::contains(long key)
 void HashTable::addToBookshelf(long key, Book value)
 {
   BookNode* newBookNode = new BookNode(key, value);
-  /** check if there's a duplicate 
-  if(contains(key) != -1) {
-    cout << "A book with ISBN " << key << " is already in the bookshelf!"
-         << endl;
-    return; 
-  }
-  **/
-
   int index = hash(key);
   // cout << "Load factor: " << numOfElements / MAX_SIZE << endl;
   // check if it's the first key-value pair in the bucket
-  if(!arr[index]) {
-    arr[index] = newBookNode;
-    cout << "inserted at " << index << endl;
-  } else if(!arr[index]->next) { 
+  if(!arr[index]->next) {
     arr[index]->next = newBookNode;
+    cout << "inserted " << newBookNode->value.getTitle() << " at "
+         << index << endl;
   } else {
     BookNode *nPtr = arr[index]->next;
     while(nPtr) {
       nPtr = nPtr->next;
     }
     nPtr = newBookNode;
-    cout << "inserted at " << index << " after " << nPtr->value.getTitle()
-         << endl;
+    cout << "inserted " << newBookNode->value.getTitle() << " at "
+         << index << endl;
   }
   numOfElements++;
 }
@@ -99,25 +91,16 @@ void HashTable::bookInfo(long key)
 
 void HashTable::displayAll()
 {
-  // int count = 0;
   for(int index = 0; index < MAX_SIZE; index++) {
-    if(arr[index]) {
-      cout << "Title: " << arr[index]->value.getTitle() << endl
-           << "ISBN: " << arr[index]->value.getISBN() << endl << endl;
+    BookNode* nPtr = arr[index]->next; 
+    while(nPtr) {
+      cout << "Title: " << nPtr->value.getTitle() << endl
+           << "ISBN: " << nPtr->value.getISBN() << endl << endl;
+      nPtr = nPtr->next; 
     }
-      /** count++;
-      BookNode* nPtr = arr[index]->next; 
-      while(nPtr) {
-        cout << "Title: " << nPtr->value.getTitle() << endl
-             << "ISBN: " << nPtr->value.getISBN() << endl << endl;
-        nPtr = nPtr->next; 
-        count++;
-      }
-    }  
-    **/ 
-  }
-  // cout << "Total Books: " << count  << endl;
-}
+  } 
+} 
+
 
 void HashTable::recommend(long key)
 {
