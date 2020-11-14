@@ -21,7 +21,7 @@
 using namespace std; 
 
 const int NUM_OF_COLS = 5; 
-const string FILE_NAME = "books-sample.csv"; // REMEMBER TO CHANGE TO books.csv
+const string FILE_NAME = "books.csv"; // REMEMBER TO CHANGE TO books.csv
 const char DELIMITER = ',';
 const int BROWSE = 1;
 const int READ = 2;
@@ -44,7 +44,7 @@ int main()
   HashTable bookshelf; 
   int menuChoice; 
   cout << endl << "Welcome to PA 5" << endl; 
-  cout << "Reading from books-sample.csv..." << endl << endl;
+  cout << "Reading from books.csv..." << endl << endl;
   fileRead(bookshelf);
 
   while(menuChoice != QUIT) {

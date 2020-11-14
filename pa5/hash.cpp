@@ -37,18 +37,42 @@ int HashTable::hash(long key)
 
 int HashTable::contains(long key)
 {
-  return -1; 
+  int index = -1;
+  for(int i = 0; i < MAX_SIZE; i++) {
+    if(arr[i]) {
+      if(arr[index]->key == key) {
+        index = i; 
+      } else if(arr[i]->next) {
+        BookNode *nPtr = arr[i]->next; 
+        while(nPtr) {
+          if(nPtr->key == key) {
+            index = i;
+          }
+          nPtr = nPtr->next; 
+        }
+      }
+    }
+  }
+  return index; 
 }
 
 void HashTable::addToBookshelf(long key, Book value)
 {
   BookNode* newBookNode = new BookNode(key, value);
-  // check if there's a duplicate 
+  /** check if there's a duplicate 
+  if(contains(key) != -1) {
+    cout << "A book with ISBN " << key << " is already in the bookshelf!"
+         << endl;
+    return; 
+  }
+  **/
+
   int index = hash(key);
-  cout << "Load factor: " << numOfElements / MAX_SIZE;
+  // cout << "Load factor: " << numOfElements / MAX_SIZE << endl;
   // check if it's the first key-value pair in the bucket
   if(!arr[index]) {
     arr[index] = newBookNode;
+    cout << "inserted at " << index << endl;
   } else if(!arr[index]->next) { 
     arr[index]->next = newBookNode;
   } else {
@@ -57,6 +81,8 @@ void HashTable::addToBookshelf(long key, Book value)
       nPtr = nPtr->next;
     }
     nPtr = newBookNode;
+    cout << "inserted at " << index << " after " << nPtr->value.getTitle()
+         << endl;
   }
   numOfElements++;
 }
@@ -73,18 +99,24 @@ void HashTable::bookInfo(long key)
 
 void HashTable::displayAll()
 {
+  // int count = 0;
   for(int index = 0; index < MAX_SIZE; index++) {
     if(arr[index]) {
       cout << "Title: " << arr[index]->value.getTitle() << endl
            << "ISBN: " << arr[index]->value.getISBN() << endl << endl;
+    }
+      /** count++;
       BookNode* nPtr = arr[index]->next; 
       while(nPtr) {
         cout << "Title: " << nPtr->value.getTitle() << endl
              << "ISBN: " << nPtr->value.getISBN() << endl << endl;
         nPtr = nPtr->next; 
+        count++;
       }
     }  
+    **/ 
   }
+  // cout << "Total Books: " << count  << endl;
 }
 
 void HashTable::recommend(long key)
