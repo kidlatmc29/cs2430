@@ -38,17 +38,19 @@ int HashTable::hash(long key)
 
 int HashTable::contains(long key)
 {
-  int index = -1;
-  for(int i = 0; index < MAX_SIZE; i++) {
-    BookNode *nPtr = arr[i]->next; 
-    while(nPtr) {
-      if(nPtr->key == key) {
-        index = i;
-      }
+  int location = -1;
+  BookNode *nPtr;
+  for(int index = 0; index < MAX_SIZE; index++) {
+    nPtr = arr[index]->next;
+    while(nPtr && nPtr->key != key) {
       nPtr = nPtr->next;
     }
+    if(nPtr && nPtr->key == key) {
+      location = index;
+    }
   }
-  return index; 
+
+  return location; 
 }
 
 void HashTable::addToBookshelf(long key, Book value)
@@ -56,17 +58,20 @@ void HashTable::addToBookshelf(long key, Book value)
   BookNode* newBookNode = new BookNode(key, value);
   int index = hash(key);
 
+  // check if there's a duplicate
+  if(contains(key) != -1) {
+    cout << newBookNode->value.getTitle() << " is already in the bookshelf!" 
+         << endl;
+    return;
+  }
+
   if(!arr[index]->next) {
     arr[index]->next = newBookNode;
-    cout << "inserted " << newBookNode->value.getTitle() << " at "
-         << index << endl;
   } else {
     BookNode* nPtr = arr[index]->next;
     while(nPtr->next) {
       nPtr = nPtr->next; 
     }
-    cout << "inserted " << newBookNode->value.getTitle() << " at "
-         << index << endl;
     nPtr->next = newBookNode;
   }
 }
@@ -83,10 +88,9 @@ void HashTable::bookInfo(long key)
 
 void HashTable::displayAll()
 {
-   BookNode *nPtr;
+  BookNode *nPtr;
   for(int index = 0; index < MAX_SIZE; index++) {
     nPtr = arr[index]->next;
-    cout << "Index " << index << ": " << endl;
     while(nPtr) {
       cout << "Title: " << nPtr->value.getTitle() << endl
            << "ISBN: " << nPtr->value.getISBN() << endl << endl;
