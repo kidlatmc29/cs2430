@@ -3,6 +3,7 @@
 // 11-16-2020
 
 #include <iostream>
+#include <sstream>
 using namespace std; 
 
 class Book {
@@ -41,6 +42,16 @@ class Book {
 
     string getTitle();
     // returns the title of the book
+    // PRE: Called from the HashTable class
+    // POST: None.
+
+    int getPages();
+    // returns the number of pages of the book
+    // PRE: Called from the HashTable class
+    // POST: None.
+
+    double getRating();
+    // returns the rating of the book
     // PRE: Called from the HashTable class
     // POST: None.
 

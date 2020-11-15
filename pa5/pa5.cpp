@@ -21,7 +21,7 @@
 using namespace std; 
 
 const int NUM_OF_COLS = 5; 
-const string FILE_NAME = "books-sample.csv"; // REMEMBER TO CHANGE TO books.csv
+const string FILE_NAME = "books.csv"; // REMEMBER TO CHANGE TO books.csv
 const char DELIMITER = ',';
 const int BROWSE = 1;
 const int READ = 2;
@@ -70,7 +70,11 @@ int main()
       }
       case INFO:
       {
-        cout << "getting info for book! " << endl;
+        long input;
+        cout << "Enter the ISBN of the book: ";
+        cin >> input; 
+        cout << endl;
+        bookshelf.bookInfo(input);
         menuChoice = getMenuChoice();
         break;
       }

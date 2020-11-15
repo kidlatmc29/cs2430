@@ -78,14 +78,35 @@ void HashTable::addToBookshelf(long key, Book value)
 
 bool HashTable::readBook(long key)
 {
-  return true;
+  bool read = true; 
+  int location = contains(key);
+
+  if(location != -1) {
+    BookNode *nPtr = arr[location]->next; 
+    BookNode *prev; 
+    while(nPtr && nPtr->key != key) {
+      prev = nPtr;
+      nPtr = nPtr->next; 
+    }
+    if(nPtr && nPtr->key == key) {
+      prev->next = nPtr->next;
+      delete nPtr; 
+      read = true;
+    }
+  } else {
+    cout << "A book with the ISBN " << key << " is not in the bookshelf." 
+         << endl;
+    read = false; 
+  }
+
+  return read;
 }
 
 void HashTable::bookInfo(long key)
 {
   // call contains to find index of key
   int location = contains(key);
-  if(location = -1) {
+  if(location == -1) {
     cout << "A book with the ISBN " << key << " is not in the bookshelf." 
          << endl;
   } else {

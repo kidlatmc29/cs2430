@@ -31,7 +31,7 @@ long Book::getISBN()
 
 string Book::getAuthor()
 {
-  return author;
+  return author; 
 }
 
 string Book::getTitle()
@@ -47,13 +47,4 @@ int Book::getPages()
 double Book::getRating()
 {
   return rating; 
-}
-
-void Book::printInfo()
-{
-  cout << "Title: " << title << endl
-       << "Authors: " << author << endl
-       << "ISBN: " << ISBN  << endl
-       << "Pages: " << pages << endl
-       << "Rating " << rating << endl;
 }
