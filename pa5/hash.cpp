@@ -84,6 +84,25 @@ bool HashTable::readBook(long key)
 void HashTable::bookInfo(long key)
 {
   // call contains to find index of key
+  int location = contains(key);
+  if(location = -1) {
+    cout << "A book with the ISBN " << key << " is not in the bookshelf." 
+         << endl;
+  } else {
+    BookNode *nPtr = arr[location]->next; 
+    while(nPtr && nPtr->key != key) {
+      nPtr = nPtr->next; 
+    }
+
+    if(nPtr && nPtr->key == key) {
+      cout << "Title: " << nPtr->value.getTitle() << endl
+           << "Author(s): " << nPtr->value.getAuthor() << endl
+           << "ISBN: " << nPtr->value.getISBN() << endl 
+           << "Pages: " << nPtr->value.getPages() << endl
+           << "Rating: " << nPtr->value.getRating() << endl
+           << endl;
+    }
+  }
 }
 
 void HashTable::displayAll()

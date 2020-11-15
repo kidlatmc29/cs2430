@@ -39,6 +39,16 @@ string Book::getTitle()
   return title;
 }
 
+int Book::getPages()
+{
+  return pages;
+}
+
+double Book::getRating()
+{
+  return rating; 
+}
+
 void Book::printInfo()
 {
   cout << "Title: " << title << endl
