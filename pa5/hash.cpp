@@ -55,22 +55,20 @@ void HashTable::addToBookshelf(long key, Book value)
 {
   BookNode* newBookNode = new BookNode(key, value);
   int index = hash(key);
-  // cout << "Load factor: " << numOfElements / MAX_SIZE << endl;
-  // check if it's the first key-value pair in the bucket
+
   if(!arr[index]->next) {
     arr[index]->next = newBookNode;
     cout << "inserted " << newBookNode->value.getTitle() << " at "
          << index << endl;
   } else {
-    BookNode *nPtr = arr[index]->next;
-    while(nPtr) {
-      nPtr = nPtr->next;
+    BookNode* nPtr = arr[index]->next;
+    while(nPtr->next) {
+      nPtr = nPtr->next; 
     }
-    nPtr = newBookNode;
     cout << "inserted " << newBookNode->value.getTitle() << " at "
          << index << endl;
+    nPtr->next = newBookNode;
   }
-  numOfElements++;
 }
 
 bool HashTable::readBook(long key)
@@ -85,8 +83,9 @@ void HashTable::bookInfo(long key)
 
 void HashTable::displayAll()
 {
+   BookNode *nPtr;
   for(int index = 0; index < MAX_SIZE; index++) {
-    BookNode *nPtr = arr[index]->next;
+    nPtr = arr[index]->next;
     cout << "Index " << index << ": " << endl;
     while(nPtr) {
       cout << "Title: " << nPtr->value.getTitle() << endl
@@ -95,7 +94,6 @@ void HashTable::displayAll()
     }
   }
 } 
-
 
 void HashTable::recommend(long key)
 {
