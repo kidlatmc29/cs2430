@@ -155,14 +155,16 @@ void HashTable::recommend(long key)
     }
     author = nPtr->value.getAuthor();
 
+    cout << "Other book(s) by " << author << "are: " << endl;
+
     for(int index = 0; index < MAX_SIZE; index++) {
       nPtr = arr[index]->next;
       while(nPtr) {
-        if(nPtr->value.getAuthor() == author) {
+        if(nPtr->key != key && nPtr->value.getAuthor() == author) {
           cout << "Title: " << nPtr->value.getTitle() << endl
                << "ISBN: " << nPtr->value.getISBN() << endl << endl;
-          nPtr = nPtr->next;
         }
+        nPtr = nPtr->next;
       }
     }
   }

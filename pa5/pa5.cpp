@@ -74,13 +74,19 @@ int main()
         cout << "Enter the ISBN of the book: ";
         cin >> input; 
         cout << endl;
+
         bookshelf.bookInfo(input);
         menuChoice = getMenuChoice();
         break;
       }
       case REC:
       {
-        cout << "getting a reccomendation! " << endl;
+        long input;
+        cout << "Enter the ISBN of the book you enjoyed: ";
+        cin >> input; 
+        cout << endl;
+        bookshelf.recommend(input);
+
         menuChoice = getMenuChoice();
         break;  
       }
