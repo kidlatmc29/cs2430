@@ -141,5 +141,30 @@ void HashTable::displayAll()
 
 void HashTable::recommend(long key)
 {
+  BookNode *nPtr; 
+  string author;
+  int location = contains(key);
+  if(location == -1) {
+    cout << "A book with the ISBN " << key << " is not in the bookshelf." 
+         << endl;
+    return;
+  } else {
+    nPtr = arr[location]->next; 
+    while(nPtr && nPtr->key != key) {
+      nPtr = nPtr->next; 
+    }
+    author = nPtr->value.getAuthor();
+
+    for(int index = 0; index < MAX_SIZE; index++) {
+      nPtr = arr[index]->next;
+      while(nPtr) {
+        if(nPtr->value.getAuthor() == author) {
+          cout << "Title: " << nPtr->value.getTitle() << endl
+               << "ISBN: " << nPtr->value.getISBN() << endl << endl;
+          nPtr = nPtr->next;
+        }
+      }
+    }
+  }
 
 }
