@@ -30,14 +30,15 @@ const int REC = 4;
 const int QUIT = 5;
 
 void fileRead(HashTable &bookshelf);
-//
-// PRE:
-// POST:
+// reads in the given file of books
+// PRE: the given file is in cvs form and has all the correct formatting
+// POST: all the books will have been created and put into the hash table
 
 int getMenuChoice();
-//
-// PRE:
-// POST:
+// prints out the menu for the user and gets their given choice
+// PRE: As long as the user doesn't enter anything other than an integer, this
+//  will not break the program- 
+// POST: the given choice will be sent back to main and is excetuted
 
 int main()
 {
