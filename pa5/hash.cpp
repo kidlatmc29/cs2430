@@ -17,16 +17,17 @@ HashTable::HashTable()
 HashTable::~HashTable()
 {
   // go through array and delete linked lists 
+  BookNode *nPtr; 
+  BookNode *prev; 
   for(int index = 0; index < MAX_SIZE; index++) {
-    BookNode* nPtr = arr[index]->next;
-    if(nPtr) {
-      while(nPtr != nullptr) {
-        BookNode* prev = nPtr; 
-        nPtr = nPtr->next; 
-        delete prev; 
-      }
+    nPtr = arr[index]->next; 
+    while(nPtr) {
+      prev = nPtr;
+      nPtr = nPtr->next; 
+      delete prev; 
     }
   }
+
   delete[] arr; 
   numOfElements = 0;
 }
@@ -90,6 +91,8 @@ bool HashTable::readBook(long key)
     }
     if(nPtr && nPtr->key == key) {
       prev->next = nPtr->next;
+       cout << "Read " << nPtr->value.getTitle() << endl
+            << "Removed from bookshelf...." << endl;
       delete nPtr; 
       read = true;
     }

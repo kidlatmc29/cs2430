@@ -65,7 +65,11 @@ int main()
       }
       case READ:
       {
-        cout << "reading a book! " << endl;
+        long input;
+        cout << "Enter the ISBN of the book: ";
+        cin >> input; 
+        cout << endl;
+        bookshelf.readBook(input);
         menuChoice = getMenuChoice();
         break;
       }
